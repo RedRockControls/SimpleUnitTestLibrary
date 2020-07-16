@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.3">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.4">
   <POU Name="Test_AssertEquals_DINT" Id="{321b55b8-08df-49a6-8c75-b7bf48233d47}" SpecialFunc="None">
     <Declaration><![CDATA[FUNCTION_BLOCK Test_AssertEquals_DINT EXTENDS TUnitTestBase
 VAR
@@ -18,36 +18,29 @@ AssertionListenerMock.ActualAsString   := '';
 AssertionUnderTest.AssertEquals_DINT(
     Expected := 2222,
     Actual   := DINT_Variable,
-    ObjectName := 'AssertionTest',
     VariableName := 'DINT_Variable');
- 
     
 // Check the assertion worked...    
 Assertion.AssertEquals_BOOL(
     Expected := TRUE,
     Actual   := AssertionListenerMock.AssertionFailed,
-    ObjectName := _TestName,
     VariableName := 'AssertionListenerMock.AssertionFailed');
 
 // Check the assertion messages...    
 Assertion.AssertEquals_STRING(
     Expected := 'AssertEquals_DINT failed in AssertionTest: Value "DINT_Variable"',
     Actual   := AssertionListenerMock.AssertionMessage,
-    ObjectName := _TestName,
     VariableName := 'AssertionListenerMock.AssertionMessage');
 
 Assertion.AssertEquals_STRING(
     Expected := '  Expected = 2222',
     Actual   := AssertionListenerMock.ExpectedAsString,
-    ObjectName := _TestName,
     VariableName := 'AssertionListenerMock.ExpectedAsString');
 
 Assertion.AssertEquals_STRING(
     Expected := '  Actual   = 1111',
     Actual   := AssertionListenerMock.ActualAsString,
-    ObjectName := _TestName,
     VariableName := 'AssertionListenerMock.ActualAsString');
-
 
 TestFinished();    ]]></ST>
     </Implementation>

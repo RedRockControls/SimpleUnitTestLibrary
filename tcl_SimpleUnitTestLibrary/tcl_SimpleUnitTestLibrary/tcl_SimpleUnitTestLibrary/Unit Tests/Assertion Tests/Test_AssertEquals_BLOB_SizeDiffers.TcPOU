@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.3">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.4">
   <POU Name="Test_AssertEquals_BLOB_SizeDiffers" Id="{4b4d9d9b-0905-49ca-aebb-53d01563efb4}" SpecialFunc="None">
     <Declaration><![CDATA[FUNCTION_BLOCK Test_AssertEquals_BLOB_SizeDiffers EXTENDS TUnitTestBase
 VAR
@@ -19,7 +19,6 @@ AssertionListenerMock.ActualAsString   := '';
 AssertionUnderTest.AssertEquals_BLOB(
     Expected := BYTE_Variable,
     Actual   := WORD_Variable,
-    ObjectName := 'AssertionTest',
     VariableName := 'WORD_VariableAsBlob');
  
     
@@ -27,28 +26,23 @@ AssertionUnderTest.AssertEquals_BLOB(
 Assertion.AssertEquals_BOOL(
     Expected := TRUE,
     Actual   := AssertionListenerMock.AssertionFailed,
-    ObjectName := _TestName,
     VariableName := 'AssertionListenerMock.AssertionFailed');
 
 // Check the assertion messages...    
 Assertion.AssertEquals_STRING(
     Expected := 'AssertEquals_BLOB failed in AssertionTest: Value "Blob.Size"',
     Actual   := AssertionListenerMock.AssertionMessage,
-    ObjectName := _TestName,
     VariableName := 'AssertionListenerMock.AssertionMessage');
 
 Assertion.AssertEquals_STRING(
     Expected := '  Expected = 1',
     Actual   := AssertionListenerMock.ExpectedAsString,
-    ObjectName := _TestName,
     VariableName := 'AssertionListenerMock.ExpectedAsString');
 
 Assertion.AssertEquals_STRING(
     Expected := '  Actual   = 2',
     Actual   := AssertionListenerMock.ActualAsString,
-    ObjectName := _TestName,
     VariableName := 'AssertionListenerMock.ActualAsString');
-
 
 TestFinished();    ]]></ST>
     </Implementation>

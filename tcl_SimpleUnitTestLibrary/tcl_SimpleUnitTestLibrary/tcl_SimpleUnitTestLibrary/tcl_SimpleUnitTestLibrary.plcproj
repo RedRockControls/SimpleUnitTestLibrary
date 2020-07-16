@@ -15,7 +15,7 @@
     <Implicit_KindOfTask>{028b744a-fba2-4ad6-9a1a-384ea0117297}</Implicit_KindOfTask>
     <Implicit_Jitter_Distribution>{c39e8777-3f3b-40cc-9943-835de0d8115c}</Implicit_Jitter_Distribution>
     <LibraryReferences>{88497f9f-773c-45a3-b469-3185dbd00fb4}</LibraryReferences>
-    <Released>true</Released>
+    <Released>false</Released>
     <Company>Red Rock Controls Limited</Company>
     <Title>tcl_SimpleUnitTestLibrary</Title>
     <ProjectVersion>1.0.1.0</ProjectVersion>

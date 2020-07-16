@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.3">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.4">
   <POU Name="TAssertion" Id="{caed79f5-0913-445c-a87a-bb4aa779b904}" SpecialFunc="None">
     <Declaration><![CDATA[FUNCTION_BLOCK TAssertion
 VAR_INPUT
@@ -22,21 +22,20 @@ END_VAR
 VAR_INPUT
     Expected : ANY;
     Actual   : ANY;
-    ObjectName   : T_MaxString;
     VariableName : T_MaxString;
 END_VAR
 ]]></Declaration>
       <Implementation>
         <ST><![CDATA[IF Expected.diSize <> Actual.diSize THEN
     _AssertionFailed := TRUE;
-    _AssertionMessage := F_FormatStringEx2('AssertEquals_BLOB failed in %s: Value "%s"', ObjectName, 'Blob.Size');
+    _AssertionMessage := F_FormatStringEx2('AssertEquals_BLOB failed in %s: Value "%s"', _AssertionListener.TestName, 'Blob.Size');
     _ExpectedAsString := F_FormatString1('  Expected = %d', F_DINT(Expected.diSize));
     _ActualAsString   := F_FormatString1('  Actual   = %d', F_DINT(Actual.diSize));
     _AssertionListener.OnAssertionFailed(_AssertionMessage,_ExpectedAsString,_ActualAsString);
     
 ELSIF Expected.TypeClass <> Actual.TypeClass THEN
     _AssertionFailed := TRUE;
-    _AssertionMessage := F_FormatStringEx2('AssertEquals_BLOB failed in %s: Value "%s"', ObjectName, 'Blob.TypeClass');
+    _AssertionMessage := F_FormatStringEx2('AssertEquals_BLOB failed in %s: Value "%s"', _AssertionListener.TestName, 'Blob.TypeClass');
     _ExpectedAsString := F_FormatStringEx1('  Expected = %s', F_TypeClassToString(Expected.TypeClass));
     _ActualAsString   := F_FormatStringEx1('  Actual   = %s', F_TypeClassToString(Actual.TypeClass));
     _AssertionListener.OnAssertionFailed(_AssertionMessage,_ExpectedAsString,_ActualAsString);
@@ -48,7 +47,7 @@ ELSIF
         n     := DINT_TO_UDINT(Actual.diSize)) <> 0
 THEN
     _AssertionFailed := TRUE;
-    _AssertionMessage := F_FormatStringEx1('AssertEquals_BLOB failed in %s: Contents differ', ObjectName);
+    _AssertionMessage := F_FormatStringEx1('AssertEquals_BLOB failed in %s: Contents differ', _AssertionListener.TestName);
     _ExpectedAsString := '';
     _ActualAsString   := '';
     _AssertionListener.OnAssertionFailed(_AssertionMessage,_ExpectedAsString,_ActualAsString);
@@ -65,14 +64,13 @@ END_IF
 VAR_INPUT
     Expected : BOOL;
     Actual   : BOOL;
-    ObjectName   : T_MaxString;
     VariableName : T_MaxString;
 END_VAR
 ]]></Declaration>
       <Implementation>
         <ST><![CDATA[IF Expected <> Actual THEN
     _AssertionFailed  := TRUE;
-    _AssertionMessage := F_FormatStringEx2('AssertEquals_BOOL failed in %s: Value "%s"', ObjectName, VariableName);
+    _AssertionMessage := F_FormatStringEx2('AssertEquals_BOOL failed in %s: Value "%s"', _AssertionListener.TestName, VariableName);
     _ExpectedAsString := F_FormatStringEx1('  Expected = %s', BOOL_TO_STRING(Expected));
     _ActualAsString   := F_FormatStringEx1('  Actual   = %s', BOOL_TO_STRING(Actual));
     _AssertionListener.OnAssertionFailed(_AssertionMessage,_ExpectedAsString,_ActualAsString);
@@ -87,14 +85,13 @@ END_IF]]></ST>
 VAR_INPUT
     Expected : BYTE;
     Actual   : BYTE;
-    ObjectName   : T_MaxString;
     VariableName : T_MaxString;
 END_VAR
 ]]></Declaration>
       <Implementation>
         <ST><![CDATA[IF Expected <> Actual THEN
     _AssertionFailed := TRUE;
-    _AssertionMessage := F_FormatStringEx2('AssertEquals_BYTE failed in %s: Value "%s"', ObjectName, VariableName);
+    _AssertionMessage := F_FormatStringEx2('AssertEquals_BYTE failed in %s: Value "%s"', _AssertionListener.TestName, VariableName);
     _ExpectedAsString := F_FormatString1('  Expected = %d', F_BYTE(Expected));
     _ActualAsString   := F_FormatString1('  Actual   = %d', F_BYTE(Actual));
     _AssertionListener.OnAssertionFailed(_AssertionMessage,_ExpectedAsString,_ActualAsString);
@@ -109,14 +106,13 @@ END_IF]]></ST>
 VAR_INPUT
     Expected : DINT;
     Actual   : DINT;
-    ObjectName   : T_MaxString;
     VariableName : T_MaxString;
 END_VAR
 ]]></Declaration>
       <Implementation>
         <ST><![CDATA[IF Expected <> Actual THEN
     _AssertionFailed  := TRUE;
-    _AssertionMessage := F_FormatStringEx2('AssertEquals_DINT failed in %s: Value "%s"', ObjectName, VariableName);
+    _AssertionMessage := F_FormatStringEx2('AssertEquals_DINT failed in %s: Value "%s"', _AssertionListener.TestName, VariableName);
     _ExpectedAsString := F_FormatString1('  Expected = %d', F_DINT(Expected));
     _ActualAsString   := F_FormatString1('  Actual   = %d', F_DINT(Actual));
     _AssertionListener.OnAssertionFailed(_AssertionMessage,_ExpectedAsString,_ActualAsString);
@@ -131,14 +127,13 @@ END_IF]]></ST>
 VAR_INPUT
     Expected : DWORD;
     Actual   : DWORD;
-    ObjectName   : T_MaxString;
     VariableName : T_MaxString;
 END_VAR
 ]]></Declaration>
       <Implementation>
         <ST><![CDATA[IF Expected <> Actual THEN
     _AssertionFailed := TRUE;
-    _AssertionMessage := F_FormatStringEx2('AssertEquals_DWORD failed in %s: Value "%s"', ObjectName, VariableName);
+    _AssertionMessage := F_FormatStringEx2('AssertEquals_DWORD failed in %s: Value "%s"', _AssertionListener.TestName, VariableName);
     _ExpectedAsString := F_FormatString1('  Expected = %d', F_DWORD(Expected));
     _ActualAsString   := F_FormatString1('  Actual   = %d', F_DWORD(Actual));
     _AssertionListener.OnAssertionFailed(_AssertionMessage,_ExpectedAsString,_ActualAsString);
@@ -153,14 +148,13 @@ END_IF]]></ST>
 VAR_INPUT
     Expected : INT;
     Actual   : INT;
-    ObjectName   : T_MaxString;
     VariableName : T_MaxString;
 END_VAR
 ]]></Declaration>
       <Implementation>
         <ST><![CDATA[IF Expected <> Actual THEN
     _AssertionFailed := TRUE;
-    _AssertionMessage := F_FormatStringEx2('AssertEquals_INT failed in %s: Value "%s"', ObjectName, VariableName);
+    _AssertionMessage := F_FormatStringEx2('AssertEquals_INT failed in %s: Value "%s"', _AssertionListener.TestName, VariableName);
     _ExpectedAsString := F_FormatString1('  Expected = %d', F_INT(Expected));
     _ActualAsString   := F_FormatString1('  Actual   = %d', F_INT(Actual));
     _AssertionListener.OnAssertionFailed(_AssertionMessage,_ExpectedAsString,_ActualAsString);
@@ -175,14 +169,13 @@ END_IF]]></ST>
 VAR_INPUT
     Expected : __SYSTEM.IQueryInterface;
     Actual   : __SYSTEM.IQueryInterface;
-    ObjectName   : T_MaxString;
     VariableName : T_MaxString;
 END_VAR
 ]]></Declaration>
       <Implementation>
         <ST><![CDATA[IF Expected <> Actual THEN
     _AssertionFailed  := TRUE;
-    _AssertionMessage := F_FormatStringEx2('AssertEquals_INTERFACE failed in %s: Value "%s"', ObjectName, VariableName);
+    _AssertionMessage := F_FormatStringEx2('AssertEquals_INTERFACE failed in %s: Value "%s"', _AssertionListener.TestName, VariableName);
     _ExpectedAsString := '  Interfaces Differ';
     _ActualAsString   := '';
     _AssertionListener.OnAssertionFailed(_AssertionMessage,_ExpectedAsString,_ActualAsString);
@@ -197,14 +190,13 @@ END_IF]]></ST>
 VAR_INPUT
     Expected : LINT;
     Actual   : LINT;
-    ObjectName   : T_MaxString;
     VariableName : T_MaxString;
 END_VAR
 ]]></Declaration>
       <Implementation>
         <ST><![CDATA[IF Expected <> Actual THEN
     _AssertionFailed  := TRUE;
-    _AssertionMessage := F_FormatStringEx2('AssertEquals_LINT failed in %s: Value "%s"', ObjectName, VariableName);
+    _AssertionMessage := F_FormatStringEx2('AssertEquals_LINT failed in %s: Value "%s"', _AssertionListener.TestName, VariableName);
     _ExpectedAsString := F_FormatString1('  Expected = %d', F_LINT(Expected));
     _ActualAsString   := F_FormatString1('  Actual   = %d', F_LINT(Actual));
     _AssertionListener.OnAssertionFailed(_AssertionMessage,_ExpectedAsString,_ActualAsString);
@@ -220,14 +212,13 @@ VAR_INPUT
     Expected : LREAL;
     Actual   : LREAL;
     Delta    : LREAL;
-    ObjectName   : T_MaxString;
     VariableName : T_MaxString;
 END_VAR
 ]]></Declaration>
       <Implementation>
         <ST><![CDATA[IF ABS(Expected - Actual) >= Delta THEN
     _AssertionFailed  := TRUE;
-    _AssertionMessage := F_FormatStringEx2('AssertEquals_LREAL failed in %s: Value "%s"', ObjectName, VariableName);
+    _AssertionMessage := F_FormatStringEx2('AssertEquals_LREAL failed in %s: Value "%s"', _AssertionListener.TestName, VariableName);
     _ExpectedAsString := F_FormatString1('  Expected = %f', F_LREAL(Expected));
     _ActualAsString   := F_FormatString1('  Actual   = %f', F_LREAL(Actual));
     _AssertionListener.OnAssertionFailed(_AssertionMessage,_ExpectedAsString,_ActualAsString);
@@ -242,14 +233,13 @@ END_IF]]></ST>
 VAR_INPUT
     Expected : PVOID;
     Actual   : PVOID;
-    ObjectName   : T_MaxString;
     VariableName : T_MaxString;
 END_VAR
 ]]></Declaration>
       <Implementation>
         <ST><![CDATA[IF Expected <> Actual THEN
     _AssertionFailed  := TRUE;
-    _AssertionMessage := F_FormatStringEx2('AssertEquals_PVOID failed in %s: Value "%s"', ObjectName, VariableName);
+    _AssertionMessage := F_FormatStringEx2('AssertEquals_PVOID failed in %s: Value "%s"', _AssertionListener.TestName, VariableName);
     _ExpectedAsString := F_FormatString1('  Expected = %d', F_PVOID(Expected));
     _ActualAsString   := F_FormatString1('  Actual   = %d', F_PVOID(Actual));
     _AssertionListener.OnAssertionFailed(_AssertionMessage,_ExpectedAsString,_ActualAsString);
@@ -265,14 +255,13 @@ VAR_INPUT
     Expected : REAL;
     Actual   : REAL;
     Delta    : REAL;
-    ObjectName   : T_MaxString;
     VariableName : T_MaxString;
 END_VAR
 ]]></Declaration>
       <Implementation>
         <ST><![CDATA[IF ABS(Expected - Actual) >= Delta THEN
     _AssertionFailed  := TRUE;
-    _AssertionMessage := F_FormatStringEx2('AssertEquals_REAL failed in %s: Value "%s"', ObjectName, VariableName);
+    _AssertionMessage := F_FormatStringEx2('AssertEquals_REAL failed in %s: Value "%s"', _AssertionListener.TestName, VariableName);
     _ExpectedAsString := F_FormatString1('  Expected = %f', F_REAL(Expected));
     _ActualAsString   := F_FormatString1('  Actual   = %f', F_REAL(Actual));
     _AssertionListener.OnAssertionFailed(_AssertionMessage,_ExpectedAsString,_ActualAsString);
@@ -287,14 +276,13 @@ END_IF]]></ST>
 VAR_INPUT
     Expected : T_MaxString;
     Actual   : T_MaxString;
-    ObjectName   : T_MaxString;
     VariableName : T_MaxString;
 END_VAR
 ]]></Declaration>
       <Implementation>
         <ST><![CDATA[IF Expected <> Actual THEN
     _AssertionFailed := TRUE;
-    _AssertionMessage := F_FormatStringEx2('AssertEquals_STRING failed in %s: Value "%s"', ObjectName, VariableName);
+    _AssertionMessage := F_FormatStringEx2('AssertEquals_STRING failed in %s: Value "%s"', _AssertionListener.TestName, VariableName);
     _ExpectedAsString := F_FormatStringEx1('  Expected = %s', Expected);
     _ActualAsString   := F_FormatStringEx1('  Actual   = %s', Actual);
     _AssertionListener.OnAssertionFailed(_AssertionMessage,_ExpectedAsString,_ActualAsString);
@@ -313,14 +301,13 @@ END_IF
 VAR_INPUT
     Expected : UDINT;
     Actual   : UDINT;
-    ObjectName   : T_MaxString;
     VariableName : T_MaxString;
 END_VAR
 ]]></Declaration>
       <Implementation>
         <ST><![CDATA[IF Expected <> Actual THEN
     _AssertionFailed := TRUE;
-    _AssertionMessage := F_FormatStringEx2('AssertEquals_UDINT failed in %s: Value "%s"', ObjectName, VariableName);
+    _AssertionMessage := F_FormatStringEx2('AssertEquals_UDINT failed in %s: Value "%s"', _AssertionListener.TestName, VariableName);
     _ExpectedAsString := F_FormatString1('  Expected = %d', F_UDINT(Expected));
     _ActualAsString   := F_FormatString1('  Actual   = %d', F_UDINT(Actual));
     _AssertionListener.OnAssertionFailed(_AssertionMessage,_ExpectedAsString,_ActualAsString);
@@ -335,14 +322,13 @@ END_IF]]></ST>
 VAR_INPUT
     Expected : UINT;
     Actual   : UINT;
-    ObjectName   : T_MaxString;
     VariableName : T_MaxString;
 END_VAR
 ]]></Declaration>
       <Implementation>
         <ST><![CDATA[IF Expected <> Actual THEN
     _AssertionFailed := TRUE;
-    _AssertionMessage := F_FormatStringEx2('AssertEquals_UINT failed in %s: Value "%s"', ObjectName, VariableName);
+    _AssertionMessage := F_FormatStringEx2('AssertEquals_UINT failed in %s: Value "%s"', _AssertionListener.TestName, VariableName);
     _ExpectedAsString := F_FormatString1('  Expected = %d', F_UINT(Expected));
     _ActualAsString   := F_FormatString1('  Actual   = %d', F_UINT(Actual));
     _AssertionListener.OnAssertionFailed(_AssertionMessage,_ExpectedAsString,_ActualAsString);
@@ -357,14 +343,13 @@ END_IF]]></ST>
 VAR_INPUT
     Expected : ULINT;
     Actual   : ULINT;
-    ObjectName   : T_MaxString;
     VariableName : T_MaxString;
 END_VAR
 ]]></Declaration>
       <Implementation>
         <ST><![CDATA[IF Expected <> Actual THEN
     _AssertionFailed  := TRUE;
-    _AssertionMessage := F_FormatStringEx2('AssertEquals_ULINT failed in %s: Value "%s"', ObjectName, VariableName);
+    _AssertionMessage := F_FormatStringEx2('AssertEquals_ULINT failed in %s: Value "%s"', _AssertionListener.TestName, VariableName);
     _ExpectedAsString := F_FormatString1('  Expected = %d', F_ULINT(Expected));
     _ActualAsString   := F_FormatString1('  Actual   = %d', F_ULINT(Actual));
     _AssertionListener.OnAssertionFailed(_AssertionMessage,_ExpectedAsString,_ActualAsString);
@@ -379,14 +364,13 @@ END_IF]]></ST>
 VAR_INPUT
     Expected : WORD;
     Actual   : WORD;
-    ObjectName   : T_MaxString;
     VariableName : T_MaxString;
 END_VAR
 ]]></Declaration>
       <Implementation>
         <ST><![CDATA[IF Expected <> Actual THEN
     _AssertionFailed := TRUE;
-    _AssertionMessage := F_FormatStringEx2('AssertEquals_WORD failed in %s: Value "%s"', ObjectName, VariableName);
+    _AssertionMessage := F_FormatStringEx2('AssertEquals_WORD failed in %s: Value "%s"', _AssertionListener.TestName, VariableName);
     _ExpectedAsString := F_FormatString1('  Expected = %d', F_WORD(Expected));
     _ActualAsString   := F_FormatString1('  Actual   = %d', F_WORD(Actual));
     _AssertionListener.OnAssertionFailed(_AssertionMessage,_ExpectedAsString,_ActualAsString);

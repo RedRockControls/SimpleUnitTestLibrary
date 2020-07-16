@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.3">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.4">
   <POU Name="Test_AssertEquals_REAL" Id="{5e4fd331-b40e-4c18-a6b9-2e5cae1cbf1c}" SpecialFunc="None">
     <Declaration><![CDATA[FUNCTION_BLOCK Test_AssertEquals_REAL EXTENDS TUnitTestBase
 VAR
@@ -19,36 +19,29 @@ AssertionUnderTest.AssertEquals_REAL(
     Expected := 2.222,
     Actual   := REAL_Variable,
     Delta    := 0.001,
-    ObjectName := 'AssertionTest',
     VariableName := 'REAL_Variable');
- 
-    
+  
 // Check the assertion worked...    
 Assertion.AssertEquals_BOOL(
     Expected := TRUE,
     Actual   := AssertionListenerMock.AssertionFailed,
-    ObjectName := _TestName,
     VariableName := 'AssertionListenerMock.AssertionFailed');
 
 // Check the assertion messages...    
 Assertion.AssertEquals_STRING(
     Expected := 'AssertEquals_REAL failed in AssertionTest: Value "REAL_Variable"',
     Actual   := AssertionListenerMock.AssertionMessage,
-    ObjectName := _TestName,
     VariableName := 'AssertionListenerMock.AssertionMessage');
 
 Assertion.AssertEquals_STRING(
     Expected := '  Expected = 2.222000',
     Actual   := AssertionListenerMock.ExpectedAsString,
-    ObjectName := _TestName,
     VariableName := 'AssertionListenerMock.ExpectedAsString');
 
 Assertion.AssertEquals_STRING(
     Expected := '  Actual   = 1.111000',
     Actual   := AssertionListenerMock.ActualAsString,
-    ObjectName := _TestName,
     VariableName := 'AssertionListenerMock.ActualAsString');
-
 
 TestFinished();    ]]></ST>
     </Implementation>

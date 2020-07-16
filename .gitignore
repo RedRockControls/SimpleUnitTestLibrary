@@ -5,3 +5,8 @@
 **/caa technical workgroup
 **/intern
 **/system
+*.suo
+*.~u
+*.bak
+_CompileInfo/
+LineIDs.dbg

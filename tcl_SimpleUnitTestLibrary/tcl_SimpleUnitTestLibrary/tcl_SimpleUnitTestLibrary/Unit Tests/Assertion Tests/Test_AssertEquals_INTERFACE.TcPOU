@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.3">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.4">
   <POU Name="Test_AssertEquals_INTERFACE" Id="{301188a0-a629-4fbf-b4cd-294d75071b07}" SpecialFunc="None">
     <Declaration><![CDATA[FUNCTION_BLOCK Test_AssertEquals_INTERFACE EXTENDS TUnitTestBase
 VAR
@@ -23,36 +23,29 @@ AssertionListenerMock.ActualAsString   := '';
 AssertionUnderTest.AssertEquals_INTERFACE(
     Expected := INTERFACE_Variable1,
     Actual   := INTERFACE_Variable2,
-    ObjectName := 'AssertionTest',
-    VariableName := 'INTERFACE_Variable2');
- 
+    VariableName := 'INTERFACE_Variable2'); 
     
 // Check the assertion worked...    
 Assertion.AssertEquals_BOOL(
     Expected := TRUE,
     Actual   := AssertionListenerMock.AssertionFailed,
-    ObjectName := _TestName,
     VariableName := 'AssertionListenerMock.AssertionFailed');
 
 // Check the assertion messages...    
 Assertion.AssertEquals_STRING(
     Expected := 'AssertEquals_INTERFACE failed in AssertionTest: Value "INTERFACE_Variable2"',
     Actual   := AssertionListenerMock.AssertionMessage,
-    ObjectName := _TestName,
     VariableName := 'AssertionListenerMock.AssertionMessage');
 
 Assertion.AssertEquals_STRING(
     Expected := '  Interfaces Differ',
     Actual   := AssertionListenerMock.ExpectedAsString,
-    ObjectName := _TestName,
     VariableName := 'AssertionListenerMock.ExpectedAsString');
 
 Assertion.AssertEquals_STRING(
     Expected := '',
     Actual   := AssertionListenerMock.ActualAsString,
-    ObjectName := _TestName,
     VariableName := 'AssertionListenerMock.ActualAsString');
-
 
 TestFinished();    ]]></ST>
     </Implementation>

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.3">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.4">
   <Itf Name="IAssertionListener" Id="{3013ab36-1e65-0a80-2235-5faa497c56a4}">
     <Declaration><![CDATA[INTERFACE IAssertionListener
 ]]></Declaration>
@@ -12,5 +12,11 @@ VAR_INPUT
 END_VAR
 ]]></Declaration>
     </Method>
+    <Property Name="TestName" Id="{dc27c40f-e1a8-4651-a7e5-d85f174fe047}">
+      <Declaration><![CDATA[PROPERTY TestName : T_MaxString]]></Declaration>
+      <Get Name="Get" Id="{47342acb-ad81-4097-9172-3ba91aa77d32}">
+        <Declaration><![CDATA[]]></Declaration>
+      </Get>
+    </Property>
   </Itf>
 </TcPlcObject>

@@ -1,8 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.3">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.4">
   <POU Name="TAssertionListenerMock" Id="{ee93dd0b-67fe-45ad-ace0-2b0e0c9dee67}" SpecialFunc="None">
     <Declaration><![CDATA[FUNCTION_BLOCK TAssertionListenerMock IMPLEMENTS IAssertionListener
 VAR
+    {attribute 'instance-path'} 
+    {attribute 'no_init'}
+    _TestName : T_MaxString; // Automatically initialised with the full name of the instance
     _AssertionFailed  : BOOL;
     _AssertionMessage : T_MaxString;
     _ExpectedAsString : T_MaxString;
@@ -103,5 +106,17 @@ _ExpectedAsString := ExpectedAsString;
 _ActualAsString := ActualAsString;]]></ST>
       </Implementation>
     </Method>
+    <Property Name="TestName" Id="{4df2820b-acf9-463d-a62d-b441799ed9a6}">
+      <Declaration><![CDATA[PROPERTY TestName : Tc2_System.T_MaxString
+]]></Declaration>
+      <Get Name="Get" Id="{965b97f0-d6de-46bc-9c27-21a8645aa650}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[TestName := _TestName;]]></ST>
+        </Implementation>
+      </Get>
+    </Property>
   </POU>
 </TcPlcObject>
