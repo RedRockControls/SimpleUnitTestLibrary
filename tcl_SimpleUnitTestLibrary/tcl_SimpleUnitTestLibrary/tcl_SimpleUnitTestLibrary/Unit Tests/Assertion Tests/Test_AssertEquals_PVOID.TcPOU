@@ -28,7 +28,7 @@ Assertion.AssertEquals_BOOL(
 
 // Check the assertion messages...    
 Assertion.AssertEquals_STRING(
-    Expected := 'AssertEquals_PVOID failed in AssertionTest: Value "PVOID_Variable"',
+    Expected := 'AssertEquals_PVOID failed in AssertionListenerMock: Value "PVOID_Variable"',
     Actual   := AssertionListenerMock.AssertionMessage,
     VariableName := 'AssertionListenerMock.AssertionMessage');
 

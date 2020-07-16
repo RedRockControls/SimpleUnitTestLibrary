@@ -31,7 +31,7 @@ Assertion.AssertEquals_BOOL(
 
 // Check the assertion messages...    
 Assertion.AssertEquals_STRING(
-    Expected := 'AssertEquals_BLOB failed in AssertionTest: Value "Blob.TypeClass"',
+    Expected := 'AssertEquals_BLOB failed in AssertionListenerMock: Value "Blob.TypeClass"',
     Actual   := AssertionListenerMock.AssertionMessage,
     VariableName := 'AssertionListenerMock.AssertionMessage');
 

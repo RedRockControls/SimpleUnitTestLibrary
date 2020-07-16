@@ -28,7 +28,7 @@ Assertion.AssertEquals_BOOL(
 
 // Check the assertion messages...    
 Assertion.AssertEquals_STRING(
-    Expected := 'AssertEquals_UDINT failed in AssertionTest: Value "UDINT_Variable"',
+    Expected := 'AssertEquals_UDINT failed in AssertionListenerMock: Value "UDINT_Variable"',
     Actual   := AssertionListenerMock.AssertionMessage,
     VariableName := 'AssertionListenerMock.AssertionMessage');
 

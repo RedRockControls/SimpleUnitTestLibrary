@@ -30,7 +30,7 @@ Assertion.AssertEquals_BOOL(
 
 // Check the assertion messages...    
 Assertion.AssertEquals_STRING(
-    Expected := 'AssertEquals_WORD failed in AssertionTest: Value "WORD_Variable"',
+    Expected := 'AssertEquals_WORD failed in AssertionListenerMock: Value "WORD_Variable"',
     Actual   := AssertionListenerMock.AssertionMessage,
     VariableName := 'AssertionListenerMock.AssertionMessage');
 

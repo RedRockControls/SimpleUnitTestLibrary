@@ -28,7 +28,7 @@ Assertion.AssertEquals_BOOL(
 
 // Check the assertion messages...    
 Assertion.AssertEquals_STRING(
-    Expected := 'AssertEquals_DINT failed in AssertionTest: Value "DINT_Variable"',
+    Expected := 'AssertEquals_DINT failed in AssertionListenerMock: Value "DINT_Variable"',
     Actual   := AssertionListenerMock.AssertionMessage,
     VariableName := 'AssertionListenerMock.AssertionMessage');
 

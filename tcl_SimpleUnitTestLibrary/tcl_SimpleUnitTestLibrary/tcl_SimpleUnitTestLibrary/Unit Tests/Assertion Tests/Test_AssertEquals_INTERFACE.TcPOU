@@ -33,7 +33,7 @@ Assertion.AssertEquals_BOOL(
 
 // Check the assertion messages...    
 Assertion.AssertEquals_STRING(
-    Expected := 'AssertEquals_INTERFACE failed in AssertionTest: Value "INTERFACE_Variable2"',
+    Expected := 'AssertEquals_INTERFACE failed in AssertionListenerMock: Value "INTERFACE_Variable2"',
     Actual   := AssertionListenerMock.AssertionMessage,
     VariableName := 'AssertionListenerMock.AssertionMessage');
 

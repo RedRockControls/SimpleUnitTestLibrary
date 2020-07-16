@@ -28,7 +28,7 @@ Assertion.AssertEquals_BOOL(
 
 // Check the assertion messages...    
 Assertion.AssertEquals_STRING(
-    Expected := 'AssertEquals_BYTE failed in AssertionTest: Value "BYTE_Variable"',
+    Expected := 'AssertEquals_BYTE failed in AssertionListenerMock: Value "BYTE_Variable"',
     Actual   := AssertionListenerMock.AssertionMessage,
     VariableName := 'AssertionListenerMock.AssertionMessage');
 

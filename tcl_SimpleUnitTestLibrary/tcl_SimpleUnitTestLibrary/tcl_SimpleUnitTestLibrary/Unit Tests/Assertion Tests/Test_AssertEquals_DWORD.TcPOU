@@ -31,7 +31,7 @@ Assertion.AssertEquals_BOOL(
 
 // Check the assertion messages...    
 Assertion.AssertEquals_STRING(
-    Expected := 'AssertEquals_DWORD failed in AssertionTest: Value "DWORD_Variable"',
+    Expected := 'AssertEquals_DWORD failed in AssertionListenerMock: Value "DWORD_Variable"',
     Actual   := AssertionListenerMock.AssertionMessage,
     VariableName := 'AssertionListenerMock.AssertionMessage');
 

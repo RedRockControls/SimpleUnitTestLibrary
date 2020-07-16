@@ -29,7 +29,7 @@ Assertion.AssertEquals_BOOL(
 
 // Check the assertion messages...    
 Assertion.AssertEquals_STRING(
-    Expected := 'AssertEquals_LINT failed in AssertionTest: Value "LINT_Variable"',
+    Expected := 'AssertEquals_LINT failed in AssertionListenerMock: Value "LINT_Variable"',
     Actual   := AssertionListenerMock.AssertionMessage,
     VariableName := 'AssertionListenerMock.AssertionMessage');
 

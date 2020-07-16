@@ -31,7 +31,7 @@ Assertion.AssertEquals_BOOL(
 
 // Check the assertion messages...    
 Assertion.AssertEquals_STRING(
-    Expected := 'AssertEquals_BLOB failed in AssertionTest: Contents differ',
+    Expected := 'AssertEquals_BLOB failed in AssertionListenerMock: Contents differ',
     Actual   := AssertionListenerMock.AssertionMessage,
     VariableName := 'AssertionListenerMock.AssertionMessage');
 
