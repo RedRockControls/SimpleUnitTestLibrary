@@ -16,10 +16,24 @@ To create a test:
 
 To run all the tests together, call:
 
-```plaintext
+```pascal
 tcl_SimpleUnitTestLibrary.TestFramework.TestRunner(RunTestsSequentially := FALSE);
 ```
 To run all the tests one after another, call: 
-```plaintext
+```pascal
 tcl_SimpleUnitTestLibrary.TestFramework.TestRunner(RunTestsSequentially := TRUE);
+```
+
+To stop tests from running automatically on download or (re)init, call: 
+```pascal
+tcl_SimpleUnitTestLibrary.TestFramework.TestRunner(ManualTestRunsOnly := TRUE);
+```
+
+Options can be combined in any way. I.e. call: 
+```pascal
+// Run tests concurrently, but only with press of Visualisation button 
+tcl_SimpleUnitTestLibrary.TestFramework.TestRunner(
+    RunTestsSequentially := FALSE,
+    ManualTestRunsOnly := TRUE
+);
 ```
