@@ -26,8 +26,7 @@ END_VAR
 ]]></Declaration>
     <Implementation>
       <ST><![CDATA[TestFramework.TestRunner(
-    ManualTestRunsOnly := TRUE
-);]]></ST>
+    ManualTestRunsOnly := TRUE);]]></ST>
     </Implementation>
   </POU>
 </TcPlcObject>

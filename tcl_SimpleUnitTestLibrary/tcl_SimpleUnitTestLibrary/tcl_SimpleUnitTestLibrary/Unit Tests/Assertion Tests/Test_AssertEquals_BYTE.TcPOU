@@ -9,10 +9,14 @@ VAR
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[AssertionListenerMock.AssertionFailed  := FALSE;
-AssertionListenerMock.AssertionMessage := '';
-AssertionListenerMock.ExpectedAsString := '';
-AssertionListenerMock.ActualAsString   := '';
+      <ST><![CDATA[// Initialise the classes under test (may be repaeting the tests)...
+AssertionListenerMock.fb_Init(
+    bInitRetains      := FALSE,
+	bInCopyCode       := FALSE);
+AssertionUnderTest.fb_Init(
+    bInitRetains      := FALSE,
+	bInCopyCode       := FALSE,
+    AssertionListener := AssertionListenerMock);
 
 // Test the assertion...
 AssertionUnderTest.AssertEquals_BYTE(

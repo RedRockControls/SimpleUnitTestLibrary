@@ -17,7 +17,9 @@ END_VAR
     <Implementation>
       <ST><![CDATA[]]></ST>
     </Implementation>
-    <Property Name="ActualAsString" Id="{c1cce4b8-2ad7-4260-a30c-42c9cfb3867c}">
+    <Folder Name="Methods" Id="{adce76dc-4257-4465-84af-38342085e0f4}" />
+    <Folder Name="Properties" Id="{396c1841-7dcf-4474-ae3a-c6600996f7e7}" />
+    <Property Name="ActualAsString" Id="{c1cce4b8-2ad7-4260-a30c-42c9cfb3867c}" FolderPath="Properties\">
       <Declaration><![CDATA[PROPERTY ActualAsString : T_MaxString]]></Declaration>
       <Get Name="Get" Id="{c15f9fb9-fe7e-48ba-bcc3-1ad21cfbb84c}">
         <Declaration><![CDATA[VAR
@@ -36,7 +38,7 @@ END_VAR
         </Implementation>
       </Set>
     </Property>
-    <Property Name="AssertionFailed" Id="{8877a547-33cb-47d7-baea-06c57dc3053d}">
+    <Property Name="AssertionFailed" Id="{8877a547-33cb-47d7-baea-06c57dc3053d}" FolderPath="Properties\">
       <Declaration><![CDATA[PROPERTY AssertionFailed : BOOL]]></Declaration>
       <Get Name="Get" Id="{fe4188fc-a128-4ef2-8667-c6e21445f7de}">
         <Declaration><![CDATA[VAR
@@ -55,7 +57,7 @@ END_VAR
         </Implementation>
       </Set>
     </Property>
-    <Property Name="AssertionMessage" Id="{2389e857-4bcb-4ea5-b2a3-969d29fbf6fa}">
+    <Property Name="AssertionMessage" Id="{2389e857-4bcb-4ea5-b2a3-969d29fbf6fa}" FolderPath="Properties\">
       <Declaration><![CDATA[PROPERTY AssertionMessage : T_MaxString]]></Declaration>
       <Get Name="Get" Id="{e66eef02-5cbe-4381-a588-ea502a1598d1}">
         <Declaration><![CDATA[VAR
@@ -74,7 +76,7 @@ END_VAR
         </Implementation>
       </Set>
     </Property>
-    <Property Name="ExpectedAsString" Id="{ad944bb0-d188-43f0-b8fb-3322e444535b}">
+    <Property Name="ExpectedAsString" Id="{ad944bb0-d188-43f0-b8fb-3322e444535b}" FolderPath="Properties\">
       <Declaration><![CDATA[PROPERTY ExpectedAsString : T_MaxString]]></Declaration>
       <Get Name="Get" Id="{d7ab7b51-8787-483c-9bd2-fc32abd1237d}">
         <Declaration><![CDATA[VAR
@@ -93,7 +95,7 @@ END_VAR
         </Implementation>
       </Set>
     </Property>
-    <Method Name="OnAssertionFailed" Id="{33a7986a-d29d-4499-9710-f64583918101}">
+    <Method Name="OnAssertionFailed" Id="{33a7986a-d29d-4499-9710-f64583918101}" FolderPath="Methods\">
       <Declaration><![CDATA[METHOD OnAssertionFailed
 VAR_INPUT
     AssertionMessage : T_MaxString;
@@ -108,7 +110,7 @@ _ExpectedAsString := ExpectedAsString;
 _ActualAsString := ActualAsString;]]></ST>
       </Implementation>
     </Method>
-    <Property Name="TestName" Id="{4df2820b-acf9-463d-a62d-b441799ed9a6}">
+    <Property Name="TestName" Id="{4df2820b-acf9-463d-a62d-b441799ed9a6}" FolderPath="Properties\">
       <Declaration><![CDATA[PROPERTY TestName : Tc2_System.T_MaxString
 ]]></Declaration>
       <Get Name="Get" Id="{965b97f0-d6de-46bc-9c27-21a8645aa650}">

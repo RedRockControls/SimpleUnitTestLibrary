@@ -63,7 +63,7 @@ END_VAR
         FOR i := 0 TO _TestCount - 1 DO
             IF Tests[i] <> 0 THEN
                 IF Tests[i].TestHasFinished THEN
-                    addTimeStamp(TestResults[i]);
+                    TestResults[i].TestCompleteTime := getTimeStampAsString();
                     IF Tests[i].TestHasFailed THEN
                         TestResults[i].TestName  := Tests[i].TestName;
                         TestResults[i].TestState := 'Failed';
@@ -93,7 +93,7 @@ END_VAR
     RunTests_Sequentially:
         IF Tests[CurrentTestIndex] <> 0 THEN
             IF Tests[CurrentTestIndex].TestHasFinished THEN
-                addTimeStamp(TestResults[CurrentTestIndex]);
+                TestResults[CurrentTestIndex].TestCompleteTime := getTimeStampAsString();
                 IF Tests[CurrentTestIndex].TestHasFailed THEN
                     TestResults[CurrentTestIndex].TestName  := Tests[CurrentTestIndex].TestName;
                     TestResults[CurrentTestIndex].TestState := 'Failed';
@@ -131,7 +131,9 @@ END_VAR
     
 END_CASE]]></ST>
     </Implementation>
-    <Method Name="AddTest" Id="{aff2d568-ab55-47bc-af2b-94e85ba5e218}">
+    <Folder Name="Methods" Id="{35bbb33e-58f9-46f6-83b2-7eeb5a0d79dc}" />
+    <Folder Name="Properties" Id="{d986fc65-5487-4e94-af74-d63818155f10}" />
+    <Method Name="AddTest" Id="{aff2d568-ab55-47bc-af2b-94e85ba5e218}" FolderPath="Methods\">
       <Declaration><![CDATA[METHOD AddTest : BOOL
 VAR_INPUT
     UnitTest : IUnitTest;
@@ -149,22 +151,7 @@ END_IF
 ]]></ST>
       </Implementation>
     </Method>
-    <Method Name="addTimeStamp" Id="{bdd169f4-a7c0-4197-b9c5-ebb28699c68a}">
-      <Declaration><![CDATA[METHOD PRIVATE addTimeStamp
-VAR_IN_OUT
-    TestResult : TTestResult;
-END_VAR
-VAR
-	CurrentDcTime : T_DCTIME64;
-    Now : TIMESTRUCT;
-END_VAR]]></Declaration>
-      <Implementation>
-        <ST><![CDATA[CurrentDcTime := F_GetActualDcTime64();
-Now := DCTIME64_TO_SYSTEMTIME(CurrentDcTime);
-TestResult.TestCompleteTime := tcl_StringUtils.F_TimeAsString_ms(Now);]]></ST>
-      </Implementation>
-    </Method>
-    <Property Name="AllTestsCompleted" Id="{35232731-1165-473b-9489-dda727905bbe}">
+    <Property Name="AllTestsCompleted" Id="{35232731-1165-473b-9489-dda727905bbe}" FolderPath="Properties\">
       <Declaration><![CDATA[PROPERTY AllTestsCompleted : BOOL]]></Declaration>
       <Get Name="Get" Id="{427b4cbb-213d-4f37-80e2-9b36fbd84c82}">
         <Declaration><![CDATA[VAR
@@ -175,7 +162,7 @@ END_VAR
         </Implementation>
       </Get>
     </Property>
-    <Method Name="ClearResults" Id="{57179eef-fc7b-4bd0-85fd-730ca5472c60}">
+    <Method Name="ClearResults" Id="{57179eef-fc7b-4bd0-85fd-730ca5472c60}" FolderPath="Methods\">
       <Declaration><![CDATA[METHOD ClearResults
 VAR_INPUT
 END_VAR
@@ -194,7 +181,19 @@ MEMSET(
 ]]></ST>
       </Implementation>
     </Method>
-    <Property Name="Results" Id="{d09ac635-f5a8-46e9-8513-febf5f67e4bf}">
+    <Method Name="getTimeStampAsString" Id="{d42516d0-c807-491e-ba92-a82bc000bc36}" FolderPath="Methods\">
+      <Declaration><![CDATA[METHOD PRIVATE getTimeStampAsString : T_MaxString
+VAR
+	CurrentDcTime : T_DCTIME64;
+    Now : TIMESTRUCT;
+END_VAR]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[CurrentDcTime := F_GetActualDcTime64();
+Now := DCTIME64_TO_SYSTEMTIME(CurrentDcTime);
+getTimeStampAsString := tcl_StringUtils.F_TimeAsString_ms(Now);]]></ST>
+      </Implementation>
+    </Method>
+    <Property Name="Results" Id="{d09ac635-f5a8-46e9-8513-febf5f67e4bf}" FolderPath="Properties\">
       <Declaration><![CDATA[PROPERTY Results : T_MaxString]]></Declaration>
       <Get Name="Get" Id="{bac56fdf-ab86-41b2-bda2-a53cd7cf550f}">
         <Declaration><![CDATA[VAR
@@ -206,7 +205,7 @@ END_VAR
         </Implementation>
       </Get>
     </Property>
-    <Property Name="TestCount" Id="{071111e2-ed4d-4d68-b95e-6b4cb6b3aa16}">
+    <Property Name="TestCount" Id="{071111e2-ed4d-4d68-b95e-6b4cb6b3aa16}" FolderPath="Properties\">
       <Declaration><![CDATA[PROPERTY TestCount : INT]]></Declaration>
       <Get Name="Get" Id="{cc7bd08b-b6fe-4e09-88cb-16b9dd473b3f}">
         <Declaration><![CDATA[VAR
@@ -217,7 +216,7 @@ END_VAR
         </Implementation>
       </Get>
     </Property>
-    <Property Name="TestsRunning" Id="{cc8e65a0-6524-4f90-8531-cec392ab281c}">
+    <Property Name="TestsRunning" Id="{cc8e65a0-6524-4f90-8531-cec392ab281c}" FolderPath="Properties\">
       <Declaration><![CDATA[PROPERTY TestsRunning : BOOL]]></Declaration>
       <Get Name="Get" Id="{0fb901a8-23b3-444c-a819-bc19c7f6c2c0}">
         <Declaration><![CDATA[VAR

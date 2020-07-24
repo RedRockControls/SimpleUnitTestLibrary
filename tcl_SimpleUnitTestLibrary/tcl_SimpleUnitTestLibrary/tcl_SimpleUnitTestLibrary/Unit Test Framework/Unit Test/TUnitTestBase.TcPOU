@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.3">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.4">
   <POU Name="TUnitTestBase" Id="{5f6c3920-eb7a-49e5-908c-08b83c026c35}" SpecialFunc="None">
     <Declaration><![CDATA[{attribute 'reflection'}
 FUNCTION_BLOCK ABSTRACT TUnitTestBase IMPLEMENTS IUnitTest, IAssertionListener
@@ -13,20 +13,22 @@ VAR
     _ImageRef : STRING;
     _MessageList : IAssertionMessageList;
     
-    Assertion : TAssertion(THIS^);
+    Assertion : TAssertion(AssertionListener := THIS^); // Callback to allow the Assertion to update the message list on assertion failed
 
 END_VAR]]></Declaration>
     <Implementation>
       <ST><![CDATA[]]></ST>
     </Implementation>
-    <Method Name="Execute" Id="{1cfba8ca-d4ce-4ec4-8707-d70a9a291eab}">
+    <Folder Name="Methods" Id="{8d775bbb-f4bf-4ecb-a1a7-b2ad26bcafbc}" />
+    <Folder Name="Properties" Id="{8c3e4d49-b91e-4eb9-a46d-e0c656e5f039}" />
+    <Method Name="Execute" Id="{1cfba8ca-d4ce-4ec4-8707-d70a9a291eab}" FolderPath="Methods\">
       <Declaration><![CDATA[METHOD Execute
 ]]></Declaration>
       <Implementation>
         <ST><![CDATA[THIS^();]]></ST>
       </Implementation>
     </Method>
-    <Method Name="FB_init" Id="{50ea1a2d-ce62-4995-a376-1159add5fe74}">
+    <Method Name="FB_init" Id="{50ea1a2d-ce62-4995-a376-1159add5fe74}" FolderPath="Methods\">
       <Declaration><![CDATA[METHOD FB_init : BOOL
 VAR_INPUT
 	bInitRetains : BOOL; // if TRUE, the retain variables are initialized (warm start / cold start)
@@ -40,7 +42,7 @@ END_IF
 ]]></ST>
       </Implementation>
     </Method>
-    <Method Name="Initialise" Id="{c86508f2-0a12-445b-9bb3-f664bdcd4e53}">
+    <Method Name="Initialise" Id="{c86508f2-0a12-445b-9bb3-f664bdcd4e53}" FolderPath="Methods\">
       <Declaration><![CDATA[METHOD Initialise
 VAR_INPUT
     MessageList : IAssertionMessageList;
@@ -65,7 +67,7 @@ END_WHILE
 ]]></ST>
       </Implementation>
     </Method>
-    <Method Name="OnAssertionFailed" Id="{fd6c487c-95ee-0775-0c67-5c39af276035}">
+    <Method Name="OnAssertionFailed" Id="{fd6c487c-95ee-0775-0c67-5c39af276035}" FolderPath="Methods\">
       <Declaration><![CDATA[METHOD OnAssertionFailed
 VAR_INPUT
     AssertionMessage : T_MaxString;
@@ -86,7 +88,7 @@ IF ActualAsString <> '' THEN
 END_IF]]></ST>
       </Implementation>
     </Method>
-    <Method Name="TestFinished" Id="{f9554933-97f3-48a5-a721-13782a1587cd}">
+    <Method Name="TestFinished" Id="{f9554933-97f3-48a5-a721-13782a1587cd}" FolderPath="Methods\">
       <Declaration><![CDATA[METHOD TestFinished
 VAR_INPUT
 END_VAR
@@ -95,7 +97,7 @@ END_VAR
         <ST><![CDATA[_TestFinished := TRUE;]]></ST>
       </Implementation>
     </Method>
-    <Property Name="TestHasFailed" Id="{b7849270-c8d1-4b4d-8e55-7ac7432c746b}">
+    <Property Name="TestHasFailed" Id="{b7849270-c8d1-4b4d-8e55-7ac7432c746b}" FolderPath="Properties\">
       <Declaration><![CDATA[PROPERTY TestHasFailed : BOOL]]></Declaration>
       <Get Name="Get" Id="{960f25ef-372b-43ed-b423-24b2b17dce8a}">
         <Declaration><![CDATA[VAR
@@ -106,7 +108,7 @@ END_VAR
         </Implementation>
       </Get>
     </Property>
-    <Property Name="TestHasFinished" Id="{1d3107c4-993a-43fc-80aa-35d26b65703c}">
+    <Property Name="TestHasFinished" Id="{1d3107c4-993a-43fc-80aa-35d26b65703c}" FolderPath="Properties\">
       <Declaration><![CDATA[PROPERTY TestHasFinished : BOOL]]></Declaration>
       <Get Name="Get" Id="{92979e69-b298-4864-9fb5-4e9e6245ef62}">
         <Declaration><![CDATA[VAR
@@ -117,7 +119,7 @@ END_VAR
         </Implementation>
       </Get>
     </Property>
-    <Property Name="TestName" Id="{d429c824-d3a5-422b-a3ec-1e2fb1e7cb7a}">
+    <Property Name="TestName" Id="{d429c824-d3a5-422b-a3ec-1e2fb1e7cb7a}" FolderPath="Properties\">
       <Declaration><![CDATA[PROPERTY TestName : T_MaxString]]></Declaration>
       <Get Name="Get" Id="{80e54b19-a2c6-4d0f-81fb-c32e95f224e5}">
         <Declaration><![CDATA[VAR
