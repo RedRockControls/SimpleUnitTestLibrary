@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.3">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.4">
   <POU Name="Test_AssertEquals_WORD" Id="{302df836-097e-4453-af80-790301b29cf5}" SpecialFunc="None">
     <Declaration><![CDATA[FUNCTION_BLOCK Test_AssertEquals_WORD EXTENDS TUnitTestBase
 VAR
@@ -20,34 +20,28 @@ WORD_Variable := 1111;
 AssertionUnderTest.AssertEquals_WORD(
     Expected := 2222, // deliberately different to test the assertion
     Actual   := WORD_Variable,
-    ObjectName := 'AssertionTest',
     VariableName := 'WORD_Variable');
  
-    
 // Check the assertion worked...    
 Assertion.AssertEquals_BOOL(
     Expected := TRUE,
     Actual   := AssertionListenerMock.AssertionFailed,
-    ObjectName := _TestName,
     VariableName := 'AssertionListenerMock.AssertionFailed');
 
 // Check the assertion messages...    
 Assertion.AssertEquals_STRING(
-    Expected := 'AssertEquals_WORD failed in AssertionTest: Value "WORD_Variable"',
+    Expected := 'AssertEquals_WORD failed in AssertionListenerMock: Value "WORD_Variable"',
     Actual   := AssertionListenerMock.AssertionMessage,
-    ObjectName := _TestName,
     VariableName := 'AssertionListenerMock.AssertionMessage');
 
 Assertion.AssertEquals_STRING(
     Expected := '  Expected = 2222',
     Actual   := AssertionListenerMock.ExpectedAsString,
-    ObjectName := _TestName,
     VariableName := 'AssertionListenerMock.ExpectedAsString');
 
 Assertion.AssertEquals_STRING(
     Expected := '  Actual   = 1111',
     Actual   := AssertionListenerMock.ActualAsString,
-    ObjectName := _TestName,
     VariableName := 'AssertionListenerMock.ActualAsString');
 
 

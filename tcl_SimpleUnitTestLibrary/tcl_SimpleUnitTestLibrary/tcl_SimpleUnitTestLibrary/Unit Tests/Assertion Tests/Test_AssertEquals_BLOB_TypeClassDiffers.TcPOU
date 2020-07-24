@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.3">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.4">
   <POU Name="Test_AssertEquals_BLOB_TypeClassDiffers" Id="{a0cae954-6b3c-42cc-8237-22c890f769c5}" SpecialFunc="None">
     <Declaration><![CDATA[FUNCTION_BLOCK Test_AssertEquals_BLOB_TypeClassDiffers EXTENDS TUnitTestBase
 VAR
@@ -21,36 +21,29 @@ AssertionListenerMock.ActualAsString   := '';
 AssertionUnderTest.AssertEquals_BLOB(
     Expected := INT_Variable,
     Actual   := WORD_Variable,
-    ObjectName := 'AssertionTest',
     VariableName := 'WORD_VariableAsBlob');
  
-    
 // Check the assertion worked...    
 Assertion.AssertEquals_BOOL(
     Expected := TRUE,
     Actual   := AssertionListenerMock.AssertionFailed,
-    ObjectName := _TestName,
     VariableName := 'AssertionListenerMock.AssertionFailed');
 
 // Check the assertion messages...    
 Assertion.AssertEquals_STRING(
-    Expected := 'AssertEquals_BLOB failed in AssertionTest: Value "Blob.TypeClass"',
+    Expected := 'AssertEquals_BLOB failed in AssertionListenerMock: Value "Blob.TypeClass"',
     Actual   := AssertionListenerMock.AssertionMessage,
-    ObjectName := _TestName,
     VariableName := 'AssertionListenerMock.AssertionMessage');
 
 Assertion.AssertEquals_STRING(
     Expected := '  Expected = INT',
     Actual   := AssertionListenerMock.ExpectedAsString,
-    ObjectName := _TestName,
     VariableName := 'AssertionListenerMock.ExpectedAsString');
 
 Assertion.AssertEquals_STRING(
     Expected := '  Actual   = WORD',
     Actual   := AssertionListenerMock.ActualAsString,
-    ObjectName := _TestName,
     VariableName := 'AssertionListenerMock.ActualAsString');
-
 
 TestFinished();    ]]></ST>
     </Implementation>
