@@ -2,222 +2,44 @@
   <PropertyGroup>
     <FileVersion>1.0.0.0</FileVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{75084952-274e-476c-b561-408e43820b7f}</ProjectGuid>
+    <ProjectGuid>{a6b114d0-fcb4-4b18-aa33-4d0231ba28b5}</ProjectGuid>
     <SubObjectsSortedByName>True</SubObjectsSortedByName>
     <DownloadApplicationInfo>true</DownloadApplicationInfo>
     <WriteProductVersion>true</WriteProductVersion>
     <GenerateTpy>false</GenerateTpy>
-    <Name>tcl_SimpleUnitTestLibrary</Name>
+    <Name>tcl_UnitTestBaseClasses</Name>
     <ProgramVersion>3.1.4023.0</ProgramVersion>
-    <Application>{e40807bb-832f-45b5-97fd-909168ae8314}</Application>
-    <TypeSystem>{a7e92dba-8355-4c6f-bf3a-45d7b77ebe20}</TypeSystem>
-    <Implicit_Task_Info>{3e61b47b-6d10-45f2-84f5-03dae3651578}</Implicit_Task_Info>
-    <Implicit_KindOfTask>{028b744a-fba2-4ad6-9a1a-384ea0117297}</Implicit_KindOfTask>
-    <Implicit_Jitter_Distribution>{c39e8777-3f3b-40cc-9943-835de0d8115c}</Implicit_Jitter_Distribution>
-    <LibraryReferences>{88497f9f-773c-45a3-b469-3185dbd00fb4}</LibraryReferences>
-    <Released>false</Released>
+    <Application>{bd3f106c-4267-4760-8d1a-0fc97d460fd2}</Application>
+    <TypeSystem>{1751350c-cf06-46d4-b320-6da360ff37ab}</TypeSystem>
+    <Implicit_Task_Info>{2bf4df50-723d-46f7-90c5-bca0a15703ad}</Implicit_Task_Info>
+    <Implicit_KindOfTask>{4c34e579-3b6a-4bfa-a201-dc14f7806a52}</Implicit_KindOfTask>
+    <Implicit_Jitter_Distribution>{679323ce-9774-4182-aa2a-154e75640c05}</Implicit_Jitter_Distribution>
+    <LibraryReferences>{18066108-5989-40c1-8e68-5e9cfea42829}</LibraryReferences>
     <Company>Red Rock Controls Limited</Company>
-    <Title>tcl_SimpleUnitTestLibrary</Title>
-    <ProjectVersion>1.0.4.0</ProjectVersion>
+    <Released>false</Released>
+    <Title>tcl_UnitTestBaseClasses</Title>
+    <ProjectVersion>1.0.0.0</ProjectVersion>
+    <Author>R.Christopher</Author>
+    <Description>Classes imported from tclSimpleUnitTestLibrary V1.0.3.0</Description>
     <LibraryCategories>
-      <LibraryCategory>
+      <LibraryCategory xmlns="">
         <Id>{0d08a09c-9493-4b37-a26c-544e7211ff2d}</Id>
         <Version>1.0.0.0</Version>
         <DefaultName>tcl_ClassLibraries</DefaultName>
       </LibraryCategory>
     </LibraryCategories>
     <SelectedLibraryCategories>
-      <Id>{0d08a09c-9493-4b37-a26c-544e7211ff2d}</Id>
+      <Id xmlns="">{0d08a09c-9493-4b37-a26c-544e7211ff2d}</Id>
     </SelectedLibraryCategories>
-    <Author>Roger Christopher</Author>
-    <Description>TUnitTestBase moved to tcl_UnitTestBaseClasses
-TTestSuite added to hold related tests</Description>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="GVLs\Parameters.TcGVL">
-      <SubType>Code</SubType>
-      <LinkAlways>true</LinkAlways>
-    </Compile>
-    <Compile Include="GVLs\UnitTests.TcGVL">
-      <SubType>Code</SubType>
-      <LinkAlways>true</LinkAlways>
-    </Compile>
-    <Compile Include="Unit Test Framework\Message list\TAssertionMessageList.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Unit Test Framework\Test Runner\Test Runner\TTestRunner.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="DUTs\TTestResult.TcDUT">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="GlobalImagePool.TcGIPO">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="GlobalTextList.TcGTLO">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="GVLs\TestFramework.TcGVL">
-      <SubType>Code</SubType>
-      <LinkAlways>true</LinkAlways>
-    </Compile>
-    <Compile Include="PlcTask.TcTTO">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Unit Test Framework\Test Suite\TTestSuite.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Unit Test Framework\Unit Test Base\TUnitTestBase.TcPOU">
-      <SubType>Code</SubType>
-      <ExcludeFromBuild>false</ExcludeFromBuild>
-    </Compile>
-    <Compile Include="Unit Tests\Assertion Tests\Test_AssertEquals_BLOB_TypeClassDiffers.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Unit Tests\Assertion Tests\Test_AssertEquals_BLOB_TypeContentDiffers.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Unit Tests\Assertion Tests\Test_AssertEquals_BOOL.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Unit Tests\Assertion Tests\Test_AssertEquals_BYTE.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Unit Tests\Assertion Tests\Test_AssertEquals_BLOB_SizeDiffers.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Unit Tests\Assertion Tests\Test_AssertEquals_WORD.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Unit Tests\Assertion Tests\Test_AssertEquals_ULINT.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Unit Tests\Assertion Tests\Test_AssertEquals_UINT.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Unit Tests\Assertion Tests\Test_AssertEquals_UDINT.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Unit Tests\Assertion Tests\Test_AssertEquals_LINT.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Unit Tests\Assertion Tests\Test_AssertEquals_INT.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Unit Tests\Assertion Tests\Test_AssertEquals_DINT.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Unit Tests\Assertion Tests\Test_AssertEquals_INTERFACE.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Unit Tests\Assertion Tests\Test_AssertEquals_REAL.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Unit Tests\Assertion Tests\Test_AssertEquals_PVOID.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Unit Tests\Assertion Tests\Test_AssertEquals_LREAL.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Unit Tests\Assertion Tests\Test_AssertEquals_STRING.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Unit Tests\Assertion Tests\Test_AssertEquals_DWORD.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Unit Tests\Fixtures\IExampleInterface.TcIO">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Unit Tests\Fixtures\TExampleInterfaceImplementation.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Unit Tests\Mocks\TAssertionListenerMock.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Unit Tests\PB_TestRunner.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Unit Tests\UnitTestBase Tests\Test_setTestName_setsTestName.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Unit Tests\UnitTestBase Tests\TUnitTestUnderTest.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Version\Global_Version.TcGVL">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Visualization Manager.TcVMO">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="VISUs\Visualization.TcVIS">
-      <SubType>Code</SubType>
-      <DependentUpon>Visualization Manager.TcVMO</DependentUpon>
-    </Compile>
+    <Folder Include="POUs\Assertions" />
+    <Folder Include="POUs\TestSuite" />
+    <Folder Include="POUs\Test Runner" />
+    <Folder Include="POUs\Unit Test" />
+    <Folder Include="POUs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Unit Test Framework" />
-    <Folder Include="Unit Test Framework\Message list" />
-    <Folder Include="Unit Test Framework\Test Suite" />
-    <Folder Include="Unit Test Framework\Unit Test Base" />
-    <Folder Include="Unit Test Framework\Test Runner" />
-    <Folder Include="Unit Test Framework\Test Runner\Test Runner" />
-    <Folder Include="GVLs" />
-    <Folder Include="DUTs" />
-    <Folder Include="Unit Tests" />
-    <Folder Include="Unit Tests\Assertion Tests" />
-    <Folder Include="Unit Tests\Mocks" />
-    <Folder Include="Unit Tests\Fixtures" />
-    <Folder Include="Unit Tests\UnitTestBase Tests" />
-    <Folder Include="Version" />
-    <Folder Include="VISUs" />
-  </ItemGroup>
-  <ItemGroup>
-    <PlaceholderReference Include="System_VisuElemMeter">
-      <DefaultResolution>VisuElemMeter, 3.5.13.0 (System)</DefaultResolution>
-      <Namespace>VisuElemMeter</Namespace>
-      <SystemLibrary>true</SystemLibrary>
-      <ResolverGuid>2717eb6a-dd07-4c66-8d8d-cacebd7b18ae</ResolverGuid>
-    </PlaceholderReference>
-    <PlaceholderReference Include="System_VisuElems">
-      <DefaultResolution>VisuElems, 3.5.13.40 (System)</DefaultResolution>
-      <Namespace>VisuElems</Namespace>
-      <SystemLibrary>true</SystemLibrary>
-      <ResolverGuid>2717eb6a-dd07-4c66-8d8d-cacebd7b18ae</ResolverGuid>
-    </PlaceholderReference>
-    <PlaceholderReference Include="System_VisuElemsSpecialControls">
-      <DefaultResolution>VisuElemsSpecialControls, 3.5.13.0 (System)</DefaultResolution>
-      <Namespace>VisuElemsSpecialControls</Namespace>
-      <SystemLibrary>true</SystemLibrary>
-      <ResolverGuid>2717eb6a-dd07-4c66-8d8d-cacebd7b18ae</ResolverGuid>
-    </PlaceholderReference>
-    <PlaceholderReference Include="System_VisuElemsWinControls">
-      <DefaultResolution>VisuElemsWinControls, 3.5.13.20 (System)</DefaultResolution>
-      <Namespace>VisuElemsWinControls</Namespace>
-      <SystemLibrary>true</SystemLibrary>
-      <ResolverGuid>2717eb6a-dd07-4c66-8d8d-cacebd7b18ae</ResolverGuid>
-    </PlaceholderReference>
-    <PlaceholderReference Include="System_VisuElemTextEditor">
-      <DefaultResolution>VisuElemTextEditor, 3.5.13.0 (System)</DefaultResolution>
-      <Namespace>VisuElemTextEditor</Namespace>
-      <SystemLibrary>true</SystemLibrary>
-      <ResolverGuid>2717eb6a-dd07-4c66-8d8d-cacebd7b18ae</ResolverGuid>
-    </PlaceholderReference>
-    <PlaceholderReference Include="system_visuinputs">
-      <DefaultResolution>visuinputs, 3.5.13.0 (system)</DefaultResolution>
-      <Namespace>visuinputs</Namespace>
-      <SystemLibrary>true</SystemLibrary>
-      <ResolverGuid>2717eb6a-dd07-4c66-8d8d-cacebd7b18ae</ResolverGuid>
-    </PlaceholderReference>
-    <PlaceholderReference Include="System_VisuNativeControl">
-      <DefaultResolution>VisuNativeControl, 3.5.13.0 (System)</DefaultResolution>
-      <Namespace>VisuNativeControl</Namespace>
-      <SystemLibrary>true</SystemLibrary>
-      <ResolverGuid>2717eb6a-dd07-4c66-8d8d-cacebd7b18ae</ResolverGuid>
-    </PlaceholderReference>
-    <PlaceholderReference Include="Tc2_EtherCAT">
-      <DefaultResolution>Tc2_EtherCAT, * (Beckhoff Automation GmbH)</DefaultResolution>
-      <Namespace>Tc2_EtherCAT</Namespace>
-    </PlaceholderReference>
     <PlaceholderReference Include="Tc2_Standard">
       <DefaultResolution>Tc2_Standard, * (Beckhoff Automation GmbH)</DefaultResolution>
       <Namespace>Tc2_Standard</Namespace>
@@ -230,10 +52,6 @@ TTestSuite added to hold related tests</Description>
       <DefaultResolution>Tc2_Utilities, * (Beckhoff Automation GmbH)</DefaultResolution>
       <Namespace>Tc2_Utilities</Namespace>
     </PlaceholderReference>
-    <PlaceholderReference Include="Tc3_DynamicMemory">
-      <DefaultResolution>Tc3_DynamicMemory, * (Beckhoff Automation GmbH)</DefaultResolution>
-      <Namespace>Tc3_DynamicMemory</Namespace>
-    </PlaceholderReference>
     <PlaceholderReference Include="Tc3_Module">
       <DefaultResolution>Tc3_Module, * (Beckhoff Automation GmbH)</DefaultResolution>
       <Namespace>Tc3_Module</Namespace>
@@ -242,13 +60,35 @@ TTestSuite added to hold related tests</Description>
       <DefaultResolution>tcl_StringUtils, * (Red Rock Controls Limited)</DefaultResolution>
       <Namespace>tcl_StringUtils</Namespace>
     </PlaceholderReference>
-    <PlaceholderReference Include="tcl_UnitTestBaseClasses">
-      <DefaultResolution>tcl_UnitTestBaseClasses, * (Red Rock Controls Limited)</DefaultResolution>
-      <Namespace>tcl_UnitTestBaseClasses</Namespace>
-    </PlaceholderReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="tcl_SimpleUnitTestLibrary.tmc">
+    <Compile Include="POUs\Assertions\IAssertionMessageList.TcIO">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\Assertions\TAssertion.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\Test Runner\ITestRunner.TcIO">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\TestSuite\ITestSuite.TcIO">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\TestSuite\TTestSuite.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\Unit Test\IAssertionListener.TcIO">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\Unit Test\IUnitTest.TcIO">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\Unit Test\TUnitTestBase.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="tcl_UnitTestBaseClasses.tmc">
       <SubType>Content</SubType>
     </None>
   </ItemGroup>

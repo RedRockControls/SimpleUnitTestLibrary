@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.4">
-  <Itf Name="IAssertionListener" Id="{3013ab36-1e65-0a80-2235-5faa497c56a4}">
+  <Itf Name="IAssertionListener" Id="{fe3d0b3b-5ee1-4fd7-bdd2-334821d13a4d}">
     <Declaration><![CDATA[INTERFACE IAssertionListener
 ]]></Declaration>
-    <Method Name="OnAssertionFailed" Id="{b6db4923-68d1-0c12-24c0-3d61a89106a5}">
+    <Method Name="OnAssertionFailed" Id="{d9aff967-7824-405f-9421-8751c88d368f}">
       <Declaration><![CDATA[METHOD OnAssertionFailed
 VAR_INPUT
     AssertionMessage : T_MaxString;
@@ -12,9 +12,9 @@ VAR_INPUT
 END_VAR
 ]]></Declaration>
     </Method>
-    <Property Name="TestName" Id="{dc27c40f-e1a8-4651-a7e5-d85f174fe047}">
+    <Property Name="TestName" Id="{07b43fbb-79b5-43a4-b4fa-0f3491665c38}">
       <Declaration><![CDATA[PROPERTY TestName : T_MaxString]]></Declaration>
-      <Get Name="Get" Id="{47342acb-ad81-4097-9172-3ba91aa77d32}">
+      <Get Name="Get" Id="{d13fb6a0-d46d-436f-930f-e3b14b83aa81}">
         <Declaration><![CDATA[]]></Declaration>
       </Get>
     </Property>

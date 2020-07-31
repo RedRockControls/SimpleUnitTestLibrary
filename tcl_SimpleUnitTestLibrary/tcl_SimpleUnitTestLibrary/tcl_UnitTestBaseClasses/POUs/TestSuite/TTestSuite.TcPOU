@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.4">
+  <POU Name="TTestSuite" Id="{925a3760-a834-4031-8036-d0d43ba7ca3b}" SpecialFunc="None">
+    <Declaration><![CDATA[{attribute 'reflection'}
+FUNCTION_BLOCK TTestSuite IMPLEMENTS ITestSuite
+VAR_INPUT
+END_VAR
+VAR_OUTPUT
+END_VAR
+VAR
+    {attribute 'instance-path'} 
+    {attribute 'no_init'}
+    _TestSuiteName       : T_MaxString; // Automatically initialised with the full name of the instance
+    _TestCount : INT;
+    Tests : ARRAY[0..MAX_TESTS] OF IUnitTest;
+END_VAR
+VAR CONSTANT
+    MAX_TESTS              : DINT := 100;
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[]]></ST>
+    </Implementation>
+    <Method Name="AddTest" Id="{197ef7f4-ec9b-4d7c-87e8-be0c276e2e20}">
+      <Declaration><![CDATA[METHOD AddTest : BOOL
+VAR_INPUT
+    UnitTest : IUnitTest;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[IF _TestCount < MAX_TESTS THEN
+    Tests[_TestCount] := UnitTest;
+    _TestCount := _TestCount + 1;
+    AddTest := TRUE;
+END_IF
+]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="FB_init" Id="{4a3cf178-3ad2-404d-bfb8-02e0553c3693}">
+      <Declaration><![CDATA[METHOD FB_init : BOOL
+VAR_INPUT
+	bInitRetains : BOOL; // if TRUE, the retain variables are initialized (warm start / cold start)
+	bInCopyCode : BOOL;  // if TRUE, the instance afterwards gets moved into the copy code (online change)
+END_VAR
+VAR
+    StringSplitter : TStringSplitter;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[StringSplitter.Init(
+    Str := _TestSuiteName,
+    Delim1 := '.',
+    Delim2 := '');
+    
+WHILE StringSplitter.HasMore() DO
+    _TestSuiteName := StringSplitter.GetNext(); // to get last sub-section
+END_WHILE
+
+]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="GetTest" Id="{823dc052-804d-4654-8acf-3e98e5815da8}">
+      <Declaration><![CDATA[METHOD GetTest : IUnitTest
+VAR_INPUT
+    Index : INT;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[IF Index >= 0 AND Index < _TestCount THEN
+    GetTest := Tests[Index];
+END_IF
+]]></ST>
+      </Implementation>
+    </Method>
+    <Property Name="Name" Id="{4deb3fb9-148c-4431-b8dc-0196490f2ad4}">
+      <Declaration><![CDATA[PROPERTY Name : T_MaxString]]></Declaration>
+      <Get Name="Get" Id="{c2841677-bd3e-42ef-b2f7-a0bafe00eab0}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[Name := _TestSuiteName;]]></ST>
+        </Implementation>
+      </Get>
+    </Property>
+    <Property Name="TestCount" Id="{f429d810-6900-4a43-b527-185b9ef53b39}">
+      <Declaration><![CDATA[PROPERTY TestCount : INT]]></Declaration>
+      <Get Name="Get" Id="{18bc7539-034a-409a-8411-e0a50af56177}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[TestCount := _TestCount;]]></ST>
+        </Implementation>
+      </Get>
+    </Property>
+  </POU>
+</TcPlcObject>

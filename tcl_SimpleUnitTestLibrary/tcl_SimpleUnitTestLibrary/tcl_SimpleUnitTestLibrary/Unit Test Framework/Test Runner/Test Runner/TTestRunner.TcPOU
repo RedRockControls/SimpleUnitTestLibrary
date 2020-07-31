@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.4">
   <POU Name="TTestRunner" Id="{c7f35beb-7079-466d-ae1a-1beb011dea9f}" SpecialFunc="None">
-    <Declaration><![CDATA[FUNCTION_BLOCK TTestRunner 
+    <Declaration><![CDATA[FUNCTION_BLOCK TTestRunner IMPLEMENTS ITestRunner
 VAR_INPUT
     RunTestsSequentially : BOOL;
     ManualTestRunsOnly : BOOL; // Set true to enforce "Manual run only"
@@ -140,14 +140,31 @@ VAR_INPUT
 END_VAR
 ]]></Declaration>
       <Implementation>
-        <ST><![CDATA[IF UnitTest.Enabled THEN
-    IF _TestCount < MAX_TESTS THEN
-        Tests[_TestCount] := UnitTest;
-        _TestCount := _TestCount + 1;
-        AddTest := TRUE;
-    ELSE
-        AssertionMessages.AddMessage('Maximum unit tests exceeded!');
-    END_IF
+        <ST><![CDATA[IF _TestCount < MAX_TESTS THEN
+    Tests[_TestCount] := UnitTest;
+    _TestCount := _TestCount + 1;
+    AddTest := TRUE;
+ELSE
+    AssertionMessages.AddMessage('Maximum unit tests exceeded!');
+END_IF
+]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="AddTestSuite" Id="{9fd86142-9111-4782-8bb5-add73fbdb86e}" FolderPath="Methods\">
+      <Declaration><![CDATA[METHOD AddTestSuite : BOOL
+VAR_INPUT
+    TestSuite : ITestSuite;
+END_VAR
+VAR
+    i : INT;
+    UnitTestToAdd : IUnitTest;
+END_VAR]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[IF TestSuite.TestCount > 0 THEN
+    FOR i := 0 TO TestSuite.TestCount - 1 DO
+        UnitTestToAdd := TestSuite.GetTest(i);
+        AddTest(UnitTestToAdd);
+    END_FOR
 END_IF
 ]]></ST>
       </Implementation>

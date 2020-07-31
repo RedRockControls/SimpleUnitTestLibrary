@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.4">
+  <POU Name="TUnitTestBase" Id="{e881a7f9-6480-47d9-8edc-17b69707ad38}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK TUnitTestBase EXTENDS tcl_UnitTestBaseClasses.TUnitTestBase // Used to make TUnutTestBase accesible via this library
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>

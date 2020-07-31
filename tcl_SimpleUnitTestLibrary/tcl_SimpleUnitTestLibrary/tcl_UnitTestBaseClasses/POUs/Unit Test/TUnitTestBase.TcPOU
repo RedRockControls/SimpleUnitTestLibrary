@@ -1,13 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.4">
-  <POU Name="TUnitTestBase" Id="{5f6c3920-eb7a-49e5-908c-08b83c026c35}" SpecialFunc="None">
+  <POU Name="TUnitTestBase" Id="{2716a74b-00b8-44b5-b7e8-bde5fdd3d3fa}" SpecialFunc="None">
     <Declaration><![CDATA[{attribute 'reflection'}
 FUNCTION_BLOCK ABSTRACT TUnitTestBase IMPLEMENTS IUnitTest, IAssertionListener
 VAR
     {attribute 'instance-path'} 
     {attribute 'no_init'}
     _TestName       : T_MaxString; // Automatically initialised with the full name of the instance
-    _Enabled        : BOOL;
     _TestFailed     : BOOL;
     _TestFinished   : BOOL;
     _ImageRef       : STRING;
@@ -19,43 +18,31 @@ END_VAR]]></Declaration>
     <Implementation>
       <ST><![CDATA[]]></ST>
     </Implementation>
-    <Folder Name="Methods" Id="{8d775bbb-f4bf-4ecb-a1a7-b2ad26bcafbc}" />
-    <Folder Name="Properties" Id="{8c3e4d49-b91e-4eb9-a46d-e0c656e5f039}" />
-    <Property Name="Enabled" Id="{85c93296-b27e-4a5d-981d-c3040f443ca9}" FolderPath="Properties\">
-      <Declaration><![CDATA[PROPERTY Enabled : BOOL]]></Declaration>
-      <Get Name="Get" Id="{bd36612b-f07f-4d7d-a39e-42b0ccbe249a}">
-        <Declaration><![CDATA[VAR
-END_VAR
-]]></Declaration>
-        <Implementation>
-          <ST><![CDATA[Enabled := _Enabled;]]></ST>
-        </Implementation>
-      </Get>
-    </Property>
-    <Method Name="Execute" Id="{1cfba8ca-d4ce-4ec4-8707-d70a9a291eab}" FolderPath="Methods\">
+    <Folder Name="Methods" Id="{c4ee87b3-79f4-4e44-914b-1fd2c8b96c50}" />
+    <Folder Name="Properties" Id="{a28878d3-67e7-4a1d-9964-7e24b0862f67}" />
+    <Method Name="Execute" Id="{9d4d5cb9-cd4b-404a-9343-ef8bd4043f30}" FolderPath="Methods\">
       <Declaration><![CDATA[METHOD Execute
 ]]></Declaration>
       <Implementation>
         <ST><![CDATA[THIS^();]]></ST>
       </Implementation>
     </Method>
-    <Method Name="FB_init" Id="{50ea1a2d-ce62-4995-a376-1159add5fe74}" FolderPath="Methods\">
+    <Method Name="FB_init" Id="{7e9e4b75-0b79-4af8-b29e-08e49710d666}" FolderPath="Methods\">
       <Declaration><![CDATA[METHOD FB_init : BOOL
 VAR_INPUT
 	bInitRetains : BOOL; // if TRUE, the retain variables are initialized (warm start / cold start)
 	bInCopyCode : BOOL;  // if TRUE, the instance afterwards gets moved into the copy code (online change)
-    Enabled : BOOL;      // if TRUE, test will be executed by Test Runner
-    GroupName : STRING;  // to allow groups of tests to be identified - lightweight test suite implementation
+    TestSuite : ITestSuite;
 END_VAR
 ]]></Declaration>
       <Implementation>
-        <ST><![CDATA[THIS^._Enabled := Enabled;
-THIS^.setTestName(GroupName);
-TestFramework.TestRunner.AddTest(THIS^);
-]]></ST>
+        <ST><![CDATA[IF TestSuite <> 0 THEN
+    THIS^.setTestName(TestSuite.Name);
+    TestSuite.AddTest(THIS^);
+END_IF]]></ST>
       </Implementation>
     </Method>
-    <Method Name="Initialise" Id="{c86508f2-0a12-445b-9bb3-f664bdcd4e53}" FolderPath="Methods\">
+    <Method Name="Initialise" Id="{8c607387-56e3-442d-9f48-702bdb51e8ad}" FolderPath="Methods\">
       <Declaration><![CDATA[METHOD Initialise
 VAR_INPUT
     MessageList : IAssertionMessageList;
@@ -68,7 +55,7 @@ _ImageRef     := '0';
 _MessageList  := MessageList;]]></ST>
       </Implementation>
     </Method>
-    <Method Name="OnAssertionFailed" Id="{fd6c487c-95ee-0775-0c67-5c39af276035}" FolderPath="Methods\">
+    <Method Name="OnAssertionFailed" Id="{a9b83090-539d-4539-b02b-3c4012c92864}" FolderPath="Methods\">
       <Declaration><![CDATA[METHOD OnAssertionFailed
 VAR_INPUT
     AssertionMessage : T_MaxString;
@@ -89,7 +76,7 @@ IF ActualAsString <> '' THEN
 END_IF]]></ST>
       </Implementation>
     </Method>
-    <Method Name="setTestName" Id="{b1faeced-490d-45dd-a9e4-20fb9905ff5a}" FolderPath="Methods\">
+    <Method Name="setTestName" Id="{a3ebd022-a962-460b-b749-c6934865afca}" FolderPath="Methods\">
       <Declaration><![CDATA[METHOD setTestName
 VAR_INPUT
     GroupName : STRING;
@@ -114,7 +101,7 @@ END_IF
 ]]></ST>
       </Implementation>
     </Method>
-    <Method Name="TestFinished" Id="{f9554933-97f3-48a5-a721-13782a1587cd}" FolderPath="Methods\">
+    <Method Name="TestFinished" Id="{ced04d66-d048-47e1-9c71-4ac4a1e51472}" FolderPath="Methods\">
       <Declaration><![CDATA[METHOD TestFinished
 VAR_INPUT
 END_VAR
@@ -123,9 +110,9 @@ END_VAR
         <ST><![CDATA[_TestFinished := TRUE;]]></ST>
       </Implementation>
     </Method>
-    <Property Name="TestHasFailed" Id="{b7849270-c8d1-4b4d-8e55-7ac7432c746b}" FolderPath="Properties\">
+    <Property Name="TestHasFailed" Id="{27520f4d-136d-4400-b2e6-f007285814af}" FolderPath="Properties\">
       <Declaration><![CDATA[PROPERTY TestHasFailed : BOOL]]></Declaration>
-      <Get Name="Get" Id="{960f25ef-372b-43ed-b423-24b2b17dce8a}">
+      <Get Name="Get" Id="{d8010879-b867-4f7f-b078-9b7053bfca1a}">
         <Declaration><![CDATA[VAR
 END_VAR
 ]]></Declaration>
@@ -134,9 +121,9 @@ END_VAR
         </Implementation>
       </Get>
     </Property>
-    <Property Name="TestHasFinished" Id="{1d3107c4-993a-43fc-80aa-35d26b65703c}" FolderPath="Properties\">
+    <Property Name="TestHasFinished" Id="{7e960da8-2268-4fb6-b3e4-1d10693a431f}" FolderPath="Properties\">
       <Declaration><![CDATA[PROPERTY TestHasFinished : BOOL]]></Declaration>
-      <Get Name="Get" Id="{92979e69-b298-4864-9fb5-4e9e6245ef62}">
+      <Get Name="Get" Id="{15856091-691b-480c-8060-68960082e90d}">
         <Declaration><![CDATA[VAR
 END_VAR
 ]]></Declaration>
@@ -145,9 +132,9 @@ END_VAR
         </Implementation>
       </Get>
     </Property>
-    <Property Name="TestName" Id="{d429c824-d3a5-422b-a3ec-1e2fb1e7cb7a}" FolderPath="Properties\">
+    <Property Name="TestName" Id="{ac5920b8-13c5-426d-8b0e-7fab5090176f}" FolderPath="Properties\">
       <Declaration><![CDATA[PROPERTY TestName : T_MaxString]]></Declaration>
-      <Get Name="Get" Id="{80e54b19-a2c6-4d0f-81fb-c32e95f224e5}">
+      <Get Name="Get" Id="{2e4ad193-65e7-4dbc-83b4-97eca75502b6}">
         <Declaration><![CDATA[VAR
 END_VAR
 ]]></Declaration>

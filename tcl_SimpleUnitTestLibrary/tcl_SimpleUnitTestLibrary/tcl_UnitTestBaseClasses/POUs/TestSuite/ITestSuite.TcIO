@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.4">
+  <Itf Name="ITestSuite" Id="{2318a2ee-cddf-4e08-ac60-54cf86926076}">
+    <Declaration><![CDATA[INTERFACE ITestSuite
+]]></Declaration>
+    <Method Name="AddTest" Id="{81fb66fe-8951-4a6c-ad53-c98105066df4}">
+      <Declaration><![CDATA[METHOD AddTest : BOOL
+VAR_INPUT
+    UnitTest : IUnitTest;
+END_VAR
+]]></Declaration>
+    </Method>
+    <Method Name="GetTest" Id="{3700e1a4-7b02-4689-9788-15de352cfc5a}">
+      <Declaration><![CDATA[METHOD GetTest : IUnitTest
+VAR_INPUT
+    Index : INT;
+END_VAR
+]]></Declaration>
+    </Method>
+    <Property Name="Name" Id="{29998ec3-77b5-460c-b795-ad83ca5dcdf3}">
+      <Declaration><![CDATA[PROPERTY Name : T_MaxString]]></Declaration>
+      <Get Name="Get" Id="{1eac693a-708d-496d-8cf9-4a192293d360}">
+        <Declaration><![CDATA[]]></Declaration>
+      </Get>
+    </Property>
+    <Property Name="TestCount" Id="{022fb47e-ad40-4ede-a41c-8c020446bb05}">
+      <Declaration><![CDATA[PROPERTY TestCount : INT]]></Declaration>
+      <Get Name="Get" Id="{921e36d3-7c19-41fb-943a-e22bb4e545b8}">
+        <Declaration><![CDATA[]]></Declaration>
+      </Get>
+    </Property>
+  </Itf>
+</TcPlcObject>

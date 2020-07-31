@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.4">
+  <Itf Name="ITestRunner" Id="{11372eec-e0ba-4bdc-b3e5-cc1ca432aca4}">
+    <Declaration><![CDATA[INTERFACE ITestRunner
+]]></Declaration>
+    <Method Name="AddTest" Id="{0990ada4-40f2-4c68-9bcc-0094eb21bf38}">
+      <Declaration><![CDATA[METHOD AddTest : BOOL
+VAR_INPUT
+    UnitTest : IUnitTest;
+END_VAR
+]]></Declaration>
+    </Method>
+    <Method Name="AddTestSuite" Id="{0dcd9666-f1b9-4da4-96b6-3aec5aeb25f5}">
+      <Declaration><![CDATA[METHOD AddTestSuite : BOOL
+VAR_INPUT
+    TestSuite : ITestSuite;
+END_VAR
+]]></Declaration>
+    </Method>
+  </Itf>
+</TcPlcObject>

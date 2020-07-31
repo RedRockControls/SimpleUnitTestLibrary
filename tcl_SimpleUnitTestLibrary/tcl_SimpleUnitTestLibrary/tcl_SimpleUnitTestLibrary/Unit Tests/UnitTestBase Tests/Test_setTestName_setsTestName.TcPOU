@@ -7,7 +7,7 @@ END_VAR
 VAR_OUTPUT
 END_VAR
 VAR
-    UnitTest : TUnitTestUnderTest(FALSE,'');
+    UnitTest : TUnitTestUnderTest(TestSuite := 0); // not added to Test Runner
 END_VAR
 ]]></Declaration>
     <Implementation>

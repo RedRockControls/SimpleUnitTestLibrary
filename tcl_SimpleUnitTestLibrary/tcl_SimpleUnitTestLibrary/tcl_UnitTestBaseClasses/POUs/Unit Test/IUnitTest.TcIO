@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.4">
+  <Itf Name="IUnitTest" Id="{5a865065-1461-4713-8b72-2d119ca0555a}">
+    <Declaration><![CDATA[INTERFACE IUnitTest EXTENDS __SYSTEM.IQueryInterface
+]]></Declaration>
+    <Method Name="Execute" Id="{5b8843d7-4cda-4c26-9de3-be7fac99b2df}">
+      <Declaration><![CDATA[METHOD Execute
+]]></Declaration>
+    </Method>
+    <Method Name="Initialise" Id="{9fa25a66-9b79-49d4-a1db-f7754906e1ac}">
+      <Declaration><![CDATA[METHOD Initialise
+VAR_INPUT
+    MessageList : IAssertionMessageList;
+END_VAR
+]]></Declaration>
+    </Method>
+    <Property Name="TestHasFailed" Id="{b3492329-9de3-4a09-9fad-26085c91b577}">
+      <Declaration><![CDATA[PROPERTY TestHasFailed : BOOL]]></Declaration>
+      <Get Name="Get" Id="{86c6f866-6427-453e-89d8-c1b3ee4a7196}">
+        <Declaration><![CDATA[]]></Declaration>
+      </Get>
+    </Property>
+    <Property Name="TestHasFinished" Id="{493589bb-3ee3-4901-af36-1621c899024d}">
+      <Declaration><![CDATA[PROPERTY TestHasFinished : BOOL]]></Declaration>
+      <Get Name="Get" Id="{16cee2ab-a5b6-40b9-94d3-5031542657b0}">
+        <Declaration><![CDATA[]]></Declaration>
+      </Get>
+    </Property>
+    <Property Name="TestName" Id="{ae85e44c-4aaf-43d7-bbf9-20ebb283ad73}">
+      <Declaration><![CDATA[PROPERTY TestName : T_MaxString]]></Declaration>
+      <Get Name="Get" Id="{6add4a7d-7111-429c-aa26-265aa41be0d2}">
+        <Declaration><![CDATA[]]></Declaration>
+      </Get>
+    </Property>
+  </Itf>
+</TcPlcObject>
