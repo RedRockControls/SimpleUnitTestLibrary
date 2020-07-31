@@ -140,28 +140,18 @@ VAR_INPUT
 END_VAR
 ]]></Declaration>
       <Implementation>
-        <ST><![CDATA[IF _TestCount < MAX_TESTS THEN
-    Tests[_TestCount] := UnitTest;
-    _TestCount := _TestCount + 1;
-    AddTest := TRUE;
-ELSE
-    AssertionMessages.AddMessage('Maximum unit tests exceeded!');
+        <ST><![CDATA[IF UnitTest.Enabled THEN
+    IF _TestCount < MAX_TESTS THEN
+        Tests[_TestCount] := UnitTest;
+        _TestCount := _TestCount + 1;
+        AddTest := TRUE;
+    ELSE
+        AssertionMessages.AddMessage('Maximum unit tests exceeded!');
+    END_IF
 END_IF
-
 ]]></ST>
       </Implementation>
     </Method>
-    <Property Name="AllTestsCompleted" Id="{35232731-1165-473b-9489-dda727905bbe}" FolderPath="Properties\">
-      <Declaration><![CDATA[PROPERTY AllTestsCompleted : BOOL]]></Declaration>
-      <Get Name="Get" Id="{427b4cbb-213d-4f37-80e2-9b36fbd84c82}">
-        <Declaration><![CDATA[VAR
-END_VAR
-]]></Declaration>
-        <Implementation>
-          <ST><![CDATA[AllTestsCompleted := _AllTestsCompleted;]]></ST>
-        </Implementation>
-      </Get>
-    </Property>
     <Method Name="ClearResults" Id="{57179eef-fc7b-4bd0-85fd-730ca5472c60}" FolderPath="Methods\">
       <Declaration><![CDATA[METHOD ClearResults
 VAR_INPUT

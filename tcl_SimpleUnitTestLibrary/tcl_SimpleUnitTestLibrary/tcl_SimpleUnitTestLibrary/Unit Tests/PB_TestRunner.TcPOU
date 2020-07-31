@@ -3,25 +3,27 @@
   <POU Name="PB_TestRunner" Id="{a755dca6-4b07-4813-bdbd-9b14c5cd29a6}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM PB_TestRunner
 VAR
-    Test_AssertEquals_BOOL      : Test_AssertEquals_BOOL;
-    Test_AssertEquals_BYTE      : Test_AssertEquals_BYTE;
-    Test_AssertEquals_DINT      : Test_AssertEquals_DINT;
-    Test_AssertEquals_INT       : Test_AssertEquals_INT;
-    Test_AssertEquals_INTERFACE : Test_AssertEquals_INTERFACE;
-    Test_AssertEquals_LINT      : Test_AssertEquals_LINT;
-    Test_AssertEquals_LREAL     : Test_AssertEquals_LREAL;
-    Test_AssertEquals_PVOID     : Test_AssertEquals_PVOID;
-    Test_AssertEquals_REAL      : Test_AssertEquals_REAL;
-    Test_AssertEquals_STRING    : Test_AssertEquals_STRING;
-    Test_AssertEquals_UDINT     : Test_AssertEquals_UDINT;
-    Test_AssertEquals_UINT      : Test_AssertEquals_UINT;
-    Test_AssertEquals_ULINT     : Test_AssertEquals_ULINT;  
-    Test_AssertEquals_WORD      : Test_AssertEquals_WORD;
-    Test_AssertEquals_DWORD     : Test_AssertEquals_DWORD;
+    Test_AssertEquals_BOOL      : Test_AssertEquals_BOOL        (Enabled := TRUE, GroupName := 'TestFramework');
+    Test_AssertEquals_BYTE      : Test_AssertEquals_BYTE        (Enabled := TRUE, GroupName := 'TestFramework');
+    Test_AssertEquals_DINT      : Test_AssertEquals_DINT        (Enabled := TRUE, GroupName := 'TestFramework');
+    Test_AssertEquals_INT       : Test_AssertEquals_INT         (Enabled := TRUE, GroupName := 'TestFramework');
+    Test_AssertEquals_INTERFACE : Test_AssertEquals_INTERFACE   (Enabled := TRUE, GroupName := 'TestFramework');
+    Test_AssertEquals_LINT      : Test_AssertEquals_LINT        (Enabled := TRUE, GroupName := 'TestFramework');
+    Test_AssertEquals_LREAL     : Test_AssertEquals_LREAL       (Enabled := TRUE, GroupName := 'TestFramework');
+    Test_AssertEquals_PVOID     : Test_AssertEquals_PVOID       (Enabled := TRUE, GroupName := 'TestFramework');
+    Test_AssertEquals_REAL      : Test_AssertEquals_REAL        (Enabled := TRUE, GroupName := 'TestFramework');
+    Test_AssertEquals_STRING    : Test_AssertEquals_STRING      (Enabled := TRUE, GroupName := 'TestFramework');
+    Test_AssertEquals_UDINT     : Test_AssertEquals_UDINT       (Enabled := TRUE, GroupName := 'TestFramework');
+    Test_AssertEquals_UINT      : Test_AssertEquals_UINT        (Enabled := TRUE, GroupName := 'TestFramework');
+    Test_AssertEquals_ULINT     : Test_AssertEquals_ULINT       (Enabled := TRUE, GroupName := 'TestFramework');  
+    Test_AssertEquals_WORD      : Test_AssertEquals_WORD        (Enabled := TRUE, GroupName := 'TestFramework');
+    Test_AssertEquals_DWORD     : Test_AssertEquals_DWORD       (Enabled := TRUE, GroupName := 'TestFramework');
     
-    Test_AssertEquals_BLOB_SizeDiffers          : Test_AssertEquals_BLOB_SizeDiffers;  
-    Test_AssertEquals_BLOB_TypeClassDiffers     : Test_AssertEquals_BLOB_TypeClassDiffers;
-    Test_AssertEquals_BLOB_TypeContentDiffers   : Test_AssertEquals_BLOB_TypeContentDiffers;
+    Test_AssertEquals_BLOB_SizeDiffers          : Test_AssertEquals_BLOB_SizeDiffers        (Enabled := TRUE, GroupName := 'TestFramework');  
+    Test_AssertEquals_BLOB_TypeClassDiffers     : Test_AssertEquals_BLOB_TypeClassDiffers   (Enabled := TRUE, GroupName := 'TestFramework');
+    Test_AssertEquals_BLOB_TypeContentDiffers   : Test_AssertEquals_BLOB_TypeContentDiffers (Enabled := TRUE, GroupName := 'TestFramework');
+    
+    Test_setTestName_setsTestName : Test_setTestName_setsTestName (Enabled := TRUE, GroupName := 'TestFramework');
 END_VAR
 ]]></Declaration>
     <Implementation>

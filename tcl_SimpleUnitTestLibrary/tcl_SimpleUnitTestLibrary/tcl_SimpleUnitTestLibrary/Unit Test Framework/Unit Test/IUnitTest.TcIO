@@ -1,8 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.3">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.4">
   <Itf Name="IUnitTest" Id="{5e460ea2-01bf-4593-869c-becd2e132076}">
     <Declaration><![CDATA[INTERFACE IUnitTest EXTENDS __SYSTEM.IQueryInterface
 ]]></Declaration>
+    <Property Name="Enabled" Id="{57bdb636-45c1-45fd-aa09-0677d35a9244}">
+      <Declaration><![CDATA[PROPERTY Enabled : BOOL]]></Declaration>
+      <Get Name="Get" Id="{3e284cc6-c9e1-4ffa-b967-47a77f974d92}">
+        <Declaration><![CDATA[]]></Declaration>
+      </Get>
+    </Property>
     <Method Name="Execute" Id="{00e9f158-bca0-4be7-a174-a15e36fcc65a}">
       <Declaration><![CDATA[METHOD Execute
 ]]></Declaration>

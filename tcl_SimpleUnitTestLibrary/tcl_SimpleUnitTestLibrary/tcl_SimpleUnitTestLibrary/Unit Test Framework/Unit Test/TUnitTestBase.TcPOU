@@ -6,12 +6,12 @@ FUNCTION_BLOCK ABSTRACT TUnitTestBase IMPLEMENTS IUnitTest, IAssertionListener
 VAR
     {attribute 'instance-path'} 
     {attribute 'no_init'}
-    _TestName : T_MaxString; // Automatically initialised with the full name of the instance
-    
-    _TestFailed : BOOL;
-    _TestFinished : BOOL;
-    _ImageRef : STRING;
-    _MessageList : IAssertionMessageList;
+    _TestName       : T_MaxString; // Automatically initialised with the full name of the instance
+    _Enabled        : BOOL;
+    _TestFailed     : BOOL;
+    _TestFinished   : BOOL;
+    _ImageRef       : STRING;
+    _MessageList    : IAssertionMessageList;
     
     Assertion : TAssertion(AssertionListener := THIS^); // Callback to allow the Assertion to update the message list on assertion failed
 
@@ -21,6 +21,17 @@ END_VAR]]></Declaration>
     </Implementation>
     <Folder Name="Methods" Id="{8d775bbb-f4bf-4ecb-a1a7-b2ad26bcafbc}" />
     <Folder Name="Properties" Id="{8c3e4d49-b91e-4eb9-a46d-e0c656e5f039}" />
+    <Property Name="Enabled" Id="{85c93296-b27e-4a5d-981d-c3040f443ca9}" FolderPath="Properties\">
+      <Declaration><![CDATA[PROPERTY Enabled : BOOL]]></Declaration>
+      <Get Name="Get" Id="{bd36612b-f07f-4d7d-a39e-42b0ccbe249a}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[Enabled := _Enabled;]]></ST>
+        </Implementation>
+      </Get>
+    </Property>
     <Method Name="Execute" Id="{1cfba8ca-d4ce-4ec4-8707-d70a9a291eab}" FolderPath="Methods\">
       <Declaration><![CDATA[METHOD Execute
 ]]></Declaration>
@@ -33,12 +44,14 @@ END_VAR]]></Declaration>
 VAR_INPUT
 	bInitRetains : BOOL; // if TRUE, the retain variables are initialized (warm start / cold start)
 	bInCopyCode : BOOL;  // if TRUE, the instance afterwards gets moved into the copy code (online change)
+    Enabled : BOOL;      // if TRUE, test will be executed by Test Runner
+    GroupName : STRING;  // to allow groups of tests to be identified - lightweight test suite implementation
 END_VAR
 ]]></Declaration>
       <Implementation>
-        <ST><![CDATA[IF NOT bInCopyCode THEN
-    TestFramework.TestRunner.AddTest(THIS^);
-END_IF
+        <ST><![CDATA[THIS^._Enabled := Enabled;
+THIS^.setTestName(GroupName);
+TestFramework.TestRunner.AddTest(THIS^);
 ]]></ST>
       </Implementation>
     </Method>
@@ -47,24 +60,12 @@ END_IF
 VAR_INPUT
     MessageList : IAssertionMessageList;
 END_VAR
-VAR
-    StringSplitter : TStringSplitter;
-END_VAR]]></Declaration>
+]]></Declaration>
       <Implementation>
         <ST><![CDATA[_TestFailed   := FALSE;
 _TestFinished := FALSE;
 _ImageRef     := '0';
-_MessageList  := MessageList;
-
-StringSplitter.Init(
-    Str := _TestName,
-    Delim1 := '.',
-    Delim2 := '');
-    
-WHILE StringSplitter.HasMore() DO
-    _TestName := StringSplitter.GetNext(); // to get last sub-section
-END_WHILE
-]]></ST>
+_MessageList  := MessageList;]]></ST>
       </Implementation>
     </Method>
     <Method Name="OnAssertionFailed" Id="{fd6c487c-95ee-0775-0c67-5c39af276035}" FolderPath="Methods\">
@@ -86,6 +87,31 @@ END_IF
 IF ActualAsString <> '' THEN
     _MessageList.AddMessage(ActualAsString);
 END_IF]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="setTestName" Id="{b1faeced-490d-45dd-a9e4-20fb9905ff5a}" FolderPath="Methods\">
+      <Declaration><![CDATA[METHOD setTestName
+VAR_INPUT
+    GroupName : STRING;
+END_VAR
+VAR
+    StringSplitter : TStringSplitter;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[StringSplitter.Init(
+    Str := _TestName,
+    Delim1 := '.',
+    Delim2 := '');
+    
+WHILE StringSplitter.HasMore() DO
+    _TestName := StringSplitter.GetNext(); // to get last sub-section
+END_WHILE
+
+IF GroupName <> '' THEN
+    _TestName := F_FormatStringEx2(Format := '%s.%s',arg1 := GroupName, arg2 := _TestName);
+END_IF
+]]></ST>
       </Implementation>
     </Method>
     <Method Name="TestFinished" Id="{f9554933-97f3-48a5-a721-13782a1587cd}" FolderPath="Methods\">

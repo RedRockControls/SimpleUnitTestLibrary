@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.4">
+  <POU Name="Test_setTestName_setsTestName" Id="{7e5b8960-f8d6-4ef6-9d64-55c857422daf}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK Test_setTestName_setsTestName EXTENDS TUnitTestBase
+VAR_INPUT
+END_VAR
+VAR_OUTPUT
+END_VAR
+VAR
+    UnitTest : TUnitTestUnderTest(FALSE,'');
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[UnitTest.setTestName('ABCD');
+
+Assertion.AssertEquals_STRING(
+    Expected := 'ABCD.UnitTest',
+    Actual   := UnitTest.TestName,
+    VariableName := UnitTest.TestName);
+    
+TestFinished();
+]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>
