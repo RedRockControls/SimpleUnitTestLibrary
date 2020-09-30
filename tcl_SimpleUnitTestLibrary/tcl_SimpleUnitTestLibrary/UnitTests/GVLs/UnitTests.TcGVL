@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.4">
+  <GVL Name="UnitTests" Id="{ca7f809e-818b-42a0-a22f-5b347aa3ab18}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+VAR_GLOBAL
+    TestFrameworkTests : TTestSuite;
+
+    Test_AssertEquals_BOOL      : Test_AssertEquals_BOOL        (TestSuite := TestFrameworkTests);
+    Test_AssertEquals_BYTE      : Test_AssertEquals_BYTE        (TestSuite := TestFrameworkTests);
+    Test_AssertEquals_DINT      : Test_AssertEquals_DINT        (TestSuite := TestFrameworkTests);
+    Test_AssertEquals_INT       : Test_AssertEquals_INT         (TestSuite := TestFrameworkTests);
+    Test_AssertEquals_INTERFACE : Test_AssertEquals_INTERFACE   (TestSuite := TestFrameworkTests);
+    Test_AssertEquals_LINT      : Test_AssertEquals_LINT        (TestSuite := TestFrameworkTests);
+    Test_AssertEquals_LREAL     : Test_AssertEquals_LREAL       (TestSuite := TestFrameworkTests);
+    Test_AssertEquals_PVOID     : Test_AssertEquals_PVOID       (TestSuite := TestFrameworkTests);
+    Test_AssertEquals_REAL      : Test_AssertEquals_REAL        (TestSuite := TestFrameworkTests);
+    Test_AssertEquals_STRING    : Test_AssertEquals_STRING      (TestSuite := TestFrameworkTests);
+    Test_AssertEquals_UDINT     : Test_AssertEquals_UDINT       (TestSuite := TestFrameworkTests);
+    Test_AssertEquals_UINT      : Test_AssertEquals_UINT        (TestSuite := TestFrameworkTests);
+    Test_AssertEquals_ULINT     : Test_AssertEquals_ULINT       (TestSuite := TestFrameworkTests);  
+    Test_AssertEquals_WORD      : Test_AssertEquals_WORD        (TestSuite := TestFrameworkTests);
+    Test_AssertEquals_DWORD     : Test_AssertEquals_DWORD       (TestSuite := TestFrameworkTests);
+    
+    Test_AssertEquals_BLOB_SizeDiffers          : Test_AssertEquals_BLOB_SizeDiffers        (TestSuite := TestFrameworkTests);  
+    Test_AssertEquals_BLOB_TypeClassDiffers     : Test_AssertEquals_BLOB_TypeClassDiffers   (TestSuite := TestFrameworkTests);
+    Test_AssertEquals_BLOB_TypeContentDiffers   : Test_AssertEquals_BLOB_TypeContentDiffers (TestSuite := TestFrameworkTests);
+    
+    Test_setTestName_setsTestName : Test_setTestName_setsTestName (TestSuite := TestFrameworkTests);
+
+
+END_VAR]]></Declaration>
+  </GVL>
+</TcPlcObject>

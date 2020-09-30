@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.4">
+  <POU Name="Test_AssertEquals_PVOID" Id="{7a491631-649a-4653-90e0-541a7c2b8cd4}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK Test_AssertEquals_PVOID EXTENDS TUnitTestBase
+VAR
+    AssertionUnderTest : TAssertion(AssertionListenerMock);
+    AssertionListenerMock : TAssertionListenerMock;
+    PVOID_Variable : PVOID := 1111;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[// Initialise the classes under test (may be repaeting the tests)...
+AssertionListenerMock.fb_Init(
+    bInitRetains      := FALSE,
+	bInCopyCode       := FALSE);
+AssertionUnderTest.fb_Init(
+    bInitRetains      := FALSE,
+	bInCopyCode       := FALSE,
+    AssertionListener := AssertionListenerMock);
+
+// Test the assertion...
+AssertionUnderTest.AssertEquals_PVOID(
+    Expected := 2222,
+    Actual   := PVOID_Variable,
+    VariableName := 'PVOID_Variable'); 
+    
+// Check the assertion worked...    
+Assertion.AssertEquals_BOOL(
+    Expected := TRUE,
+    Actual   := AssertionListenerMock.AssertionFailed,
+    VariableName := 'AssertionListenerMock.AssertionFailed');
+
+// Check the assertion messages...    
+Assertion.AssertEquals_STRING(
+    Expected := 'AssertEquals_PVOID failed in AssertionListenerMock: Value "PVOID_Variable"',
+    Actual   := AssertionListenerMock.AssertionMessage,
+    VariableName := 'AssertionListenerMock.AssertionMessage');
+
+Assertion.AssertEquals_STRING(
+    Expected := '  Expected = 2222',
+    Actual   := AssertionListenerMock.ExpectedAsString,
+    VariableName := 'AssertionListenerMock.ExpectedAsString');
+
+Assertion.AssertEquals_STRING(
+    Expected := '  Actual   = 1111',
+    Actual   := AssertionListenerMock.ActualAsString,
+    VariableName := 'AssertionListenerMock.ActualAsString');
+
+TestFinished();    ]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>

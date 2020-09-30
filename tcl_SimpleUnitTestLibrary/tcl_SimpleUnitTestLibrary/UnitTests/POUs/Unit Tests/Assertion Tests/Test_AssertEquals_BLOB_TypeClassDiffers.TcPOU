@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.4">
+  <POU Name="Test_AssertEquals_BLOB_TypeClassDiffers" Id="{f101fdb6-2bb8-45cf-8992-2407faa98f94}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK Test_AssertEquals_BLOB_TypeClassDiffers EXTENDS TUnitTestBase
+VAR
+    AssertionUnderTest : TAssertion(AssertionListenerMock);
+    AssertionListenerMock : TAssertionListenerMock;
+    
+    // Sizes are the same, but TypeClass differs...
+    INT_Variable  : INT  := 123;
+    WORD_Variable : WORD := 123;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[// Initialise the classes under test (may be repaeting the tests)...
+AssertionListenerMock.fb_Init(
+    bInitRetains      := FALSE,
+	bInCopyCode       := FALSE);
+AssertionUnderTest.fb_Init(
+    bInitRetains      := FALSE,
+	bInCopyCode       := FALSE,
+    AssertionListener := AssertionListenerMock);
+
+// Test the assertion...
+AssertionUnderTest.AssertEquals_BLOB(
+    Expected := INT_Variable,
+    Actual   := WORD_Variable,
+    VariableName := 'WORD_VariableAsBlob');
+ 
+// Check the assertion worked...    
+Assertion.AssertEquals_BOOL(
+    Expected := TRUE,
+    Actual   := AssertionListenerMock.AssertionFailed,
+    VariableName := 'AssertionListenerMock.AssertionFailed');
+
+// Check the assertion messages...    
+Assertion.AssertEquals_STRING(
+    Expected := 'AssertEquals_BLOB failed in AssertionListenerMock: Value "Blob.TypeClass"',
+    Actual   := AssertionListenerMock.AssertionMessage,
+    VariableName := 'AssertionListenerMock.AssertionMessage');
+
+Assertion.AssertEquals_STRING(
+    Expected := '  Expected = INT',
+    Actual   := AssertionListenerMock.ExpectedAsString,
+    VariableName := 'AssertionListenerMock.ExpectedAsString');
+
+Assertion.AssertEquals_STRING(
+    Expected := '  Actual   = WORD',
+    Actual   := AssertionListenerMock.ActualAsString,
+    VariableName := 'AssertionListenerMock.ActualAsString');
+
+TestFinished();    ]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>

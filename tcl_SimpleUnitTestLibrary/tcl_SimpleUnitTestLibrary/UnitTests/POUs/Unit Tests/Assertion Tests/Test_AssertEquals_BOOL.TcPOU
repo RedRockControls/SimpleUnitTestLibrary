@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.4">
+  <POU Name="Test_AssertEquals_BOOL" Id="{0e8de748-6fee-46fc-8560-6947bf202f49}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK Test_AssertEquals_BOOL EXTENDS TUnitTestBase
+VAR
+    AssertionUnderTest : TAssertion(AssertionListenerMock);
+    AssertionListenerMock : TAssertionListenerMock;
+    BOOL_Variable : BOOL := FALSE;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[// Initialise the classes under test (may be repaeting the tests)...
+AssertionListenerMock.fb_Init(
+    bInitRetains      := FALSE,
+	bInCopyCode       := FALSE);
+AssertionUnderTest.fb_Init(
+    bInitRetains      := FALSE,
+	bInCopyCode       := FALSE,
+    AssertionListener := AssertionListenerMock);
+
+// Test the assertion...
+AssertionUnderTest.AssertEquals_BOOL(
+    Expected := TRUE,
+    Actual   := BOOL_Variable,
+    VariableName := 'BOOL_Variable');
+    
+// Check the assertion worked...    
+Assertion.AssertEquals_BOOL(
+    Expected := TRUE,
+    Actual   := AssertionListenerMock.AssertionFailed,
+    VariableName := 'AssertionListenerMock.AssertionFailed');
+
+// Check the assertion messages...    
+Assertion.AssertEquals_STRING(
+    Expected := 'AssertEquals_BOOL failed in AssertionListenerMock: Value "BOOL_Variable"',
+    Actual   := AssertionListenerMock.AssertionMessage,
+    VariableName := 'AssertionListenerMock.AssertionMessage');
+
+Assertion.AssertEquals_STRING(
+    Expected := '  Expected = TRUE',
+    Actual   := AssertionListenerMock.ExpectedAsString,
+    VariableName := 'AssertionListenerMock.ExpectedAsString');
+
+Assertion.AssertEquals_STRING(
+    Expected := '  Actual   = FALSE',
+    Actual   := AssertionListenerMock.ActualAsString,
+    VariableName := 'AssertionListenerMock.ActualAsString');
+
+TestFinished();    ]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>

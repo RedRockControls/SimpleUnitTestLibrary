@@ -3,9 +3,9 @@
   <DUT Name="TTestResult" Id="{ac11eadd-7f37-43d4-85bc-398c3d998e88}">
     <Declaration><![CDATA[TYPE TTestResult :
 STRUCT
-    TestName  : T_MaxString;
-    TestState : T_MaxString;
-    ImageRef  : T_MaxString;
+    TestName         : T_MaxString;
+    TestState        : T_MaxString;
+    ImageRef         : T_MaxString;
     TestCompleteTime : T_MaxString;
 END_STRUCT
 END_TYPE

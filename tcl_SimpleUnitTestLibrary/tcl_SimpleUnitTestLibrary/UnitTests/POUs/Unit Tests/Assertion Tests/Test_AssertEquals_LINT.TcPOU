@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.4">
+  <POU Name="Test_AssertEquals_LINT" Id="{1485ced9-c1d1-4ec5-b5d9-ba2f49955a42}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK Test_AssertEquals_LINT EXTENDS TUnitTestBase
+VAR
+    AssertionUnderTest : TAssertion(AssertionListenerMock);
+    AssertionListenerMock : TAssertionListenerMock;
+    LINT_Variable : LINT := 1111;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[// Initialise the classes under test (may be repaeting the tests)...
+AssertionListenerMock.fb_Init(
+    bInitRetains      := FALSE,
+	bInCopyCode       := FALSE);
+AssertionUnderTest.fb_Init(
+    bInitRetains      := FALSE,
+	bInCopyCode       := FALSE,
+    AssertionListener := AssertionListenerMock);
+
+// Test the assertion...
+AssertionUnderTest.AssertEquals_LINT(
+    Expected := 2222,
+    Actual   := LINT_Variable,
+    VariableName := 'LINT_Variable');
+ 
+    
+// Check the assertion worked...    
+Assertion.AssertEquals_BOOL(
+    Expected := TRUE,
+    Actual   := AssertionListenerMock.AssertionFailed,
+    VariableName := 'AssertionListenerMock.AssertionFailed');
+
+// Check the assertion messages...    
+Assertion.AssertEquals_STRING(
+    Expected := 'AssertEquals_LINT failed in AssertionListenerMock: Value "LINT_Variable"',
+    Actual   := AssertionListenerMock.AssertionMessage,
+    VariableName := 'AssertionListenerMock.AssertionMessage');
+
+Assertion.AssertEquals_STRING(
+    Expected := '  Expected = 2222',
+    Actual   := AssertionListenerMock.ExpectedAsString,
+    VariableName := 'AssertionListenerMock.ExpectedAsString');
+
+Assertion.AssertEquals_STRING(
+    Expected := '  Actual   = 1111',
+    Actual   := AssertionListenerMock.ActualAsString,
+    VariableName := 'AssertionListenerMock.ActualAsString');
+
+TestFinished();    ]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>

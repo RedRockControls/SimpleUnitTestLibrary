@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.4">
-  <GVL Name="TestFramework" Id="{ca7c940a-60ec-4292-9382-a233f6d36546}">
+  <GVL Name="TestFramework" Id="{dad97267-e0eb-4eb2-a4c7-4f26791309f7}">
     <Declaration><![CDATA[{attribute 'qualified_only'}
 VAR_GLOBAL
     TestRunner : TTestRunner;

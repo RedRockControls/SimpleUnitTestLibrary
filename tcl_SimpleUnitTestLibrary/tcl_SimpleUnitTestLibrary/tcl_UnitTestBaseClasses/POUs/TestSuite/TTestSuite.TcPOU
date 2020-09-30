@@ -12,10 +12,10 @@ VAR
     {attribute 'no_init'}
     _TestSuiteName       : T_MaxString; // Automatically initialised with the full name of the instance
     _TestCount : INT;
-    Tests : ARRAY[0..MAX_TESTS] OF IUnitTest;
+    Tests : ARRAY[0..MAX_TESTS_PER_TEST_SUITE] OF IUnitTest;
 END_VAR
 VAR CONSTANT
-    MAX_TESTS              : DINT := 100;
+    MAX_TESTS_PER_TEST_SUITE              : DINT := 100;
 END_VAR]]></Declaration>
     <Implementation>
       <ST><![CDATA[]]></ST>
@@ -27,7 +27,7 @@ VAR_INPUT
 END_VAR
 ]]></Declaration>
       <Implementation>
-        <ST><![CDATA[IF _TestCount < MAX_TESTS THEN
+        <ST><![CDATA[IF _TestCount < MAX_TESTS_PER_TEST_SUITE THEN
     Tests[_TestCount] := UnitTest;
     _TestCount := _TestCount + 1;
     AddTest := TRUE;

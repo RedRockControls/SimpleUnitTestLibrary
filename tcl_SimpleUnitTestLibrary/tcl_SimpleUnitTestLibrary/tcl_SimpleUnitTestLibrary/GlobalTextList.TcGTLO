@@ -51,6 +51,11 @@
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
+              <v n="TextID">"728"</v>
+              <v n="TextDefault">"Assertion Messages"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
               <v n="TextID">"200"</v>
               <v n="TextDefault">"Auto-Run Tests"</v>
               <l n="LanguageTexts" t="ArrayList" />
@@ -101,6 +106,16 @@
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
+              <v n="TextID">"209"</v>
+              <v n="TextDefault">"Test name"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"221"</v>
+              <v n="TextDefault">"Test Name"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
               <v n="TextID">"533"</v>
               <v n="TextDefault">"Test State"</v>
               <l n="LanguageTexts" t="ArrayList" />
@@ -123,6 +138,11 @@
             <o>
               <v n="TextID">"756"</v>
               <v n="TextDefault">"Time"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"188"</v>
+              <v n="TextDefault">"TIme"</v>
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
