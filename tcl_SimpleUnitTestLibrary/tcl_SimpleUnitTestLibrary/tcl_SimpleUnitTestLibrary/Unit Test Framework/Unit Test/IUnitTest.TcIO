@@ -1,34 +1,34 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.4">
-  <Itf Name="IUnitTest" Id="{5a865065-1461-4713-8b72-2d119ca0555a}">
+  <Itf Name="IUnitTest" Id="{137795db-abc7-4fa7-8556-f33fd38a5e22}">
     <Declaration><![CDATA[INTERFACE IUnitTest EXTENDS __SYSTEM.IQueryInterface
 ]]></Declaration>
-    <Method Name="Execute" Id="{5b8843d7-4cda-4c26-9de3-be7fac99b2df}">
+    <Method Name="Execute" Id="{2fba04c3-dc29-45c8-9862-61e987437cae}">
       <Declaration><![CDATA[METHOD Execute
 ]]></Declaration>
     </Method>
-    <Method Name="Initialise" Id="{9fa25a66-9b79-49d4-a1db-f7754906e1ac}">
+    <Method Name="Initialise" Id="{c9388da0-0ae6-4f8c-8201-6c010a8515b8}">
       <Declaration><![CDATA[METHOD Initialise
 VAR_INPUT
     MessageList : IAssertionMessageList;
 END_VAR
 ]]></Declaration>
     </Method>
-    <Property Name="TestHasFailed" Id="{b3492329-9de3-4a09-9fad-26085c91b577}">
+    <Property Name="TestHasFailed" Id="{df9c8aa0-74e0-4748-8bd2-4a5fb0af13a5}">
       <Declaration><![CDATA[PROPERTY TestHasFailed : BOOL]]></Declaration>
-      <Get Name="Get" Id="{86c6f866-6427-453e-89d8-c1b3ee4a7196}">
+      <Get Name="Get" Id="{1a2f703b-1650-4083-8e8e-2f36512fa429}">
         <Declaration><![CDATA[]]></Declaration>
       </Get>
     </Property>
-    <Property Name="TestHasFinished" Id="{493589bb-3ee3-4901-af36-1621c899024d}">
+    <Property Name="TestHasFinished" Id="{007eb33b-a04a-4cb1-8b1a-872bdd85f4d0}">
       <Declaration><![CDATA[PROPERTY TestHasFinished : BOOL]]></Declaration>
-      <Get Name="Get" Id="{16cee2ab-a5b6-40b9-94d3-5031542657b0}">
+      <Get Name="Get" Id="{71a925c9-9c56-4b8d-b544-8cdd0a5a0cfa}">
         <Declaration><![CDATA[]]></Declaration>
       </Get>
     </Property>
-    <Property Name="TestName" Id="{ae85e44c-4aaf-43d7-bbf9-20ebb283ad73}">
+    <Property Name="TestName" Id="{fca77da0-e028-4f06-adf6-809516ee7298}">
       <Declaration><![CDATA[PROPERTY TestName : T_MaxString]]></Declaration>
-      <Get Name="Get" Id="{6add4a7d-7111-429c-aa26-265aa41be0d2}">
+      <Get Name="Get" Id="{e1d0f475-1d5c-4058-8f2a-d47b2144376a}">
         <Declaration><![CDATA[]]></Declaration>
       </Get>
     </Property>

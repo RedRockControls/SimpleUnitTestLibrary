@@ -1,16 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.4">
-  <Itf Name="IAssertionMessageList" Id="{4656d820-d7df-49e3-8843-f40bfefe0cbb}">
+  <Itf Name="IAssertionMessageList" Id="{270b47cc-0623-4afb-ba23-90db3cde0906}">
     <Declaration><![CDATA[INTERFACE IAssertionMessageList
 ]]></Declaration>
-    <Method Name="AddMessage" Id="{6b8d80e4-67be-4a8a-b966-e5307dbe0a90}">
+    <Method Name="AddMessage" Id="{4e3dc3a3-3f3a-4e0a-b8b3-2216c3be2665}">
       <Declaration><![CDATA[METHOD AddMessage : BOOL
 VAR_INPUT
     Message : T_MaxString;
 END_VAR
 ]]></Declaration>
     </Method>
-    <Method Name="Clear" Id="{f1f39b29-d68a-4218-bc7c-cb02814d7b61}">
+    <Method Name="Clear" Id="{d5c2c172-7436-4b3f-b473-a575a70ac25f}">
       <Declaration><![CDATA[METHOD Clear
 VAR_INPUT
 END_VAR

@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.4">
-  <POU Name="TAssertion" Id="{70ae2ff2-4bf3-4e3b-bfb8-f054741d764d}" SpecialFunc="None">
+  <POU Name="TAssertion" Id="{a1aef330-5110-4c04-a4ca-af23774823fc}" SpecialFunc="None">
     <Declaration><![CDATA[FUNCTION_BLOCK TAssertion
 VAR_INPUT
 END_VAR
@@ -17,9 +17,9 @@ END_VAR
     <Implementation>
       <ST><![CDATA[]]></ST>
     </Implementation>
-    <Folder Name="Methods" Id="{54751508-b967-45e0-bbbe-d141e6a7186a}" />
-    <Folder Name="Properties" Id="{9c0c29ae-3807-4b44-8594-bf7ccc58695f}" />
-    <Method Name="AssertEquals_BLOB" Id="{c8008f7a-1f17-45ba-8b5b-5d24e1c46afb}" FolderPath="Methods\">
+    <Folder Name="Methods" Id="{b5309a9f-d22b-4798-ac38-129f27945b0a}" />
+    <Folder Name="Properties" Id="{2b96df32-c9bc-482b-8e63-e4930a06246e}" />
+    <Method Name="AssertEquals_BLOB" Id="{5eddac7b-ac1b-4f82-81db-408d888c0c87}" FolderPath="Methods\">
       <Declaration><![CDATA[METHOD AssertEquals_BLOB
 VAR_INPUT
     Expected : ANY;
@@ -61,7 +61,7 @@ END_IF
 ]]></ST>
       </Implementation>
     </Method>
-    <Method Name="AssertEquals_BOOL" Id="{9d0f876a-a0ba-4256-91ec-8535acd308e3}" FolderPath="Methods\">
+    <Method Name="AssertEquals_BOOL" Id="{cdb21bbb-0bd7-498a-af51-940faf207ee6}" FolderPath="Methods\">
       <Declaration><![CDATA[METHOD AssertEquals_BOOL 
 VAR_INPUT
     Expected : BOOL;
@@ -82,7 +82,7 @@ ELSE
 END_IF]]></ST>
       </Implementation>
     </Method>
-    <Method Name="AssertEquals_BYTE" Id="{96bd7269-e286-4f6f-a820-200693391656}" FolderPath="Methods\">
+    <Method Name="AssertEquals_BYTE" Id="{5627dd17-70c5-4b14-a1bf-829486f72942}" FolderPath="Methods\">
       <Declaration><![CDATA[METHOD AssertEquals_BYTE
 VAR_INPUT
     Expected : BYTE;
@@ -103,7 +103,7 @@ ELSE
 END_IF]]></ST>
       </Implementation>
     </Method>
-    <Method Name="AssertEquals_DINT" Id="{b14ee64c-ab19-485c-8d57-e669c3bff199}" FolderPath="Methods\">
+    <Method Name="AssertEquals_DINT" Id="{87caa963-e045-4af5-b563-b93e89f13ab7}" FolderPath="Methods\">
       <Declaration><![CDATA[METHOD AssertEquals_DINT 
 VAR_INPUT
     Expected : DINT;
@@ -124,7 +124,7 @@ ELSE
 END_IF]]></ST>
       </Implementation>
     </Method>
-    <Method Name="AssertEquals_DWORD" Id="{d6e7a204-64a3-4f0a-ace3-e0577c8bdcc2}" FolderPath="Methods\">
+    <Method Name="AssertEquals_DWORD" Id="{c529b418-e73e-46df-a704-66f342e91550}" FolderPath="Methods\">
       <Declaration><![CDATA[METHOD AssertEquals_DWORD
 VAR_INPUT
     Expected : DWORD;
@@ -145,7 +145,7 @@ ELSE
 END_IF]]></ST>
       </Implementation>
     </Method>
-    <Method Name="AssertEquals_INT" Id="{f0ecc7d4-f9a4-4160-9e6b-1b281e2673e6}" FolderPath="Methods\">
+    <Method Name="AssertEquals_INT" Id="{c0c3c3aa-4593-4e55-9ebd-e3ee2109a1e7}" FolderPath="Methods\">
       <Declaration><![CDATA[METHOD AssertEquals_INT
 VAR_INPUT
     Expected : INT;
@@ -166,7 +166,7 @@ ELSE
 END_IF]]></ST>
       </Implementation>
     </Method>
-    <Method Name="AssertEquals_INTERFACE" Id="{e805b2f5-955e-4cd5-aafa-5a7bd9ecec72}" FolderPath="Methods\">
+    <Method Name="AssertEquals_INTERFACE" Id="{ce87012c-197c-4a78-affa-13f11a2dba98}" FolderPath="Methods\">
       <Declaration><![CDATA[METHOD AssertEquals_INTERFACE 
 VAR_INPUT
     Expected : __SYSTEM.IQueryInterface;
@@ -187,7 +187,7 @@ ELSE
 END_IF]]></ST>
       </Implementation>
     </Method>
-    <Method Name="AssertEquals_LINT" Id="{e4eae7f2-3cf9-4ac3-8f98-5c0ed3a8135e}" FolderPath="Methods\">
+    <Method Name="AssertEquals_LINT" Id="{b8ab4fb5-6328-4a4b-8c8c-bd80dd43a6a9}" FolderPath="Methods\">
       <Declaration><![CDATA[METHOD AssertEquals_LINT 
 VAR_INPUT
     Expected : LINT;
@@ -208,7 +208,7 @@ ELSE
 END_IF]]></ST>
       </Implementation>
     </Method>
-    <Method Name="AssertEquals_LREAL" Id="{52757116-fb57-4c17-aed0-d4f7d29fd12a}" FolderPath="Methods\">
+    <Method Name="AssertEquals_LREAL" Id="{f1277f7a-01b7-4851-9eec-4f607faba189}" FolderPath="Methods\">
       <Declaration><![CDATA[METHOD AssertEquals_LREAL 
 VAR_INPUT
     Expected : LREAL;
@@ -230,7 +230,7 @@ ELSE
 END_IF]]></ST>
       </Implementation>
     </Method>
-    <Method Name="AssertEquals_PVOID" Id="{b66008b0-8461-4d8b-bb67-c916aa0bba8b}" FolderPath="Methods\">
+    <Method Name="AssertEquals_PVOID" Id="{55fd3806-f310-4c32-9658-04dd1567b98f}" FolderPath="Methods\">
       <Declaration><![CDATA[METHOD AssertEquals_PVOID 
 VAR_INPUT
     Expected : PVOID;
@@ -251,7 +251,7 @@ ELSE
 END_IF]]></ST>
       </Implementation>
     </Method>
-    <Method Name="AssertEquals_REAL" Id="{7471d00d-7be3-4a98-ac99-78f379f3861c}" FolderPath="Methods\">
+    <Method Name="AssertEquals_REAL" Id="{a0cf997f-5108-4a78-83dd-2d3cf9cf0251}" FolderPath="Methods\">
       <Declaration><![CDATA[METHOD AssertEquals_REAL 
 VAR_INPUT
     Expected : REAL;
@@ -273,7 +273,7 @@ ELSE
 END_IF]]></ST>
       </Implementation>
     </Method>
-    <Method Name="AssertEquals_STRING" Id="{77d6d663-2bf0-4bee-86c6-108a80d75019}" FolderPath="Methods\">
+    <Method Name="AssertEquals_STRING" Id="{bc26e0ad-c421-4d8e-b875-daeab2504431}" FolderPath="Methods\">
       <Declaration><![CDATA[METHOD AssertEquals_STRING
 VAR_INPUT
     Expected : T_MaxString;
@@ -298,7 +298,7 @@ END_IF
 ]]></ST>
       </Implementation>
     </Method>
-    <Method Name="AssertEquals_UDINT" Id="{6396b211-a968-42e9-9a4b-399eb8fd426c}" FolderPath="Methods\">
+    <Method Name="AssertEquals_UDINT" Id="{b3c4b76b-bd0f-48fc-9f1f-c334e6dc6e9c}" FolderPath="Methods\">
       <Declaration><![CDATA[METHOD AssertEquals_UDINT
 VAR_INPUT
     Expected : UDINT;
@@ -319,7 +319,7 @@ ELSE
 END_IF]]></ST>
       </Implementation>
     </Method>
-    <Method Name="AssertEquals_UINT" Id="{39cb565a-8ddb-455c-927c-14271842b8e8}" FolderPath="Methods\">
+    <Method Name="AssertEquals_UINT" Id="{64db6b8d-987c-4ac1-b2ab-42a4e606ae68}" FolderPath="Methods\">
       <Declaration><![CDATA[METHOD AssertEquals_UINT
 VAR_INPUT
     Expected : UINT;
@@ -340,7 +340,7 @@ ELSE
 END_IF]]></ST>
       </Implementation>
     </Method>
-    <Method Name="AssertEquals_ULINT" Id="{25d38aa7-e152-405a-8d53-29ffa7a1451e}" FolderPath="Methods\">
+    <Method Name="AssertEquals_ULINT" Id="{35d1cf8d-e453-4bd0-b422-61ed4fb64747}" FolderPath="Methods\">
       <Declaration><![CDATA[METHOD AssertEquals_ULINT 
 VAR_INPUT
     Expected : ULINT;
@@ -361,7 +361,7 @@ ELSE
 END_IF]]></ST>
       </Implementation>
     </Method>
-    <Method Name="AssertEquals_WORD" Id="{4f205e55-d96b-4590-a693-749ac097c639}" FolderPath="Methods\">
+    <Method Name="AssertEquals_WORD" Id="{6f951036-653a-4769-ad9d-5558c6f5e476}" FolderPath="Methods\">
       <Declaration><![CDATA[METHOD AssertEquals_WORD
 VAR_INPUT
     Expected : WORD;
@@ -382,9 +382,9 @@ ELSE
 END_IF]]></ST>
       </Implementation>
     </Method>
-    <Property Name="AssertionFailed" Id="{0d444132-37a9-4ec0-9884-356cdc1efa83}" FolderPath="Properties\">
+    <Property Name="AssertionFailed" Id="{efe5b392-bd52-4186-adc6-a08baeb9456e}" FolderPath="Properties\">
       <Declaration><![CDATA[PROPERTY AssertionFailed : BOOL]]></Declaration>
-      <Get Name="Get" Id="{928450fb-8704-4b55-a97c-1981f0fc406d}">
+      <Get Name="Get" Id="{58033276-2b54-4cf0-846a-6cb8d1dec6d1}">
         <Declaration><![CDATA[VAR
 END_VAR
 ]]></Declaration>
@@ -393,9 +393,9 @@ END_VAR
         </Implementation>
       </Get>
     </Property>
-    <Property Name="AssertionMessage" Id="{a744bcb1-3481-41a4-a14e-e42ed7cf66fc}" FolderPath="Properties\">
+    <Property Name="AssertionMessage" Id="{450e3501-7d12-45c4-a5bf-d12c3afea520}" FolderPath="Properties\">
       <Declaration><![CDATA[PROPERTY AssertionMessage : T_MaxString]]></Declaration>
-      <Get Name="Get" Id="{cf09b7f4-0306-476e-b30a-c278f1d2d6e1}">
+      <Get Name="Get" Id="{fe321a98-402a-43fe-9184-70844f27500e}">
         <Declaration><![CDATA[VAR
 END_VAR
 ]]></Declaration>
@@ -405,7 +405,7 @@ END_VAR
         </Implementation>
       </Get>
     </Property>
-    <Method Name="FB_init" Id="{4071ef20-0d0f-4fe8-b227-bc8bccfe5815}" FolderPath="Methods\">
+    <Method Name="FB_init" Id="{bd8897b6-ec9e-4893-99bd-6b87d14568ef}" FolderPath="Methods\">
       <Declaration><![CDATA[METHOD FB_init : BOOL
 VAR_INPUT
 	bInitRetains : BOOL; // if TRUE, the retain variables are initialized (warm start / cold start)

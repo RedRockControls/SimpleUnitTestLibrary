@@ -18,7 +18,7 @@
     <Released>false</Released>
     <Company>Red Rock Controls Limited</Company>
     <Title>tcl_SimpleUnitTestLibrary</Title>
-    <ProjectVersion>1.0.5.0</ProjectVersion>
+    <ProjectVersion>1.0.6.0</ProjectVersion>
     <LibraryCategories>
       <LibraryCategory>
         <Id>{0d08a09c-9493-4b37-a26c-544e7211ff2d}</Id>
@@ -30,7 +30,7 @@
       <Id>{0d08a09c-9493-4b37-a26c-544e7211ff2d}</Id>
     </SelectedLibraryCategories>
     <Author>Roger Christopher</Author>
-    <Description>Unit Tests moved to separate PLC</Description>
+    <Description>tcl_UnitTestBaseClasses merged back in</Description>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="GVLs\Parameters.TcGVL">
@@ -40,6 +40,12 @@
     <Compile Include="GVLs\TestFramework.TcGVL">
       <SubType>Code</SubType>
       <LinkAlways>true</LinkAlways>
+    </Compile>
+    <Compile Include="Unit Test Framework\Assertions\IAssertionMessageList.TcIO">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Unit Test Framework\Assertions\TAssertion.TcPOU">
+      <SubType>Code</SubType>
     </Compile>
     <Compile Include="Unit Test Framework\Message list\TAssertionMessageList.TcPOU">
       <SubType>Code</SubType>
@@ -56,6 +62,21 @@
     <Compile Include="GlobalTextList.TcGTLO">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Unit Test Framework\TestSuite\ITestSuite.TcIO">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Unit Test Framework\TestSuite\TTestSuite.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Unit Test Framework\Unit Test\IAssertionListener.TcIO">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Unit Test Framework\Unit Test\IUnitTest.TcIO">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Unit Test Framework\Unit Test\TUnitTestBase.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Version\Global_Version.TcGVL">
       <SubType>Code</SubType>
     </Compile>
@@ -69,11 +90,14 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Unit Test Framework" />
+    <Folder Include="Unit Test Framework\Assertions" />
     <Folder Include="Unit Test Framework\Message list" />
     <Folder Include="Unit Test Framework\Test Runner" />
     <Folder Include="Unit Test Framework\Test Runner\Test Runner" />
     <Folder Include="GVLs" />
     <Folder Include="DUTs" />
+    <Folder Include="Unit Test Framework\TestSuite" />
+    <Folder Include="Unit Test Framework\Unit Test" />
     <Folder Include="Version" />
     <Folder Include="VISUs" />
   </ItemGroup>
@@ -148,10 +172,6 @@
       <DefaultResolution>tcl_StringUtils, * (Red Rock Controls Limited)</DefaultResolution>
       <Namespace>tcl_StringUtils</Namespace>
     </PlaceholderReference>
-    <PlaceholderReference Include="tcl_UnitTestBaseClasses">
-      <DefaultResolution>tcl_UnitTestBaseClasses, * (Red Rock Controls Limited)</DefaultResolution>
-      <Namespace>tcl_UnitTestBaseClasses</Namespace>
-    </PlaceholderReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="tcl_SimpleUnitTestLibrary.tmc">
@@ -161,8 +181,8 @@
   <ProjectExtensions>
     <PlcProjectOptions>
       <XmlArchive>
-  <Data>
-    <o xml:space="preserve" t="OptionKey">
+        <Data>
+          <o xml:space="preserve" t="OptionKey">
       <v n="Name">"&lt;ProjectRoot&gt;"</v>
       <d n="SubKeys" t="Hashtable" ckt="String" cvt="OptionKey">
         <v>{192FAD59-8248-4824-A8DE-9177C94C195A}</v>
@@ -274,14 +294,14 @@
       </d>
       <d n="Values" t="Hashtable" />
     </o>
-  </Data>
-  <TypeList>
-    <Type n="Boolean">System.Boolean</Type>
-    <Type n="Hashtable">System.Collections.Hashtable</Type>
-    <Type n="OptionKey">{54dd0eac-a6d8-46f2-8c27-2f43c7e49861}</Type>
-    <Type n="String">System.String</Type>
-  </TypeList>
-</XmlArchive>
+        </Data>
+        <TypeList>
+          <Type n="Boolean">System.Boolean</Type>
+          <Type n="Hashtable">System.Collections.Hashtable</Type>
+          <Type n="OptionKey">{54dd0eac-a6d8-46f2-8c27-2f43c7e49861}</Type>
+          <Type n="String">System.String</Type>
+        </TypeList>
+      </XmlArchive>
     </PlcProjectOptions>
   </ProjectExtensions>
 </Project>

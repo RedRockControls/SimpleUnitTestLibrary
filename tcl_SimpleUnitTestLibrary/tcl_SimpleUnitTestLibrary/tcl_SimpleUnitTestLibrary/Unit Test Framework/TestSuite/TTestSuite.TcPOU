@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.4">
-  <POU Name="TTestSuite" Id="{925a3760-a834-4031-8036-d0d43ba7ca3b}" SpecialFunc="None">
+  <POU Name="TTestSuite" Id="{5434f086-e91b-4ff8-beea-9e089ab2b57a}" SpecialFunc="None">
     <Declaration><![CDATA[{attribute 'reflection'}
 FUNCTION_BLOCK TTestSuite IMPLEMENTS ITestSuite
 VAR_INPUT
@@ -20,7 +20,7 @@ END_VAR]]></Declaration>
     <Implementation>
       <ST><![CDATA[]]></ST>
     </Implementation>
-    <Method Name="AddTest" Id="{197ef7f4-ec9b-4d7c-87e8-be0c276e2e20}">
+    <Method Name="AddTest" Id="{cba36335-832b-45f4-b848-ff4520246c4b}">
       <Declaration><![CDATA[METHOD AddTest : BOOL
 VAR_INPUT
     UnitTest : IUnitTest;
@@ -35,7 +35,7 @@ END_IF
 ]]></ST>
       </Implementation>
     </Method>
-    <Method Name="FB_init" Id="{4a3cf178-3ad2-404d-bfb8-02e0553c3693}">
+    <Method Name="FB_init" Id="{336eb02e-059d-4b2b-93cf-377d90b7f92e}">
       <Declaration><![CDATA[METHOD FB_init : BOOL
 VAR_INPUT
 	bInitRetains : BOOL; // if TRUE, the retain variables are initialized (warm start / cold start)
@@ -58,7 +58,7 @@ END_WHILE
 ]]></ST>
       </Implementation>
     </Method>
-    <Method Name="GetTest" Id="{823dc052-804d-4654-8acf-3e98e5815da8}">
+    <Method Name="GetTest" Id="{570c8934-96ee-4fac-aad3-11d8b3efc607}">
       <Declaration><![CDATA[METHOD GetTest : IUnitTest
 VAR_INPUT
     Index : INT;
@@ -71,9 +71,9 @@ END_IF
 ]]></ST>
       </Implementation>
     </Method>
-    <Property Name="Name" Id="{4deb3fb9-148c-4431-b8dc-0196490f2ad4}">
+    <Property Name="Name" Id="{c21217d9-c040-4b9d-956a-84aeac33844f}">
       <Declaration><![CDATA[PROPERTY Name : T_MaxString]]></Declaration>
-      <Get Name="Get" Id="{c2841677-bd3e-42ef-b2f7-a0bafe00eab0}">
+      <Get Name="Get" Id="{4a17f4b0-0160-4526-b25f-aece5fed0d33}">
         <Declaration><![CDATA[VAR
 END_VAR
 ]]></Declaration>
@@ -82,9 +82,9 @@ END_VAR
         </Implementation>
       </Get>
     </Property>
-    <Property Name="TestCount" Id="{f429d810-6900-4a43-b527-185b9ef53b39}">
+    <Property Name="TestCount" Id="{fcef3c29-b1b5-47d0-a8c6-01091ef0d3c6}">
       <Declaration><![CDATA[PROPERTY TestCount : INT]]></Declaration>
-      <Get Name="Get" Id="{18bc7539-034a-409a-8411-e0a50af56177}">
+      <Get Name="Get" Id="{dd60a179-eefe-4dbc-8e55-b28e4de5f20e}">
         <Declaration><![CDATA[VAR
 END_VAR
 ]]></Declaration>

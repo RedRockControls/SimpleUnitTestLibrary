@@ -10,7 +10,6 @@
 		</System>
 		<Plc>
 			<Project File="tcl_SimpleUnitTestLibrary.xti"/>
-			<Project File="tcl_UnitTestBaseClasses.xti"/>
 			<Project File="UnitTests.xti"/>
 		</Plc>
 	</Project>
