@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.4">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.5">
   <DUT Name="TTestResult" Id="{ac11eadd-7f37-43d4-85bc-398c3d998e88}">
     <Declaration><![CDATA[TYPE TTestResult :
 STRUCT
@@ -7,6 +7,7 @@ STRUCT
     TestState        : T_MaxString;
     ImageRef         : T_MaxString;
     TestCompleteTime : T_MaxString;
+    TestCompleted    : BOOL;
 END_STRUCT
 END_TYPE
 ]]></Declaration>

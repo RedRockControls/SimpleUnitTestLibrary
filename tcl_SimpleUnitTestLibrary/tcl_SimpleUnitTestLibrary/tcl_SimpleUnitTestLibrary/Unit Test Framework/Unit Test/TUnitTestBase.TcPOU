@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.4">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.5">
   <POU Name="TUnitTestBase" Id="{11d674d7-44eb-41b0-9d82-8296e52558c5}" SpecialFunc="None">
     <Declaration><![CDATA[{attribute 'reflection'}
 FUNCTION_BLOCK ABSTRACT TUnitTestBase IMPLEMENTS IUnitTest, IAssertionListener

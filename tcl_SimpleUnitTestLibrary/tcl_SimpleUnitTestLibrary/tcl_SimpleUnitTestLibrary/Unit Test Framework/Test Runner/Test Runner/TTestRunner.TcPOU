@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.4">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.5">
   <POU Name="TTestRunner" Id="{c7f35beb-7079-466d-ae1a-1beb011dea9f}" SpecialFunc="None">
     <Declaration><![CDATA[FUNCTION_BLOCK TTestRunner 
 VAR_INPUT
@@ -62,30 +62,35 @@ END_VAR
         CompletedTestsCount := 0;
         FOR i := 0 TO _TestCount - 1 DO
             IF Tests[i] <> 0 THEN
-                IF Tests[i].TestHasFinished THEN
-                    TestResults[i].TestCompleteTime := getTimeStampAsString();
-                    IF Tests[i].TestHasFailed THEN
-                        TestResults[i].TestName  := Tests[i].TestName;
-                        TestResults[i].TestState := 'Failed';
-                        TestResults[i].ImageRef  := '3';
-                        FailedTestsCount := FailedTestsCount + 1;
+                IF TestResults[i].TestCompleted THEN
+                    CompletedTestsCount := CompletedTestsCount + 1;
+                ELSE
+                    IF Tests[i].TestHasFinished THEN
+                        TestResults[i].TestCompleted := TRUE;
+                        TestResults[i].TestCompleteTime := getTimeStampAsString();
+                        IF Tests[i].TestHasFailed THEN
+                            TestResults[i].TestName  := Tests[i].TestName;
+                            TestResults[i].TestState := 'Failed';
+                            TestResults[i].ImageRef  := '3';
+                            FailedTestsCount := FailedTestsCount + 1;
+                        ELSE
+                            TestResults[i].TestName  := Tests[i].TestName;
+                            TestResults[i].TestState := 'Passed';
+                            TestResults[i].ImageRef  := '2';
+                        END_IF    
                     ELSE
                         TestResults[i].TestName  := Tests[i].TestName;
-                        TestResults[i].TestState := 'Passed';
-                        TestResults[i].ImageRef  := '2';
-                    END_IF    
-                    
-                    CompletedTestsCount := CompletedTestsCount + 1;
-                    TestsCompletedPercentage := CompletedTestsCount * 100/_TestCount;
-                    _Results := F_FormatString2('%d Tests completed, %d Tests Failed',F_INT(CompletedTestsCount),F_INT(FailedTestsCount));
-                ELSE
-                    TestResults[i].TestName  := Tests[i].TestName;
-                    TestResults[i].TestState := 'Running';
-                    TestResults[i].ImageRef  := '1';
-                    Tests[i].Execute();
-                END_IF
+                        TestResults[i].TestState := 'Running';
+                        TestResults[i].ImageRef  := '1';
+                        Tests[i].Execute();
+                    END_IF
+				END_IF
             END_IF
         END_FOR
+        
+        TestsCompletedPercentage := CompletedTestsCount * 100/_TestCount;
+        _Results := F_FormatString2('%d Tests completed, %d Tests Failed',F_INT(CompletedTestsCount),F_INT(FailedTestsCount));
+        
         IF CompletedTestsCount >= _TestCount THEN
             State := CheckResults;
 		END_IF
@@ -93,6 +98,7 @@ END_VAR
     RunTests_Sequentially:
         IF Tests[CurrentTestIndex] <> 0 THEN
             IF Tests[CurrentTestIndex].TestHasFinished THEN
+                TestResults[CurrentTestIndex].TestCompleted := TRUE;
                 TestResults[CurrentTestIndex].TestCompleteTime := getTimeStampAsString();
                 IF Tests[CurrentTestIndex].TestHasFailed THEN
                     TestResults[CurrentTestIndex].TestName  := Tests[CurrentTestIndex].TestName;
