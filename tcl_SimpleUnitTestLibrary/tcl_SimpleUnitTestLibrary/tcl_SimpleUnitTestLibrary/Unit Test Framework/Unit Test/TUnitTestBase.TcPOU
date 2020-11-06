@@ -37,8 +37,10 @@ END_VAR
 ]]></Declaration>
       <Implementation>
         <ST><![CDATA[IF TestSuite <> 0 THEN
-    THIS^.setTestName(TestSuite.Name);
-    TestSuite.AddTest(THIS^);
+    IF NOT bInCopyCode THEN // not an online change...
+        THIS^.setTestName(TestSuite.Name);
+        TestSuite.AddTest(THIS^);
+    END_IF
 END_IF]]></ST>
       </Implementation>
     </Method>

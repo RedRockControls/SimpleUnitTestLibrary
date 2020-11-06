@@ -18,7 +18,7 @@
     <Released>false</Released>
     <Company>Red Rock Controls Limited</Company>
     <Title>tcl_SimpleUnitTestLibrary</Title>
-    <ProjectVersion>1.0.6.0</ProjectVersion>
+    <ProjectVersion>1.0.8.0</ProjectVersion>
     <LibraryCategories>
       <LibraryCategory>
         <Id>{0d08a09c-9493-4b37-a26c-544e7211ff2d}</Id>
@@ -30,7 +30,7 @@
       <Id>{0d08a09c-9493-4b37-a26c-544e7211ff2d}</Id>
     </SelectedLibraryCategories>
     <Author>Roger Christopher</Author>
-    <Description>tcl_UnitTestBaseClasses merged back in</Description>
+    <Description>TUnitTestBase.FB_Init updated so test is not added to test suite on online change</Description>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="GVLs\Parameters.TcGVL">

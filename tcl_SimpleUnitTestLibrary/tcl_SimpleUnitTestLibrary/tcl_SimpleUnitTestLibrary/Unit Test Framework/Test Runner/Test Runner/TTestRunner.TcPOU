@@ -188,6 +188,20 @@ MEMSET(
 ]]></ST>
       </Implementation>
     </Method>
+    <Method Name="ClearTests" Id="{65746c67-2f16-46ec-b23f-e8a9237c14e3}" FolderPath="Methods\">
+      <Declaration><![CDATA[METHOD ClearTests
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[MEMSET(
+    destAddr := ADR(Tests),
+    fillByte := 0,
+    n        := SIZEOF(Tests));
+_TestCount := 0;
+]]></ST>
+      </Implementation>
+    </Method>
     <Method Name="getTimeStampAsString" Id="{d42516d0-c807-491e-ba92-a82bc000bc36}" FolderPath="Methods\">
       <Declaration><![CDATA[METHOD PRIVATE getTimeStampAsString : T_MaxString
 VAR
