@@ -218,7 +218,7 @@ VAR_INPUT
 END_VAR
 ]]></Declaration>
       <Implementation>
-        <ST><![CDATA[IF ABS(Expected - Actual) >= Delta THEN
+        <ST><![CDATA[IF ABS(Expected - Actual) > Delta THEN
     _AssertionFailed  := TRUE;
     _AssertionMessage := F_FormatStringEx2('AssertEquals_LREAL failed in %s: Value "%s"', _AssertionListener.TestName, VariableName);
     _ExpectedAsString := F_FormatString1('  Expected = %f', F_LREAL(Expected));
@@ -261,7 +261,7 @@ VAR_INPUT
 END_VAR
 ]]></Declaration>
       <Implementation>
-        <ST><![CDATA[IF ABS(Expected - Actual) >= Delta THEN
+        <ST><![CDATA[IF ABS(Expected - Actual) > Delta THEN
     _AssertionFailed  := TRUE;
     _AssertionMessage := F_FormatStringEx2('AssertEquals_REAL failed in %s: Value "%s"', _AssertionListener.TestName, VariableName);
     _ExpectedAsString := F_FormatString1('  Expected = %f', F_REAL(Expected));
