@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.4">
   <POU Name="Test_setTestName_setsTestName" Id="{1926a570-2039-460c-b058-b6070c6148ef}" SpecialFunc="None">
-    <Declaration><![CDATA[FUNCTION_BLOCK Test_setTestName_setsTestName EXTENDS TUnitTestBase
+    <Declaration><![CDATA[FUNCTION_BLOCK Test_setTestName_setsTestName EXTENDS T_UnitTestBase
 VAR_INPUT
 END_VAR
 VAR_OUTPUT
 END_VAR
 VAR
-    UnitTest : TUnitTestUnderTest(TestSuite := 0); // not added to Test Runner
+    UnitTest : T_UnitTestUnderTest(TestSuite := 0); // not added to Test Runner
 END_VAR
 ]]></Declaration>
     <Implementation>

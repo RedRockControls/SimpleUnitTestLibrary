@@ -466,7 +466,7 @@
                     </o>
                     <o>
                       <v n="Id">3649724534L</v>
-                      <v n="Value">20</v>
+                      <v n="Value" t="Int16">20</v>
                     </o>
                     <o>
                       <v n="Id">1970058906L</v>
@@ -502,7 +502,7 @@
                     </o>
                     <o>
                       <v n="Id">357335551L</v>
-                      <v n="Value">60</v>
+                      <v n="Value">57</v>
                     </o>
                     <o>
                       <v n="Id">2422045748L</v>
@@ -510,7 +510,7 @@
                     </o>
                     <o>
                       <v n="Id">2134141914L</v>
-                      <v n="Value" t="Int16">441</v>
+                      <v n="Value" t="Int16">444</v>
                     </o>
                     <o>
                       <v n="Id">1668544811L</v>
@@ -520,7 +520,7 @@
                           <o t="DynamicArrayNode">
                             <o n="DynamicArrayNodeCounterNode" t="BasicTypeNode">
                               <v n="Flags">0L</v>
-                              <v n="BasicTypeNodeValue" t="Int16">4</v>
+                              <v n="BasicTypeNodeValue" t="Int16">5</v>
                               <v n="BasicTypeNodeAcceptsExpression">false</v>
                               <n n="BasicTypeNodeFastAccess" />
                               <a n="BasicTypeNodeEnumValues" et="String" />
@@ -584,7 +584,7 @@
                           </o>
                           <o t="BasicTypeNode">
                             <v n="Flags">0L</v>
-                            <v n="BasicTypeNodeValue" t="Int16">4</v>
+                            <v n="BasicTypeNodeValue" t="Int16">5</v>
                             <v n="BasicTypeNodeAcceptsExpression">false</v>
                             <n n="BasicTypeNodeFastAccess" />
                             <a n="BasicTypeNodeEnumValues" et="String" />
@@ -747,8 +747,8 @@
                     <o>
                       <v n="Id">3234392039L</v>
                       <o n="Value" t="DataVariableInformation">
-                        <v n="DataArrayType">"ARRAY [0..MAX_TESTS] OF TTestResult"</v>
-                        <v n="ColumnCount">4</v>
+                        <v n="DataArrayType">"ARRAY [0..MAX_TESTS] OF T_TestResult"</v>
+                        <v n="ColumnCount">5</v>
                         <v n="RowCount">201</v>
                         <v n="FirstColumnIndex">0</v>
                         <v n="FirstRowIndex">0</v>
@@ -757,12 +757,14 @@
                           <v>Userdef</v>
                           <v>Userdef</v>
                           <v>Userdef</v>
+                          <v>Bool</v>
                         </a>
                         <a n="ColumnNames" cet="String">
                           <v>TestFramework.TestRunner.TestResults[INDEX].TestName</v>
                           <v>TestFramework.TestRunner.TestResults[INDEX].TestState</v>
                           <v>TestFramework.TestRunner.TestResults[INDEX].ImageRef</v>
                           <v>TestFramework.TestRunner.TestResults[INDEX].TestCompleteTime</v>
+                          <v>TestFramework.TestRunner.TestResults[INDEX].TestCompleted</v>
                         </a>
                         <v n="BaseType">false</v>
                         <a n="Bounds" cet="ArrayBound">
@@ -775,115 +777,167 @@
                       </o>
                     </o>
                     <o>
-                      <v n="Id">983067315L</v>
+                      <v n="Id">1636817830L</v>
                       <v n="Value">"%s"</v>
-                    </o>
-                    <o>
-                      <v n="Id">4092479075L</v>
-                      <v n="Value">""</v>
-                    </o>
-                    <o>
-                      <v n="Id">3922825740L</v>
-                      <v n="Value">true</v>
-                    </o>
-                    <o>
-                      <v n="Id">2170511999L</v>
-                      <v n="Value">"TestFramework.TestRunner.TestResults[INDEX].ImageRef"</v>
-                    </o>
-                    <o>
-                      <v n="Id">262371475L</v>
-                      <v n="Value">"TestFramework.TestRunner.TestResults[INDEX].ImageRef"</v>
-                    </o>
-                    <o>
-                      <v n="Id">1981426263L</v>
-                      <v n="Value">true</v>
-                    </o>
-                    <o>
-                      <v n="Id">3979887725L</v>
-                      <v n="Value">true</v>
-                    </o>
-                    <o>
-                      <v n="Id">2454700408L</v>
-                      <v n="Value">2</v>
-                    </o>
-                    <o>
-                      <v n="Id">2115787593L</v>
-                      <v n="Value">25</v>
-                    </o>
-                    <o>
-                      <v n="Id">332200192L</v>
-                      <v n="Value">201</v>
-                    </o>
-                    <o>
-                      <v n="Id">4084595458L</v>
-                      <v n="Value">"HCENTER"</v>
-                    </o>
-                    <o>
-                      <v n="Id">208337472L</v>
-                      <v n="Value">"  %s"</v>
-                    </o>
-                    <o>
-                      <v n="Id">1755163831L</v>
-                      <v n="Value">"  Test State"</v>
-                    </o>
-                    <o>
-                      <v n="Id">4160591745L</v>
-                      <v n="Value">true</v>
-                    </o>
-                    <o>
-                      <v n="Id">338671338L</v>
-                      <v n="Value">"TestFramework.TestRunner.TestResults[INDEX].TestState"</v>
-                    </o>
-                    <o>
-                      <v n="Id">1791247317L</v>
-                      <v n="Value">"TestFramework.TestRunner.TestResults[INDEX].TestState"</v>
-                    </o>
-                    <o>
-                      <v n="Id">3944074017L</v>
-                      <v n="Value">true</v>
-                    </o>
-                    <o>
-                      <v n="Id">677334476L</v>
-                      <v n="Value">true</v>
-                    </o>
-                    <o>
-                      <v n="Id">1009209577L</v>
-                      <v n="Value">1</v>
-                    </o>
-                    <o>
-                      <v n="Id">2998295511L</v>
-                      <v n="Value">123</v>
-                    </o>
-                    <o>
-                      <v n="Id">3527550656L</v>
-                      <v n="Value">201</v>
-                    </o>
-                    <o>
-                      <v n="Id">1562208915L</v>
-                      <v n="Value">"LEFT"</v>
                     </o>
                     <o>
                       <v n="Id">1467829077L</v>
                       <v n="Value">"  %s"</v>
                     </o>
                     <o>
-                      <v n="Id">511219082L</v>
-                      <v n="Value">"  Test Name"</v>
+                      <v n="Id">208337472L</v>
+                      <v n="Value">"  %s"</v>
                     </o>
                     <o>
-                      <v n="Id">95058553L</v>
-                      <v n="Value">true</v>
+                      <v n="Id">983067315L</v>
+                      <v n="Value">"%s"</v>
+                    </o>
+                    <o>
+                      <v n="Id">3125123178L</v>
+                      <v n="Value">"%s"</v>
+                    </o>
+                    <o>
+                      <v n="Id">3854506369L</v>
+                      <v n="Value">"TestFramework.TestRunner.TestResults[INDEX].TestCompleteTime"</v>
                     </o>
                     <o>
                       <v n="Id">1892666644L</v>
                       <v n="Value">"TestFramework.TestRunner.TestResults[INDEX].TestName"</v>
                     </o>
                     <o>
+                      <v n="Id">338671338L</v>
+                      <v n="Value">"TestFramework.TestRunner.TestResults[INDEX].TestState"</v>
+                    </o>
+                    <o>
+                      <v n="Id">2170511999L</v>
+                      <v n="Value">"TestFramework.TestRunner.TestResults[INDEX].ImageRef"</v>
+                    </o>
+                    <o>
+                      <v n="Id">3723444502L</v>
+                      <v n="Value">"TestFramework.TestRunner.TestResults[INDEX].TestCompleted"</v>
+                    </o>
+                    <o>
+                      <v n="Id">2232123230L</v>
+                      <v n="Value">"Time"</v>
+                    </o>
+                    <o>
+                      <v n="Id">511219082L</v>
+                      <v n="Value">"  Test Name"</v>
+                    </o>
+                    <o>
+                      <v n="Id">1755163831L</v>
+                      <v n="Value">"  Test State"</v>
+                    </o>
+                    <o>
+                      <v n="Id">4092479075L</v>
+                      <v n="Value">""</v>
+                    </o>
+                    <o>
+                      <v n="Id">2237128397L</v>
+                      <v n="Value">"TestFramework.TestRunner.TestResults[INDEX].TestCompleted"</v>
+                    </o>
+                    <o>
+                      <v n="Id">2685023577L</v>
+                      <v n="Value">"TestFramework.TestRunner.TestResults[INDEX].TestCompleteTime"</v>
+                    </o>
+                    <o>
                       <v n="Id">3312258591L</v>
                       <v n="Value">"TestFramework.TestRunner.TestResults[INDEX].TestName"</v>
                     </o>
                     <o>
-                      <v n="Id">2541022970L</v>
+                      <v n="Id">1791247317L</v>
+                      <v n="Value">"TestFramework.TestRunner.TestResults[INDEX].TestState"</v>
+                    </o>
+                    <o>
+                      <v n="Id">262371475L</v>
+                      <v n="Value">"TestFramework.TestRunner.TestResults[INDEX].ImageRef"</v>
+                    </o>
+                    <o>
+                      <v n="Id">4008173056L</v>
+                      <v n="Value">"TestFramework.TestRunner.TestResults[INDEX].TestCompleted"</v>
+                    </o>
+                    <o>
+                      <v n="Id">4036189354L</v>
+                      <v n="Value" t="Int16">120</v>
+                    </o>
+                    <o>
+                      <v n="Id">1010392116L</v>
+                      <v n="Value" t="Int16">715</v>
+                    </o>
+                    <o>
+                      <v n="Id">2998295511L</v>
+                      <v n="Value">123</v>
+                    </o>
+                    <o>
+                      <v n="Id">2115787593L</v>
+                      <v n="Value" t="Int16">20</v>
+                    </o>
+                    <o>
+                      <v n="Id">1960399440L</v>
+                      <v n="Value">118</v>
+                    </o>
+                    <o>
+                      <v n="Id">3669839856L</v>
+                      <v n="Value">"HCENTER"</v>
+                    </o>
+                    <o>
+                      <v n="Id">1960173153L</v>
+                      <v n="Value">"LEFT"</v>
+                    </o>
+                    <o>
+                      <v n="Id">1562208915L</v>
+                      <v n="Value">"LEFT"</v>
+                    </o>
+                    <o>
+                      <v n="Id">4084595458L</v>
+                      <v n="Value">"HCENTER"</v>
+                    </o>
+                    <o>
+                      <v n="Id">244056951L</v>
+                      <v n="Value">"HCENTER"</v>
+                    </o>
+                    <o>
+                      <v n="Id">2318311169L</v>
+                      <v n="Value">201</v>
+                    </o>
+                    <o>
+                      <v n="Id">1268793537L</v>
+                      <v n="Value">201</v>
+                    </o>
+                    <o>
+                      <v n="Id">3527550656L</v>
+                      <v n="Value">201</v>
+                    </o>
+                    <o>
+                      <v n="Id">332200192L</v>
+                      <v n="Value">201</v>
+                    </o>
+                    <o>
+                      <v n="Id">989326467L</v>
+                      <v n="Value">201</v>
+                    </o>
+                    <o>
+                      <v n="Id">3146216842L</v>
+                      <v n="Value">0</v>
+                    </o>
+                    <o>
+                      <v n="Id">368043035L</v>
+                      <v n="Value">1</v>
+                    </o>
+                    <o>
+                      <v n="Id">1009209577L</v>
+                      <v n="Value">2</v>
+                    </o>
+                    <o>
+                      <v n="Id">2454700408L</v>
+                      <v n="Value">3</v>
+                    </o>
+                    <o>
+                      <v n="Id">1874213133L</v>
+                      <v n="Value">4</v>
+                    </o>
+                    <o>
+                      <v n="Id">1882453005L</v>
                       <v n="Value">true</v>
                     </o>
                     <o>
@@ -891,60 +945,56 @@
                       <v n="Value">true</v>
                     </o>
                     <o>
-                      <v n="Id">368043035L</v>
-                      <v n="Value">0</v>
-                    </o>
-                    <o>
-                      <v n="Id">1010392116L</v>
-                      <v n="Value">711</v>
-                    </o>
-                    <o>
-                      <v n="Id">1268793537L</v>
-                      <v n="Value">201</v>
-                    </o>
-                    <o>
-                      <v n="Id">1960173153L</v>
-                      <v n="Value">"LEFT"</v>
-                    </o>
-                    <o>
-                      <v n="Id">1636817830L</v>
-                      <v n="Value">"%s"</v>
-                    </o>
-                    <o>
-                      <v n="Id">2232123230L</v>
-                      <v n="Value">"Time"</v>
-                    </o>
-                    <o>
-                      <v n="Id">1882453005L</v>
+                      <v n="Id">677334476L</v>
                       <v n="Value">true</v>
                     </o>
                     <o>
-                      <v n="Id">3854506369L</v>
-                      <v n="Value">"TestFramework.TestRunner.TestResults[INDEX].TestCompleteTime"</v>
+                      <v n="Id">3922825740L</v>
+                      <v n="Value">true</v>
                     </o>
                     <o>
-                      <v n="Id">2685023577L</v>
-                      <v n="Value">"TestFramework.TestRunner.TestResults[INDEX].TestCompleteTime"</v>
+                      <v n="Id">3236595599L</v>
+                      <v n="Value">false</v>
                     </o>
                     <o>
                       <v n="Id">175837068L</v>
                       <v n="Value">true</v>
                     </o>
                     <o>
-                      <v n="Id">3146216842L</v>
-                      <v n="Value">3</v>
+                      <v n="Id">95058553L</v>
+                      <v n="Value">true</v>
                     </o>
                     <o>
-                      <v n="Id">4036189354L</v>
-                      <v n="Value" t="Int16">120</v>
+                      <v n="Id">2541022970L</v>
+                      <v n="Value">true</v>
                     </o>
                     <o>
-                      <v n="Id">2318311169L</v>
-                      <v n="Value">201</v>
+                      <v n="Id">4160591745L</v>
+                      <v n="Value">true</v>
                     </o>
                     <o>
-                      <v n="Id">3669839856L</v>
-                      <v n="Value">"HCENTER"</v>
+                      <v n="Id">3944074017L</v>
+                      <v n="Value">true</v>
+                    </o>
+                    <o>
+                      <v n="Id">1981426263L</v>
+                      <v n="Value">true</v>
+                    </o>
+                    <o>
+                      <v n="Id">332890263L</v>
+                      <v n="Value">false</v>
+                    </o>
+                    <o>
+                      <v n="Id">2988197969L</v>
+                      <v n="Value">false</v>
+                    </o>
+                    <o>
+                      <v n="Id">4250787478L</v>
+                      <v n="Value">true</v>
+                    </o>
+                    <o>
+                      <v n="Id">3979887725L</v>
+                      <v n="Value">true</v>
                     </o>
                   </l>
                 </o>
@@ -962,217 +1012,6 @@
                   <v>110f4736-f344-4530-a845-336d1f2f2ef5</v>
                 </a>
                 <d n="SubElements" t="Hashtable" ckt="String" cvt="GenericVisualElem">
-                  <v>Columns.Column.[3].Template</v>
-                  <o>
-                    <a n="ConfiguredComplexInputs" et="ComplexInput" />
-                    <l n="Elements" t="ArrayList" />
-                    <n n="VisualElementDescription" />
-                    <o n="VisualElemMemberList" t="VisualElemMemberList">
-                      <l n="VisualElemMemberList" t="VisualElemMemberCollection" cet="VisualElemMember">
-                        <o>
-                          <v n="Id">494569607L</v>
-                          <v n="Value">4278190080U</v>
-                        </o>
-                        <o>
-                          <v n="Id">2812299069L</v>
-                          <v n="Value">4294967295U</v>
-                        </o>
-                        <o>
-                          <v n="Id">135947015L</v>
-                          <v n="Value">4278190080U</v>
-                        </o>
-                        <o>
-                          <v n="Id">493260384L</v>
-                          <v n="Value">4294967295U</v>
-                        </o>
-                        <o>
-                          <v n="Id">2340015797L</v>
-                          <v n="Value">"HCENTER"</v>
-                        </o>
-                        <o>
-                          <v n="Id">2565699834L</v>
-                          <v n="Value">"VCENTER"</v>
-                        </o>
-                        <o>
-                          <v n="Id">4134387352L</v>
-                          <v n="Value">"NONE"</v>
-                        </o>
-                        <o>
-                          <v n="Id">1603690730L</v>
-                          <v n="Value">"Arial"</v>
-                        </o>
-                        <o>
-                          <v n="Id">4253639993L</v>
-                          <v n="Value" t="Int16">12</v>
-                        </o>
-                        <o>
-                          <v n="Id">2729990903L</v>
-                          <v n="Value">0U</v>
-                        </o>
-                        <o>
-                          <v n="Id">1213979116L</v>
-                          <v n="Value">0U</v>
-                        </o>
-                        <o>
-                          <v n="Id">3488306084L</v>
-                          <v n="Value">4278190080U</v>
-                        </o>
-                        <o>
-                          <v n="Id">1999528970L</v>
-                          <v n="Value">"&lt;toggle/tap variable&gt;"</v>
-                        </o>
-                        <o>
-                          <v n="Id">1226623408L</v>
-                          <l n="Value" t="ArrayList" cet="UInt32">
-                            <v>4294967295</v>
-                          </l>
-                        </o>
-                        <o>
-                          <v n="Id">2392705940L</v>
-                          <l n="Value" t="ArrayList" cet="UInt32">
-                            <v>4278190080</v>
-                          </l>
-                        </o>
-                        <o>
-                          <v n="Id">4174499813L</v>
-                          <v n="Value">0</v>
-                        </o>
-                        <o>
-                          <v n="Id">1525909254L</v>
-                          <v n="Value">0</v>
-                        </o>
-                        <o>
-                          <v n="Id">771012496L</v>
-                          <v n="Value">0</v>
-                        </o>
-                        <o>
-                          <v n="Id">3621822061L</v>
-                          <v n="Value">150</v>
-                        </o>
-                        <o>
-                          <v n="Id">1841577832L</v>
-                          <v n="Value">30</v>
-                        </o>
-                        <o>
-                          <v n="Id">1023961783L</v>
-                          <l n="Value" t="ArrayList" cet="NamedStyleFont">
-                            <o>
-                              <v n="FontStyle">0</v>
-                              <v n="AdditionalFontStyle" t="UInt16">0</v>
-                              <v n="ExplicitColor">-16777216</v>
-                              <v n="CanonicalName">"Font-Standard"</v>
-                              <v n="FontName">"Arial"</v>
-                              <v n="FontSize">12</v>
-                              <v n="ScriptIdentification">0</v>
-                              <v n="DoubleFontSize" t="Double">0</v>
-                              <n n="NamedColor" />
-                            </o>
-                          </l>
-                        </o>
-                        <o>
-                          <v n="Id">2945003362L</v>
-                          <l n="Value" t="ArrayList" cet="UInt32">
-                            <v>4294954959</v>
-                          </l>
-                        </o>
-                        <o>
-                          <v n="Id">3869699466L</v>
-                          <l n="Value" t="ArrayList" cet="UInt32">
-                            <v>4294901760</v>
-                          </l>
-                        </o>
-                        <o>
-                          <v n="Id">1693702769L</v>
-                          <v n="Value">75</v>
-                        </o>
-                        <o>
-                          <v n="Id">334818023L</v>
-                          <v n="Value">15</v>
-                        </o>
-                        <o>
-                          <v n="Id">2633017417L</v>
-                          <v n="Value">1U</v>
-                        </o>
-                        <o>
-                          <v n="Id">3274744456L</v>
-                          <v n="Value">"HCENTER"</v>
-                        </o>
-                        <o>
-                          <v n="Id">383236773L</v>
-                          <v n="Value">"VCENTER"</v>
-                        </o>
-                        <o>
-                          <v n="Id">1305620611L</v>
-                          <v n="Value">"VISU_ST_RECTANGLE"</v>
-                        </o>
-                        <o>
-                          <v n="Id">983067315L</v>
-                          <v n="Value">""</v>
-                        </o>
-                        <o>
-                          <v n="Id">820392192L</v>
-                          <v n="Value">""</v>
-                        </o>
-                        <o>
-                          <v n="Id">2477733581L</v>
-                          <v n="Value">"TestFramework.TestRunner.TestResults[INDEX].ImageRef"</v>
-                        </o>
-                        <o>
-                          <v n="Id">3719097617L</v>
-                          <v n="Value">0</v>
-                        </o>
-                        <o>
-                          <v n="Id">1649127785L</v>
-                          <v n="Value">10</v>
-                        </o>
-                        <o>
-                          <v n="Id">357335551L</v>
-                          <v n="Value">10</v>
-                        </o>
-                        <o>
-                          <v n="Id">2422045748L</v>
-                          <v n="Value">150</v>
-                        </o>
-                        <o>
-                          <v n="Id">2134141914L</v>
-                          <v n="Value">30</v>
-                        </o>
-                        <o>
-                          <v n="Id">390574330L</v>
-                          <v n="Value">""</v>
-                        </o>
-                        <o>
-                          <v n="Id">571893170L</v>
-                          <v n="Value">""</v>
-                        </o>
-                        <o>
-                          <v n="Id">550940142L</v>
-                          <v n="Value">0</v>
-                        </o>
-                        <o>
-                          <v n="Id">1473355128L</v>
-                          <v n="Value">0</v>
-                        </o>
-                        <o>
-                          <v n="Id">2170511999L</v>
-                          <v n="Value">"TestFramework.TestRunner.TestResults[INDEX].ImageRef"</v>
-                        </o>
-                      </l>
-                    </o>
-                    <v n="VisualElementName">"Rectangle"</v>
-                    <v n="VisualElementTypeName">"VisuFbElemSimple"</v>
-                    <v n="VisualElementIsRectangle">true</v>
-                    <v n="VisualElementIdentifier">"Columns.Column.[3].Template"</v>
-                    <n n="VisualElementOfflinePaintCommands" />
-                    <n n="VisualElementFrameInformation" />
-                    <d n="VisualElementInputActions" t="Hashtable" />
-                    <v n="VisualElementIdentification">{7e6ddc95-be8e-47bb-ad28-81db87d1d4a6}</v>
-                    <v n="VisualElementOwningObjectGuid">{deef92dd-c8d0-4c0a-b471-21d2af44be99}</v>
-                    <a n="LMGuids" et="Guid" />
-                    <d n="SubElements" t="Hashtable" />
-                    <v n="VisualElementId">9</v>
-                    <l n="UserManagementAccessRights" t="ArrayList" />
-                  </o>
                   <v>Columns.Column.[0].Template</v>
                   <o>
                     <a n="ConfiguredComplexInputs" et="ComplexInput" />
@@ -1181,40 +1020,22 @@
                     <o n="VisualElemMemberList" t="VisualElemMemberList">
                       <l n="VisualElemMemberList" t="VisualElemMemberCollection" cet="VisualElemMember">
                         <o>
-                          <v n="Id">1968905868L</v>
-                          <v n="Value">"Arial"</v>
+                          <v n="Id">365730219L</v>
+                          <v n="Value">"VISU_ST_RECTANGLE"</v>
                         </o>
                         <o>
-                          <v n="Id">3854506369L</v>
-                          <v n="Value">"TestFramework.TestRunner.TestResults[INDEX].TestCompleteTime"</v>
+                          <v n="Id">3425622852L</v>
+                          <l n="Value" t="ArrayList" cet="UInt32">
+                            <v>4294967295</v>
+                          </l>
                         </o>
                         <o>
-                          <v n="Id">153371798L</v>
-                          <v n="Value">30</v>
-                        </o>
-                        <o>
-                          <v n="Id">2729504901L</v>
-                          <v n="Value">0</v>
-                        </o>
-                        <o>
-                          <v n="Id">1054641891L</v>
-                          <v n="Value">0</v>
-                        </o>
-                        <o>
-                          <v n="Id">1796233911L</v>
-                          <v n="Value">4278190080U</v>
-                        </o>
-                        <o>
-                          <v n="Id">3851392753L</v>
-                          <v n="Value">"HCENTER"</v>
+                          <v n="Id">2764776250L</v>
+                          <v n="Value">1U</v>
                         </o>
                         <o>
                           <v n="Id">339296383L</v>
                           <v n="Value">"VCENTER"</v>
-                        </o>
-                        <o>
-                          <v n="Id">1412975715L</v>
-                          <v n="Value">"NONE"</v>
                         </o>
                         <o>
                           <v n="Id">1670709118L</v>
@@ -1223,20 +1044,8 @@
                           </l>
                         </o>
                         <o>
-                          <v n="Id">3254497565L</v>
-                          <v n="Value">75</v>
-                        </o>
-                        <o>
-                          <v n="Id">3070001547L</v>
-                          <v n="Value">15</v>
-                        </o>
-                        <o>
-                          <v n="Id">1239137909L</v>
-                          <v n="Value">0</v>
-                        </o>
-                        <o>
                           <v n="Id">1636817830L</v>
-                          <v n="Value">""</v>
+                          <v n="Value">"%s"</v>
                         </o>
                         <o>
                           <v n="Id">1409698558L</v>
@@ -1247,22 +1056,8 @@
                           <v n="Value">"&lt;toggle/tap variable&gt;"</v>
                         </o>
                         <o>
-                          <v n="Id">3425622852L</v>
-                          <l n="Value" t="ArrayList" cet="UInt32">
-                            <v>4294967295</v>
-                          </l>
-                        </o>
-                        <o>
-                          <v n="Id">1546887284L</v>
-                          <v n="Value">150</v>
-                        </o>
-                        <o>
-                          <v n="Id">365730219L</v>
-                          <v n="Value">"VISU_ST_RECTANGLE"</v>
-                        </o>
-                        <o>
-                          <v n="Id">1349026849L</v>
-                          <v n="Value">0U</v>
+                          <v n="Id">3854506369L</v>
+                          <v n="Value">"TestFramework.TestRunner.TestResults[INDEX].TestCompleteTime"</v>
                         </o>
                         <o>
                           <v n="Id">3728858389L</v>
@@ -1287,22 +1082,14 @@
                           </l>
                         </o>
                         <o>
-                          <v n="Id">2039734254L</v>
-                          <v n="Value" t="Int16">12</v>
-                        </o>
-                        <o>
-                          <v n="Id">2764776250L</v>
-                          <v n="Value">1U</v>
+                          <v n="Id">3851392753L</v>
+                          <v n="Value">"HCENTER"</v>
                         </o>
                         <o>
                           <v n="Id">4171957040L</v>
                           <l n="Value" t="ArrayList" cet="UInt32">
                             <v>4294954959</v>
                           </l>
-                        </o>
-                        <o>
-                          <v n="Id">105075684L</v>
-                          <v n="Value">0U</v>
                         </o>
                         <o>
                           <v n="Id">2477733581L</v>
@@ -1368,6 +1155,148 @@
                     <v n="VisualElementId">0</v>
                     <l n="UserManagementAccessRights" t="ArrayList" />
                   </o>
+                  <v>Columns.Column.[2].Template</v>
+                  <o>
+                    <a n="ConfiguredComplexInputs" et="ComplexInput" />
+                    <l n="Elements" t="ArrayList" />
+                    <n n="VisualElementDescription" />
+                    <o n="VisualElemMemberList" t="VisualElemMemberList">
+                      <l n="VisualElemMemberList" t="VisualElemMemberCollection" cet="VisualElemMember">
+                        <o>
+                          <v n="Id">3438761380L</v>
+                          <v n="Value">"VISU_ST_RECTANGLE"</v>
+                        </o>
+                        <o>
+                          <v n="Id">2200058403L</v>
+                          <l n="Value" t="ArrayList" cet="UInt32">
+                            <v>4294967295</v>
+                          </l>
+                        </o>
+                        <o>
+                          <v n="Id">1036594343L</v>
+                          <v n="Value">1U</v>
+                        </o>
+                        <o>
+                          <v n="Id">393351955L</v>
+                          <v n="Value">"VCENTER"</v>
+                        </o>
+                        <o>
+                          <v n="Id">748166681L</v>
+                          <l n="Value" t="ArrayList" cet="UInt32">
+                            <v>4294901760</v>
+                          </l>
+                        </o>
+                        <o>
+                          <v n="Id">208337472L</v>
+                          <v n="Value">"  %s"</v>
+                        </o>
+                        <o>
+                          <v n="Id">2778129813L</v>
+                          <v n="Value">""</v>
+                        </o>
+                        <o>
+                          <v n="Id">3577895464L</v>
+                          <v n="Value">"&lt;toggle/tap variable&gt;"</v>
+                        </o>
+                        <o>
+                          <v n="Id">338671338L</v>
+                          <v n="Value">"TestFramework.TestRunner.TestResults[INDEX].TestState"</v>
+                        </o>
+                        <o>
+                          <v n="Id">3575642646L</v>
+                          <l n="Value" t="ArrayList" cet="FontDescription">
+                            <o>
+                              <v n="FontStyle">0</v>
+                              <v n="AdditionalFontStyle" t="UInt16">0</v>
+                              <v n="ExplicitColor">-16777216</v>
+                              <v n="FontName">"Consolas"</v>
+                              <v n="FontSize">13</v>
+                              <v n="ScriptIdentification">0</v>
+                              <v n="DoubleFontSize" t="Double">0</v>
+                              <n n="NamedColor" />
+                            </o>
+                          </l>
+                        </o>
+                        <o>
+                          <v n="Id">3880859545L</v>
+                          <l n="Value" t="ArrayList" cet="UInt32">
+                            <v>4278190080</v>
+                          </l>
+                        </o>
+                        <o>
+                          <v n="Id">3735400799L</v>
+                          <v n="Value">"LEFT"</v>
+                        </o>
+                        <o>
+                          <v n="Id">733492883L</v>
+                          <l n="Value" t="ArrayList" cet="UInt32">
+                            <v>4294954959</v>
+                          </l>
+                        </o>
+                        <o>
+                          <v n="Id">2477733581L</v>
+                          <v n="Value">"TestFramework.TestRunner.TestResults[INDEX].TestState"</v>
+                        </o>
+                        <o>
+                          <v n="Id">2812299069L</v>
+                          <v n="Value">4294967295U</v>
+                        </o>
+                        <o>
+                          <v n="Id">494569607L</v>
+                          <v n="Value">4278190080U</v>
+                        </o>
+                        <o>
+                          <v n="Id">3719097617L</v>
+                          <v n="Value">0</v>
+                        </o>
+                        <o>
+                          <v n="Id">1649127785L</v>
+                          <v n="Value">10</v>
+                        </o>
+                        <o>
+                          <v n="Id">357335551L</v>
+                          <v n="Value">10</v>
+                        </o>
+                        <o>
+                          <v n="Id">2422045748L</v>
+                          <v n="Value">150</v>
+                        </o>
+                        <o>
+                          <v n="Id">2134141914L</v>
+                          <v n="Value">30</v>
+                        </o>
+                        <o>
+                          <v n="Id">390574330L</v>
+                          <v n="Value">""</v>
+                        </o>
+                        <o>
+                          <v n="Id">571893170L</v>
+                          <v n="Value">""</v>
+                        </o>
+                        <o>
+                          <v n="Id">550940142L</v>
+                          <v n="Value">0</v>
+                        </o>
+                        <o>
+                          <v n="Id">1473355128L</v>
+                          <v n="Value">0</v>
+                        </o>
+                      </l>
+                    </o>
+                    <v n="VisualElementName">"Rectangle"</v>
+                    <v n="VisualElementTypeName">"VisuFbElemSimple"</v>
+                    <v n="VisualElementIsRectangle">true</v>
+                    <v n="VisualElementIdentifier">"Columns.Column.[2].Template"</v>
+                    <n n="VisualElementOfflinePaintCommands" />
+                    <n n="VisualElementFrameInformation" />
+                    <d n="VisualElementInputActions" t="Hashtable" />
+                    <v n="VisualElementIdentification">{3fca7948-481a-46e9-992b-74c149d24285}</v>
+                    <v n="VisualElementOwningObjectGuid">{00000000-0000-0000-0000-000000000000}</v>
+                    <a n="LMGuids" et="Guid" />
+                    <d n="SubElements" t="Hashtable" />
+                    <v n="VisualElementId">8</v>
+                    <l n="UserManagementAccessRights" t="ArrayList" />
+                  </o>
                   <v>Columns.Column.[1].Template</v>
                   <o>
                     <a n="ConfiguredComplexInputs" et="ComplexInput" />
@@ -1376,46 +1305,26 @@
                     <o n="VisualElemMemberList" t="VisualElemMemberList">
                       <l n="VisualElemMemberList" t="VisualElemMemberCollection" cet="VisualElemMember">
                         <o>
+                          <v n="Id">101722327L</v>
+                          <l n="Value" t="ArrayList" cet="UInt32">
+                            <v>4294967295</v>
+                          </l>
+                        </o>
+                        <o>
+                          <v n="Id">99788756L</v>
+                          <v n="Value">1U</v>
+                        </o>
+                        <o>
                           <v n="Id">1892666644L</v>
                           <v n="Value">"TestFramework.TestRunner.TestResults[INDEX].TestName"</v>
-                        </o>
-                        <o>
-                          <v n="Id">2622787587L</v>
-                          <v n="Value">30</v>
-                        </o>
-                        <o>
-                          <v n="Id">574678938L</v>
-                          <v n="Value">0</v>
-                        </o>
-                        <o>
-                          <v n="Id">809199154L</v>
-                          <v n="Value">10</v>
-                        </o>
-                        <o>
-                          <v n="Id">4162487590L</v>
-                          <v n="Value">"LEFT"</v>
                         </o>
                         <o>
                           <v n="Id">362605001L</v>
                           <v n="Value">"VCENTER"</v>
                         </o>
                         <o>
-                          <v n="Id">2846493933L</v>
-                          <l n="Value" t="ArrayList" cet="UInt32">
-                            <v>4294901760</v>
-                          </l>
-                        </o>
-                        <o>
-                          <v n="Id">2734450745L</v>
-                          <v n="Value">0</v>
-                        </o>
-                        <o>
-                          <v n="Id">3590019247L</v>
-                          <v n="Value">0</v>
-                        </o>
-                        <o>
-                          <v n="Id">1195136676L</v>
-                          <v n="Value">10</v>
+                          <v n="Id">4162487590L</v>
+                          <v n="Value">"LEFT"</v>
                         </o>
                         <o>
                           <v n="Id">1467829077L</v>
@@ -1426,18 +1335,16 @@
                           <v n="Value">""</v>
                         </o>
                         <o>
-                          <v n="Id">101722327L</v>
+                          <v n="Id">1560556430L</v>
                           <l n="Value" t="ArrayList" cet="UInt32">
-                            <v>4294967295</v>
+                            <v>4278190080</v>
                           </l>
                         </o>
                         <o>
-                          <v n="Id">2477635516L</v>
-                          <v n="Value">150</v>
-                        </o>
-                        <o>
-                          <v n="Id">2498362508L</v>
-                          <v n="Value">"VISU_ST_RECTANGLE"</v>
+                          <v n="Id">2846493933L</v>
+                          <l n="Value" t="ArrayList" cet="UInt32">
+                            <v>4294901760</v>
+                          </l>
                         </o>
                         <o>
                           <v n="Id">911625652L</v>
@@ -1455,20 +1362,14 @@
                           </l>
                         </o>
                         <o>
-                          <v n="Id">1560556430L</v>
-                          <l n="Value" t="ArrayList" cet="UInt32">
-                            <v>4278190080</v>
-                          </l>
-                        </o>
-                        <o>
-                          <v n="Id">99788756L</v>
-                          <v n="Value">1U</v>
-                        </o>
-                        <o>
                           <v n="Id">2090474177L</v>
                           <l n="Value" t="ArrayList" cet="UInt32">
                             <v>4294954959</v>
                           </l>
+                        </o>
+                        <o>
+                          <v n="Id">2498362508L</v>
+                          <v n="Value">"VISU_ST_RECTANGLE"</v>
                         </o>
                         <o>
                           <v n="Id">2477733581L</v>
@@ -1534,7 +1435,7 @@
                     <v n="VisualElementId">2</v>
                     <l n="UserManagementAccessRights" t="ArrayList" />
                   </o>
-                  <v>Columns.Column.[2].Template</v>
+                  <v>Columns.Column.[3].Template</v>
                   <o>
                     <a n="ConfiguredComplexInputs" et="ComplexInput" />
                     <l n="Elements" t="ArrayList" />
@@ -1542,98 +1443,57 @@
                     <o n="VisualElemMemberList" t="VisualElemMemberList">
                       <l n="VisualElemMemberList" t="VisualElemMemberCollection" cet="VisualElemMember">
                         <o>
-                          <v n="Id">494569607L</v>
-                          <v n="Value">4278190080U</v>
-                        </o>
-                        <o>
-                          <v n="Id">2812299069L</v>
-                          <v n="Value">4294967295U</v>
-                        </o>
-                        <o>
-                          <v n="Id">135947015L</v>
-                          <v n="Value">4278190080U</v>
-                        </o>
-                        <o>
-                          <v n="Id">493260384L</v>
-                          <v n="Value">4294967295U</v>
-                        </o>
-                        <o>
-                          <v n="Id">2340015797L</v>
-                          <v n="Value">"HCENTER"</v>
-                        </o>
-                        <o>
-                          <v n="Id">2565699834L</v>
-                          <v n="Value">"VCENTER"</v>
-                        </o>
-                        <o>
-                          <v n="Id">4134387352L</v>
-                          <v n="Value">"NONE"</v>
-                        </o>
-                        <o>
-                          <v n="Id">1603690730L</v>
-                          <v n="Value">"Arial"</v>
-                        </o>
-                        <o>
-                          <v n="Id">4253639993L</v>
-                          <v n="Value" t="Int16">12</v>
-                        </o>
-                        <o>
-                          <v n="Id">2729990903L</v>
-                          <v n="Value">0U</v>
-                        </o>
-                        <o>
-                          <v n="Id">1213979116L</v>
-                          <v n="Value">0U</v>
-                        </o>
-                        <o>
-                          <v n="Id">3488306084L</v>
-                          <v n="Value">4278190080U</v>
-                        </o>
-                        <o>
-                          <v n="Id">1999528970L</v>
-                          <v n="Value">"&lt;toggle/tap variable&gt;"</v>
-                        </o>
-                        <o>
-                          <v n="Id">2200058403L</v>
+                          <v n="Id">1226623408L</v>
                           <l n="Value" t="ArrayList" cet="UInt32">
                             <v>4294967295</v>
                           </l>
                         </o>
                         <o>
-                          <v n="Id">3880859545L</v>
+                          <v n="Id">2633017417L</v>
+                          <v n="Value">1U</v>
+                        </o>
+                        <o>
+                          <v n="Id">2170511999L</v>
+                          <v n="Value">"TestFramework.TestRunner.TestResults[INDEX].ImageRef"</v>
+                        </o>
+                        <o>
+                          <v n="Id">383236773L</v>
+                          <v n="Value">"VCENTER"</v>
+                        </o>
+                        <o>
+                          <v n="Id">3274744456L</v>
+                          <v n="Value">"HCENTER"</v>
+                        </o>
+                        <o>
+                          <v n="Id">983067315L</v>
+                          <v n="Value">"%s"</v>
+                        </o>
+                        <o>
+                          <v n="Id">820392192L</v>
+                          <v n="Value">""</v>
+                        </o>
+                        <o>
+                          <v n="Id">2392705940L</v>
                           <l n="Value" t="ArrayList" cet="UInt32">
                             <v>4278190080</v>
                           </l>
                         </o>
                         <o>
-                          <v n="Id">2015484154L</v>
-                          <v n="Value">0</v>
+                          <v n="Id">3869699466L</v>
+                          <l n="Value" t="ArrayList" cet="UInt32">
+                            <v>4294901760</v>
+                          </l>
                         </o>
                         <o>
-                          <v n="Id">1410625495L</v>
-                          <v n="Value">10</v>
-                        </o>
-                        <o>
-                          <v n="Id">588472129L</v>
-                          <v n="Value">10</v>
-                        </o>
-                        <o>
-                          <v n="Id">410945957L</v>
-                          <v n="Value">150</v>
-                        </o>
-                        <o>
-                          <v n="Id">4172606461L</v>
-                          <v n="Value">30</v>
-                        </o>
-                        <o>
-                          <v n="Id">3575642646L</v>
-                          <l n="Value" t="ArrayList" cet="FontDescription">
+                          <v n="Id">1023961783L</v>
+                          <l n="Value" t="ArrayList" cet="NamedStyleFont">
                             <o>
                               <v n="FontStyle">0</v>
                               <v n="AdditionalFontStyle" t="UInt16">0</v>
                               <v n="ExplicitColor">-16777216</v>
-                              <v n="FontName">"Consolas"</v>
-                              <v n="FontSize">13</v>
+                              <v n="CanonicalName">"Font-Standard"</v>
+                              <v n="FontName">"Arial"</v>
+                              <v n="FontSize">12</v>
                               <v n="ScriptIdentification">0</v>
                               <v n="DoubleFontSize" t="Double">0</v>
                               <n n="NamedColor" />
@@ -1641,60 +1501,26 @@
                           </l>
                         </o>
                         <o>
-                          <v n="Id">733492883L</v>
+                          <v n="Id">2945003362L</v>
                           <l n="Value" t="ArrayList" cet="UInt32">
                             <v>4294954959</v>
                           </l>
                         </o>
                         <o>
-                          <v n="Id">748166681L</v>
-                          <l n="Value" t="ArrayList" cet="UInt32">
-                            <v>4294901760</v>
-                          </l>
-                        </o>
-                        <o>
-                          <v n="Id">133432149L</v>
-                          <v n="Value">0</v>
-                        </o>
-                        <o>
-                          <v n="Id">1894986691L</v>
-                          <v n="Value">0</v>
-                        </o>
-                        <o>
-                          <v n="Id">1036594343L</v>
-                          <v n="Value">1U</v>
-                        </o>
-                        <o>
-                          <v n="Id">3735400799L</v>
-                          <v n="Value">"LEFT"</v>
-                        </o>
-                        <o>
-                          <v n="Id">393351955L</v>
-                          <v n="Value">"VCENTER"</v>
-                        </o>
-                        <o>
-                          <v n="Id">3438761380L</v>
+                          <v n="Id">1305620611L</v>
                           <v n="Value">"VISU_ST_RECTANGLE"</v>
                         </o>
                         <o>
-                          <v n="Id">208337472L</v>
-                          <v n="Value">"  %s"</v>
-                        </o>
-                        <o>
-                          <v n="Id">2778129813L</v>
-                          <v n="Value">""</v>
-                        </o>
-                        <o>
-                          <v n="Id">338671338L</v>
-                          <v n="Value">"TestFramework.TestRunner.TestResults[INDEX].TestState"</v>
-                        </o>
-                        <o>
-                          <v n="Id">3577895464L</v>
-                          <v n="Value">"&lt;toggle/tap variable&gt;"</v>
-                        </o>
-                        <o>
                           <v n="Id">2477733581L</v>
-                          <v n="Value">"TestFramework.TestRunner.TestResults[INDEX].TestState"</v>
+                          <v n="Value">"TestFramework.TestRunner.TestResults[INDEX].ImageRef"</v>
+                        </o>
+                        <o>
+                          <v n="Id">2812299069L</v>
+                          <v n="Value">4294967295U</v>
+                        </o>
+                        <o>
+                          <v n="Id">494569607L</v>
+                          <v n="Value">4278190080U</v>
                         </o>
                         <o>
                           <v n="Id">3719097617L</v>
@@ -1737,15 +1563,15 @@
                     <v n="VisualElementName">"Rectangle"</v>
                     <v n="VisualElementTypeName">"VisuFbElemSimple"</v>
                     <v n="VisualElementIsRectangle">true</v>
-                    <v n="VisualElementIdentifier">"Columns.Column.[2].Template"</v>
+                    <v n="VisualElementIdentifier">"Columns.Column.[3].Template"</v>
                     <n n="VisualElementOfflinePaintCommands" />
                     <n n="VisualElementFrameInformation" />
                     <d n="VisualElementInputActions" t="Hashtable" />
-                    <v n="VisualElementIdentification">{3fca7948-481a-46e9-992b-74c149d24285}</v>
-                    <v n="VisualElementOwningObjectGuid">{00000000-0000-0000-0000-000000000000}</v>
+                    <v n="VisualElementIdentification">{7e6ddc95-be8e-47bb-ad28-81db87d1d4a6}</v>
+                    <v n="VisualElementOwningObjectGuid">{deef92dd-c8d0-4c0a-b471-21d2af44be99}</v>
                     <a n="LMGuids" et="Guid" />
                     <d n="SubElements" t="Hashtable" />
-                    <v n="VisualElementId">8</v>
+                    <v n="VisualElementId">9</v>
                     <l n="UserManagementAccessRights" t="ArrayList" />
                   </o>
                 </d>
@@ -2779,7 +2605,7 @@
             </o>
             <v n="DialogDut">{7be67a9e-4963-4736-828c-70f5ef307b96}</v>
           </o>
-          <v n="LastUsedIdForIdentifier">24</v>
+          <v n="LastUsedIdForIdentifier">26</v>
           <o n="TextDocument" t="TextDocument">
             <a n="TextLines" cet="TextLine">
               <o>

@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.4">
   <POU Name="Test_AssertEquals_PVOID" Id="{7a491631-649a-4653-90e0-541a7c2b8cd4}" SpecialFunc="None">
-    <Declaration><![CDATA[FUNCTION_BLOCK Test_AssertEquals_PVOID EXTENDS TUnitTestBase
+    <Declaration><![CDATA[FUNCTION_BLOCK Test_AssertEquals_PVOID EXTENDS T_UnitTestBase
 VAR
-    AssertionUnderTest : TAssertion(AssertionListenerMock);
-    AssertionListenerMock : TAssertionListenerMock;
+    AssertionUnderTest : T_Assertion(AssertionListenerMock);
+    AssertionListenerMock : T_AssertionListenerMock;
     PVOID_Variable : PVOID := 1111;
 END_VAR
 ]]></Declaration>

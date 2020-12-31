@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.4">
   <POU Name="Test_AssertEquals_LINT" Id="{1485ced9-c1d1-4ec5-b5d9-ba2f49955a42}" SpecialFunc="None">
-    <Declaration><![CDATA[FUNCTION_BLOCK Test_AssertEquals_LINT EXTENDS TUnitTestBase
+    <Declaration><![CDATA[FUNCTION_BLOCK Test_AssertEquals_LINT EXTENDS T_UnitTestBase
 VAR
-    AssertionUnderTest : TAssertion(AssertionListenerMock);
-    AssertionListenerMock : TAssertionListenerMock;
+    AssertionUnderTest : T_Assertion(AssertionListenerMock);
+    AssertionListenerMock : T_AssertionListenerMock;
     LINT_Variable : LINT := 1111;
 END_VAR
 ]]></Declaration>

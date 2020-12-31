@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.4">
   <POU Name="Test_AssertEquals_BOOL" Id="{0e8de748-6fee-46fc-8560-6947bf202f49}" SpecialFunc="None">
-    <Declaration><![CDATA[FUNCTION_BLOCK Test_AssertEquals_BOOL EXTENDS TUnitTestBase
+    <Declaration><![CDATA[FUNCTION_BLOCK Test_AssertEquals_BOOL EXTENDS T_UnitTestBase
 VAR
-    AssertionUnderTest : TAssertion(AssertionListenerMock);
-    AssertionListenerMock : TAssertionListenerMock;
+    AssertionUnderTest : T_Assertion(AssertionListenerMock);
+    AssertionListenerMock : T_AssertionListenerMock;
     BOOL_Variable : BOOL := FALSE;
 END_VAR
 ]]></Declaration>

@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.4">
-  <POU Name="TAssertionListenerMock" Id="{aea5748a-7a0b-49d1-9b5d-092bdfc42755}" SpecialFunc="None">
+  <POU Name="T_AssertionListenerMock" Id="{aea5748a-7a0b-49d1-9b5d-092bdfc42755}" SpecialFunc="None">
     <Declaration><![CDATA[{attribute 'reflection'}
-FUNCTION_BLOCK TAssertionListenerMock IMPLEMENTS IAssertionListener
+FUNCTION_BLOCK T_AssertionListenerMock IMPLEMENTS I_AssertionListener
 VAR
     {attribute 'instance-path'} 
     {attribute 'no_init'}
@@ -115,7 +115,7 @@ _ActualAsString := ActualAsString;]]></ST>
 ]]></Declaration>
       <Get Name="Get" Id="{af1bd727-18ac-4d78-9390-07553b1c082b}">
         <Declaration><![CDATA[VAR_INST
-    StringSplitter : TStringSplitter;
+    StringSplitter : T_StringSplitter;
 END_VAR
 ]]></Declaration>
         <Implementation>

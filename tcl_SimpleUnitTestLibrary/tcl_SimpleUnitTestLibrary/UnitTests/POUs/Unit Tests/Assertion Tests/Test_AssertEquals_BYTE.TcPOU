@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.4">
   <POU Name="Test_AssertEquals_BYTE" Id="{3fdfb42a-61a2-4262-86e4-f6e8a1375f21}" SpecialFunc="None">
-    <Declaration><![CDATA[FUNCTION_BLOCK Test_AssertEquals_BYTE EXTENDS TUnitTestBase
+    <Declaration><![CDATA[FUNCTION_BLOCK Test_AssertEquals_BYTE EXTENDS T_UnitTestBase
 VAR
-    AssertionUnderTest : TAssertion(AssertionListenerMock);
-    AssertionListenerMock : TAssertionListenerMock;
+    AssertionUnderTest : T_Assertion(AssertionListenerMock);
+    AssertionListenerMock : T_AssertionListenerMock;
     BYTE_Variable : BYTE := 123;
 END_VAR
 ]]></Declaration>

@@ -1,17 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.4">
-  <Itf Name="ITestSuite" Id="{80cf6ddf-a651-4ab2-891a-a7b3f91b2fb4}">
-    <Declaration><![CDATA[INTERFACE ITestSuite
+  <Itf Name="I_TestSuite" Id="{80cf6ddf-a651-4ab2-891a-a7b3f91b2fb4}">
+    <Declaration><![CDATA[INTERFACE I_TestSuite
 ]]></Declaration>
     <Method Name="AddTest" Id="{9c5890c3-cf8e-456f-a82e-905c99112e10}">
       <Declaration><![CDATA[METHOD AddTest : BOOL
 VAR_INPUT
-    UnitTest : IUnitTest;
+    UnitTest : I_UnitTest;
 END_VAR
 ]]></Declaration>
     </Method>
     <Method Name="GetTest" Id="{2dbfe228-23d5-4b93-863d-80e6ea34ac9f}">
-      <Declaration><![CDATA[METHOD GetTest : IUnitTest
+      <Declaration><![CDATA[METHOD GetTest : I_UnitTest
 VAR_INPUT
     Index : INT;
 END_VAR

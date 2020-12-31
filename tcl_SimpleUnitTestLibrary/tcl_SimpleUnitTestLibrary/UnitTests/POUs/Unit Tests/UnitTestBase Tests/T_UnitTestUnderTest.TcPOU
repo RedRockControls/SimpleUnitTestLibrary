@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.4">
-  <POU Name="TExampleInterfaceImplementation" Id="{67292391-722e-466e-b7ea-d2f4f341d700}" SpecialFunc="None">
-    <Declaration><![CDATA[FUNCTION_BLOCK TExampleInterfaceImplementation IMPLEMENTS IExampleInterface
+  <POU Name="T_UnitTestUnderTest" Id="{7bfed642-dce0-402f-827d-e5704a2c4489}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK T_UnitTestUnderTest EXTENDS T_UnitTestBase
 VAR_INPUT
 END_VAR
 VAR_OUTPUT

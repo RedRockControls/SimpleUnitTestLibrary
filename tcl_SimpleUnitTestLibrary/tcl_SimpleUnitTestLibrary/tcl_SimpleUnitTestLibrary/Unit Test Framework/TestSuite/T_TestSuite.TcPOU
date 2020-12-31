@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.4">
-  <POU Name="TTestSuite" Id="{5434f086-e91b-4ff8-beea-9e089ab2b57a}" SpecialFunc="None">
+  <POU Name="T_TestSuite" Id="{5434f086-e91b-4ff8-beea-9e089ab2b57a}" SpecialFunc="None">
     <Declaration><![CDATA[{attribute 'reflection'}
-FUNCTION_BLOCK TTestSuite IMPLEMENTS ITestSuite
+FUNCTION_BLOCK T_TestSuite IMPLEMENTS I_TestSuite
 VAR_INPUT
 END_VAR
 VAR_OUTPUT
@@ -12,7 +12,7 @@ VAR
     {attribute 'no_init'}
     _TestSuiteName       : T_MaxString; // Automatically initialised with the full name of the instance
     _TestCount : INT;
-    Tests : ARRAY[0..MAX_TESTS_PER_TEST_SUITE] OF IUnitTest;
+    Tests : ARRAY[0..MAX_TESTS_PER_TEST_SUITE] OF I_UnitTest;
 END_VAR
 VAR CONSTANT
     MAX_TESTS_PER_TEST_SUITE              : DINT := 100;
@@ -23,7 +23,7 @@ END_VAR]]></Declaration>
     <Method Name="AddTest" Id="{cba36335-832b-45f4-b848-ff4520246c4b}">
       <Declaration><![CDATA[METHOD AddTest : BOOL
 VAR_INPUT
-    UnitTest : IUnitTest;
+    UnitTest : I_UnitTest;
 END_VAR
 ]]></Declaration>
       <Implementation>
@@ -42,7 +42,7 @@ VAR_INPUT
 	bInCopyCode : BOOL;  // if TRUE, the instance afterwards gets moved into the copy code (online change)
 END_VAR
 VAR
-    StringSplitter : TStringSplitter;
+    StringSplitter : T_StringSplitter;
 END_VAR
 ]]></Declaration>
       <Implementation>
@@ -59,7 +59,7 @@ END_WHILE
       </Implementation>
     </Method>
     <Method Name="GetTest" Id="{570c8934-96ee-4fac-aad3-11d8b3efc607}">
-      <Declaration><![CDATA[METHOD GetTest : IUnitTest
+      <Declaration><![CDATA[METHOD GetTest : I_UnitTest
 VAR_INPUT
     Index : INT;
 END_VAR

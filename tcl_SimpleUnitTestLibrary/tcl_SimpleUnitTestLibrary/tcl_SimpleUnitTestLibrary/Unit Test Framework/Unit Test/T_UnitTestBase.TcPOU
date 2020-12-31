@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.5">
-  <POU Name="TUnitTestBase" Id="{11d674d7-44eb-41b0-9d82-8296e52558c5}" SpecialFunc="None">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.4">
+  <POU Name="T_UnitTestBase" Id="{11d674d7-44eb-41b0-9d82-8296e52558c5}" SpecialFunc="None">
     <Declaration><![CDATA[{attribute 'reflection'}
-FUNCTION_BLOCK ABSTRACT TUnitTestBase IMPLEMENTS IUnitTest, IAssertionListener
+FUNCTION_BLOCK ABSTRACT T_UnitTestBase IMPLEMENTS I_UnitTest, I_AssertionListener
 VAR
     {attribute 'instance-path'} 
     {attribute 'no_init'}
@@ -10,9 +10,9 @@ VAR
     _TestFailed     : BOOL;
     _TestFinished   : BOOL;
     _ImageRef       : STRING;
-    _MessageList    : IAssertionMessageList;
+    _MessageList    : I_AssertionMessageList;
     
-    Assertion : TAssertion(AssertionListener := THIS^); // Callback to allow the Assertion to update the message list on assertion failed
+    Assertion : T_Assertion(AssertionListener := THIS^); // Callback to allow the Assertion to update the message list on assertion failed
 
 END_VAR]]></Declaration>
     <Implementation>
@@ -32,7 +32,7 @@ END_VAR]]></Declaration>
 VAR_INPUT
 	bInitRetains : BOOL; // if TRUE, the retain variables are initialized (warm start / cold start)
 	bInCopyCode : BOOL;  // if TRUE, the instance afterwards gets moved into the copy code (online change)
-    TestSuite : ITestSuite;
+    TestSuite : I_TestSuite;
 END_VAR
 ]]></Declaration>
       <Implementation>
@@ -47,7 +47,7 @@ END_IF]]></ST>
     <Method Name="Initialise" Id="{1fd7cd17-bea4-4e1a-b8bf-80b7d6405b5d}" FolderPath="Methods\">
       <Declaration><![CDATA[METHOD Initialise
 VAR_INPUT
-    MessageList : IAssertionMessageList;
+    MessageList : I_AssertionMessageList;
 END_VAR
 ]]></Declaration>
       <Implementation>
@@ -84,7 +84,7 @@ VAR_INPUT
     GroupName : STRING;
 END_VAR
 VAR
-    StringSplitter : TStringSplitter;
+    StringSplitter : T_StringSplitter;
 END_VAR
 ]]></Declaration>
       <Implementation>

@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.5">
-  <POU Name="TTestRunner" Id="{c7f35beb-7079-466d-ae1a-1beb011dea9f}" SpecialFunc="None">
-    <Declaration><![CDATA[FUNCTION_BLOCK TTestRunner 
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.4">
+  <POU Name="T_TestRunner" Id="{c7f35beb-7079-466d-ae1a-1beb011dea9f}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK T_TestRunner 
 VAR_INPUT
     RunTestsSequentially : BOOL := TRUE; 
     ManualTestRunsOnly   : BOOL := TRUE; // Set true to enforce "Manual run only"
@@ -26,9 +26,9 @@ VAR
     _AllTestsCompleted : BOOL;
     _TestCount : INT;
     
-    Tests : ARRAY[0..MAX_TESTS] OF IUnitTest;
-    TestResults : ARRAY[0..MAX_TESTS] OF TTestResult;
-    AssertionMessages : TAssertionMessageList;
+    Tests : ARRAY[0..MAX_TESTS] OF I_UnitTest;
+    TestResults : ARRAY[0..MAX_TESTS] OF T_TestResult;
+    AssertionMessages : T_AssertionMessageList;
     
     TestsCompletedPercentage : LREAL;
 END_VAR
@@ -142,7 +142,7 @@ END_CASE]]></ST>
     <Method Name="AddTest" Id="{aff2d568-ab55-47bc-af2b-94e85ba5e218}" FolderPath="Methods\">
       <Declaration><![CDATA[METHOD AddTest : BOOL
 VAR_INPUT
-    UnitTest : IUnitTest;
+    UnitTest : I_UnitTest;
 END_VAR
 ]]></Declaration>
       <Implementation>
@@ -159,11 +159,11 @@ END_IF
     <Method Name="AddTestSuite" Id="{9fd86142-9111-4782-8bb5-add73fbdb86e}" FolderPath="Methods\">
       <Declaration><![CDATA[METHOD AddTestSuite : BOOL
 VAR_INPUT
-    TestSuite : ITestSuite;
+    TestSuite : I_TestSuite;
 END_VAR
 VAR
     i : INT;
-    UnitTestToAdd : IUnitTest;
+    UnitTestToAdd : I_UnitTest;
 END_VAR]]></Declaration>
       <Implementation>
         <ST><![CDATA[IF TestSuite.TestCount > 0 THEN

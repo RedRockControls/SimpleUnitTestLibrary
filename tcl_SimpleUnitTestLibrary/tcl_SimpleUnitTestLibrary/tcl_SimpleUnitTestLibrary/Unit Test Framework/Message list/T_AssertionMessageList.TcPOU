@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.3">
-  <POU Name="TAssertionMessageList" Id="{e7d5340d-c089-4dbb-ae44-9c00444fa0e8}" SpecialFunc="None">
-    <Declaration><![CDATA[FUNCTION_BLOCK TAssertionMessageList IMPLEMENTS IAssertionMessageList
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.4">
+  <POU Name="T_AssertionMessageList" Id="{e7d5340d-c089-4dbb-ae44-9c00444fa0e8}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK T_AssertionMessageList IMPLEMENTS I_AssertionMessageList
 VAR
     _Messages : ARRAY[0..MAX_ASSERTION_MESSAGES] OF T_MaxString;
     _Count : INT;

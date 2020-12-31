@@ -86,19 +86,19 @@
     <Compile Include="POUs\Unit Tests\Assertion Tests\Test_AssertEquals_WORD.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\Unit Tests\Fixtures\IExampleInterface.TcIO">
+    <Compile Include="POUs\Unit Tests\Fixtures\I_ExampleInterface.TcIO">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\Unit Tests\Fixtures\TExampleInterfaceImplementation.TcPOU">
+    <Compile Include="POUs\Unit Tests\Fixtures\T_ExampleInterfaceImplementation.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\Unit Tests\Mocks\TAssertionListenerMock.TcPOU">
+    <Compile Include="POUs\Unit Tests\Mocks\T_AssertionListenerMock.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\Unit Tests\UnitTestBase Tests\Test_setTestName_setsTestName.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\Unit Tests\UnitTestBase Tests\TUnitTestUnderTest.TcPOU">
+    <Compile Include="POUs\Unit Tests\UnitTestBase Tests\T_UnitTestUnderTest.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Tasks\MAIN.TcPOU">

@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.4">
-  <POU Name="TAssertion" Id="{a1aef330-5110-4c04-a4ca-af23774823fc}" SpecialFunc="None">
-    <Declaration><![CDATA[FUNCTION_BLOCK TAssertion
+  <POU Name="T_Assertion" Id="{a1aef330-5110-4c04-a4ca-af23774823fc}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK T_Assertion
 VAR_INPUT
 END_VAR
 VAR_OUTPUT
@@ -11,7 +11,7 @@ VAR
     _AssertionMessage : T_MaxString;
     _ExpectedAsString : T_MaxString;
     _ActualAsString   : T_MaxString;
-    _AssertionListener : IAssertionListener;
+    _AssertionListener : I_AssertionListener;
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -410,7 +410,7 @@ END_VAR
 VAR_INPUT
 	bInitRetains : BOOL; // if TRUE, the retain variables are initialized (warm start / cold start)
 	bInCopyCode : BOOL;  // if TRUE, the instance afterwards gets moved into the copy code (online change)
-    AssertionListener : IAssertionListener;
+    AssertionListener : I_AssertionListener;
 END_VAR
 ]]></Declaration>
       <Implementation>

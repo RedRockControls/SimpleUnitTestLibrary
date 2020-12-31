@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.4">
-  <Itf Name="IUnitTest" Id="{137795db-abc7-4fa7-8556-f33fd38a5e22}">
-    <Declaration><![CDATA[INTERFACE IUnitTest EXTENDS __SYSTEM.IQueryInterface
+  <Itf Name="I_UnitTest" Id="{137795db-abc7-4fa7-8556-f33fd38a5e22}">
+    <Declaration><![CDATA[INTERFACE I_UnitTest EXTENDS __SYSTEM.IQueryInterface
 ]]></Declaration>
     <Method Name="Execute" Id="{2fba04c3-dc29-45c8-9862-61e987437cae}">
       <Declaration><![CDATA[METHOD Execute
@@ -10,7 +10,7 @@
     <Method Name="Initialise" Id="{c9388da0-0ae6-4f8c-8201-6c010a8515b8}">
       <Declaration><![CDATA[METHOD Initialise
 VAR_INPUT
-    MessageList : IAssertionMessageList;
+    MessageList : I_AssertionMessageList;
 END_VAR
 ]]></Declaration>
     </Method>

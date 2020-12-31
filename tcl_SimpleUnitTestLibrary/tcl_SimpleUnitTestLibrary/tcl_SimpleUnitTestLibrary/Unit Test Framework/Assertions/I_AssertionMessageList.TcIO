@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.4">
-  <Itf Name="IAssertionMessageList" Id="{270b47cc-0623-4afb-ba23-90db3cde0906}">
-    <Declaration><![CDATA[INTERFACE IAssertionMessageList
+  <Itf Name="I_AssertionMessageList" Id="{270b47cc-0623-4afb-ba23-90db3cde0906}">
+    <Declaration><![CDATA[INTERFACE I_AssertionMessageList
 ]]></Declaration>
     <Method Name="AddMessage" Id="{4e3dc3a3-3f3a-4e0a-b8b3-2216c3be2665}">
       <Declaration><![CDATA[METHOD AddMessage : BOOL
