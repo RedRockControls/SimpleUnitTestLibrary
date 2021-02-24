@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.4">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.6">
   <POU Name="T_Assertion" Id="{a1aef330-5110-4c04-a4ca-af23774823fc}" SpecialFunc="None">
     <Declaration><![CDATA[FUNCTION_BLOCK T_Assertion
 VAR_INPUT
@@ -405,6 +405,27 @@ END_VAR
         </Implementation>
       </Get>
     </Property>
+    <Method Name="AssertNotEquals_INTERFACE" Id="{3414da64-89ed-4537-94fe-9444ec716ca2}" FolderPath="Methods\">
+      <Declaration><![CDATA[METHOD AssertNotEquals_INTERFACE 
+VAR_INPUT
+    Expected : __SYSTEM.IQueryInterface;
+    Actual   : __SYSTEM.IQueryInterface;
+    VariableName : T_MaxString;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[IF Expected = Actual THEN
+    _AssertionFailed  := TRUE;
+    _AssertionMessage := F_FormatStringEx2('AssertNotEquals_INTERFACE failed in %s: Value "%s"', _AssertionListener.TestName, VariableName);
+    _ExpectedAsString := '  Interfaces are the same';
+    _ActualAsString   := '';
+    _AssertionListener.OnAssertionFailed(_AssertionMessage,_ExpectedAsString,_ActualAsString);
+ELSE
+    _AssertionFailed  := FALSE;
+    _AssertionMessage := '';
+END_IF]]></ST>
+      </Implementation>
+    </Method>
     <Method Name="FB_init" Id="{bd8897b6-ec9e-4893-99bd-6b87d14568ef}" FolderPath="Methods\">
       <Declaration><![CDATA[METHOD FB_init : BOOL
 VAR_INPUT

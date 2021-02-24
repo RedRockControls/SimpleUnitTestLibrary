@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.4">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.6">
   <POU Name="T_TestRunner" Id="{c7f35beb-7079-466d-ae1a-1beb011dea9f}" SpecialFunc="None">
     <Declaration><![CDATA[FUNCTION_BLOCK T_TestRunner 
 VAR_INPUT
@@ -12,6 +12,7 @@ VAR
     State :(
         PreInit,
         Init,
+        StartTests,
         RunTests_Concurrently,
         RunTests_Sequentially,
         CheckResults);
@@ -42,22 +43,29 @@ END_VAR
     Init:
         IF Run THEN
             Run := FALSE;
-            ClearResults();
-            AssertionMessages.Clear();
-            FOR i := 0 TO _TestCount - 1 DO
-                IF Tests[i] <> 0 THEN
-                    Tests[i].Initialise(AssertionMessages);
-				END_IF
-			END_FOR
-            _TestsRunning := TRUE;
-            IF RunTestsSequentially THEN
-                CurrentTestIndex := 0;
-                State := RunTests_Sequentially;
+            IF _TestCount = 0 THEN
+                State := CheckResults;
             ELSE
-                State := RunTests_Concurrently;
+                State := StartTests;
+			END_IF
+        END_IF
+    
+    StartTests:
+        ClearResults();
+        AssertionMessages.Clear();
+        FOR i := 0 TO _TestCount - 1 DO
+            IF Tests[i] <> 0 THEN
+                Tests[i].Initialise(AssertionMessages);
             END_IF
-		END_IF
-        
+        END_FOR
+        _TestsRunning := TRUE;
+        IF RunTestsSequentially THEN
+            CurrentTestIndex := 0;
+            State := RunTests_Sequentially;
+        ELSE
+            State := RunTests_Concurrently;
+        END_IF
+    
     RunTests_Concurrently:
         CompletedTestsCount := 0;
         FOR i := 0 TO _TestCount - 1 DO
@@ -88,7 +96,9 @@ END_VAR
             END_IF
         END_FOR
         
-        TestsCompletedPercentage := CompletedTestsCount * 100/_TestCount;
+        IF _TestCount > 0 THEN
+            TestsCompletedPercentage := CompletedTestsCount * 100/_TestCount;
+        END_IF
         _Results := F_FormatString2('%d Tests completed, %d Tests Failed',F_INT(CompletedTestsCount),F_INT(FailedTestsCount));
         
         IF CompletedTestsCount >= _TestCount THEN
