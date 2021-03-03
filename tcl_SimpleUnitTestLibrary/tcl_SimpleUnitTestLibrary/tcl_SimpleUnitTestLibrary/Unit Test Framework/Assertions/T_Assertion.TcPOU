@@ -19,6 +19,23 @@ END_VAR
     </Implementation>
     <Folder Name="Methods" Id="{b5309a9f-d22b-4798-ac38-129f27945b0a}" />
     <Folder Name="Properties" Id="{2b96df32-c9bc-482b-8e63-e4930a06246e}" />
+    <Method Name="Assert" Id="{5e9acc7f-6ce2-451c-8a85-e51d1cf371f9}" FolderPath="Methods\">
+      <Declaration><![CDATA[METHOD Assert
+VAR_INPUT
+    AssertionMessage : T_MaxString;
+    Expected         : T_MaxString;
+    Actual           : T_MaxString;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[_AssertionFailed := TRUE;
+_AssertionMessage := F_FormatStringEx2('Assertion failed in %s - %s',_AssertionListener.TestName, AssertionMessage);
+    _ExpectedAsString := F_FormatStringEx1('  Expected = %s', Expected);
+    _ActualAsString   := F_FormatStringEx1('  Actual   = %s', Actual);
+_AssertionListener.OnAssertionFailed(_AssertionMessage,_ExpectedAsString,_ActualAsString);
+]]></ST>
+      </Implementation>
+    </Method>
     <Method Name="AssertEquals_BLOB" Id="{5eddac7b-ac1b-4f82-81db-408d888c0c87}" FolderPath="Methods\">
       <Declaration><![CDATA[METHOD AssertEquals_BLOB
 VAR_INPUT
