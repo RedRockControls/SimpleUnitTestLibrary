@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.4">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.6">
   <POU Name="T_AssertionMessageList" Id="{e7d5340d-c089-4dbb-ae44-9c00444fa0e8}" SpecialFunc="None">
     <Declaration><![CDATA[FUNCTION_BLOCK T_AssertionMessageList IMPLEMENTS I_AssertionMessageList
 VAR
-    _Messages : ARRAY[0..MAX_ASSERTION_MESSAGES] OF T_MaxString;
-    _Count : INT;
+    Messages : ARRAY[0..200] OF T_MaxString;
+    Count : INT;
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -17,9 +17,9 @@ VAR_INPUT
 END_VAR
 ]]></Declaration>
       <Implementation>
-        <ST><![CDATA[IF _Count <= MAX_ASSERTION_MESSAGES THEN
-    _Messages[_Count] := Message;
-    _Count := _Count + 1;
+        <ST><![CDATA[IF Count <= MAX_ASSERTION_MESSAGES THEN
+    Messages[Count] := Message;
+    Count := Count + 1;
     AddMessage := TRUE;
 END_IF]]></ST>
       </Implementation>
@@ -31,10 +31,10 @@ END_VAR
 ]]></Declaration>
       <Implementation>
         <ST><![CDATA[MEMSET(
-    destAddr := ADR(_Messages), 
+    destAddr := ADR(Messages), 
     fillByte := 0, 
-    n        := SIZEOF(_Messages));
-_Count := 0;
+    n        := SIZEOF(Messages));
+Count := 0;
 ]]></ST>
       </Implementation>
     </Method>

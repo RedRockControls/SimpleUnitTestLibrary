@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.4">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.6">
   <GlobalTextList Name="GlobalTextList" Id="{42c9dfd2-3183-43e0-8e62-ed19a75479c6}">
     <XmlArchive>
       <Data>
@@ -31,6 +31,11 @@
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
+              <v n="TextID">"210"</v>
+              <v n="TextDefault">"  Time"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
               <v n="TextID">"199"</v>
               <v n="TextDefault">" %s"</v>
               <l n="LanguageTexts" t="ArrayList" />
@@ -43,6 +48,11 @@
             <o>
               <v n="TextID">"559"</v>
               <v n="TextDefault">"%s"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"551"</v>
+              <v n="TextDefault">"All"</v>
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
@@ -66,6 +76,36 @@
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
+              <v n="TextID">"736"</v>
+              <v n="TextDefault">"Disable All"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"460"</v>
+              <v n="TextDefault">"Enable"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"946"</v>
+              <v n="TextDefault">"Enable All"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"303"</v>
+              <v n="TextDefault">"Enable:"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"790"</v>
+              <v n="TextDefault">"Enabled"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"476"</v>
+              <v n="TextDefault">"Hide Disabled"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
               <v n="TextID">"797"</v>
               <v n="TextDefault">"ImageRef"</v>
               <l n="LanguageTexts" t="ArrayList" />
@@ -76,13 +116,48 @@
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
+              <v n="TextID">"26"</v>
+              <v n="TextDefault">"Name"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"85"</v>
+              <v n="TextDefault">"None"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
               <v n="TextID">"409"</v>
               <v n="TextDefault">"Page Up"</v>
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
+              <v n="TextID">"478"</v>
+              <v n="TextDefault">"Reload Tests"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"452"</v>
+              <v n="TextDefault">"Result"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"799"</v>
+              <v n="TextDefault">"Run Sequentially"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
               <v n="TextID">"480"</v>
               <v n="TextDefault">"Run Tests"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"635"</v>
+              <v n="TextDefault">"Run Tests Sequentially"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"351"</v>
+              <v n="TextDefault">"Show All"</v>
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
@@ -98,6 +173,11 @@
             <o>
               <v n="TextID">"197"</v>
               <v n="TextDefault">"State"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"348"</v>
+              <v n="TextDefault">"Suite"</v>
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
@@ -118,6 +198,11 @@
             <o>
               <v n="TextID">"533"</v>
               <v n="TextDefault">"Test State"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"547"</v>
+              <v n="TextDefault">"Test state"</v>
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>

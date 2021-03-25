@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.3">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.6">
   <GlobalImagePool Name="GlobalImagePool" Id="{7bffdd2d-90fa-43d8-bfd4-3303d3a03db8}">
     <XmlArchive>
       <Data>
         <o xml:space="preserve" t="GlobalImagePoolObject">
-          <v n="UniqueIdGenerator">"27"</v>
+          <v n="UniqueIdGenerator">"29"</v>
           <l n="BitmapPool" t="ArrayList" cet="ImagePoolItem">
             <o>
               <v n="BitmapID">"3"</v>
@@ -22,9 +22,14 @@
               <v n="ItemID">17</v>
             </o>
             <o>
-              <v n="BitmapID">""</v>
+              <v n="BitmapID">"4"</v>
               <v n="FileID">""</v>
               <v n="ItemID">23</v>
+            </o>
+            <o>
+              <v n="BitmapID">""</v>
+              <v n="FileID">""</v>
+              <v n="ItemID">28</v>
             </o>
           </l>
           <v n="GuidInit">{fef981e0-f203-4315-9502-f25706122c8e}</v>

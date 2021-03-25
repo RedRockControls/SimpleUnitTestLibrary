@@ -1,150 +1,118 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.6">
   <POU Name="T_TestRunner" Id="{c7f35beb-7079-466d-ae1a-1beb011dea9f}" SpecialFunc="None">
-    <Declaration><![CDATA[FUNCTION_BLOCK T_TestRunner 
-VAR_INPUT
-    RunTestsSequentially : BOOL := TRUE; 
-    ManualTestRunsOnly   : BOOL := TRUE; // Set true to enforce "Manual run only"
-END_VAR
+    <Declaration><![CDATA[FUNCTION_BLOCK T_TestRunner
 VAR
-    Run : BOOL := TRUE;
-    
-    State :(
-        PreInit,
+    ReloadTests          : BOOL;
+    RunTestsSequentially : BOOL := TRUE;
+    Run                  : BOOL;
+    Reset                : BOOL;
+    EnableAllTests       : BOOL;
+    DisableAllTests      : BOOL;
+    RowIsSelected        : BOOL;
+    SelectedRow          : DINT;
+
+    State : (
         Init,
         StartTests,
         RunTests_Concurrently,
         RunTests_Sequentially,
-        CheckResults);
-        
-    i : INT;
-    CompletedTestsCount : INT;
-    FailedTestsCount : INT;
-    CurrentTestIndex : INT;
-    
-    _TestsRunning : BOOL;
-    _Results : T_MaxString;
-    _AllTestsCompleted : BOOL;
-    _TestCount : INT;
-    
-    Tests : ARRAY[0..MAX_TESTS] OF I_UnitTest;
-    TestResults : ARRAY[0..MAX_TESTS] OF T_TestResult;
-    AssertionMessages : T_AssertionMessageList;
-    
-    TestsCompletedPercentage : LREAL;
-END_VAR
+        CheckResults
+    );
 
+    i                        : DINT;
+    CompletedTestsCount      : DINT;
+    FailedTestsCount         : DINT;
+    CurrentTestIndex         : DINT;
+    TestsCompletedPercentage : LREAL;
+    TestCount                : DINT;
+    EnabledTestCount         : DINT;
+    ResultsSummary           : T_MaxString;
+
+    Tests             : ARRAY[0..MAX_TESTS] OF I_UnitTest;
+    AssertionMessages : T_AssertionMessageList;
+
+END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[CASE State OF
-    PreInit:
-        Run := NOT ManualTestRunsOnly;
-        State := Init;
+      <ST><![CDATA[IF RowIsSelected THEN
+    ToggleTestEnable(Index := SelectedRow);
+    RowIsSelected := FALSE;
+END_IF
+
+IF EnableAllTests THEN
+    EnableAllTests := FALSE;
+    EnableAll();
+END_IF
+
+IF DisableAllTests THEN
+    DisableAllTests := FALSE;
+    DisableAll();
+END_IF
+
+CASE State OF
     Init:
+        IF Reset THEN
+            Reset := FALSE;
+            Initialisation();
+        END_IF
+
         IF Run THEN
-            Run := FALSE;
-            IF _TestCount = 0 THEN
+            Run              := FALSE;
+            EnabledTestCount := GetEnabledTestCount();
+
+            IF EnabledTestCount = 0 THEN
                 State := CheckResults;
             ELSE
                 State := StartTests;
-			END_IF
-        END_IF
-    
-    StartTests:
-        ClearResults();
-        AssertionMessages.Clear();
-        FOR i := 0 TO _TestCount - 1 DO
-            IF Tests[i] <> 0 THEN
-                Tests[i].Initialise(AssertionMessages);
             END_IF
-        END_FOR
-        _TestsRunning := TRUE;
+        END_IF
+
+    StartTests:
         IF RunTestsSequentially THEN
-            CurrentTestIndex := 0;
             State := RunTests_Sequentially;
         ELSE
             State := RunTests_Concurrently;
         END_IF
-    
+
     RunTests_Concurrently:
-        CompletedTestsCount := 0;
-        FOR i := 0 TO _TestCount - 1 DO
-            IF Tests[i] <> 0 THEN
-                IF TestResults[i].TestCompleted THEN
-                    CompletedTestsCount := CompletedTestsCount + 1;
-                ELSE
-                    IF Tests[i].TestHasFinished THEN
-                        TestResults[i].TestCompleted := TRUE;
-                        TestResults[i].TestCompleteTime := getTimeStampAsString();
-                        IF Tests[i].TestHasFailed THEN
-                            TestResults[i].TestName  := Tests[i].TestName;
-                            TestResults[i].TestState := 'Failed';
-                            TestResults[i].ImageRef  := '3';
-                            FailedTestsCount := FailedTestsCount + 1;
-                        ELSE
-                            TestResults[i].TestName  := Tests[i].TestName;
-                            TestResults[i].TestState := 'Passed';
-                            TestResults[i].ImageRef  := '2';
-                        END_IF    
-                    ELSE
-                        TestResults[i].TestName  := Tests[i].TestName;
-                        TestResults[i].TestState := 'Running';
-                        TestResults[i].ImageRef  := '1';
-                        Tests[i].Execute();
-                    END_IF
-				END_IF
-            END_IF
+        FOR i := 0 TO TestCount - 1 DO
+            Tests[i].Execute();
         END_FOR
-        
-        IF _TestCount > 0 THEN
-            TestsCompletedPercentage := CompletedTestsCount * 100/_TestCount;
+
+        IF EnabledTestCount > 0 THEN
+            TestsCompletedPercentage := CompletedTestsCount * 100 / EnabledTestCount;
         END_IF
-        _Results := F_FormatString2('%d Tests completed, %d Tests Failed',F_INT(CompletedTestsCount),F_INT(FailedTestsCount));
-        
-        IF CompletedTestsCount >= _TestCount THEN
+
+        ResultsSummary := GetResultsSummary();
+
+        IF CompletedTestsCount >= EnabledTestCount THEN
             State := CheckResults;
-		END_IF
-        
+        END_IF
+
     RunTests_Sequentially:
         IF Tests[CurrentTestIndex] <> 0 THEN
-            IF Tests[CurrentTestIndex].TestHasFinished THEN
-                TestResults[CurrentTestIndex].TestCompleted := TRUE;
-                TestResults[CurrentTestIndex].TestCompleteTime := getTimeStampAsString();
-                IF Tests[CurrentTestIndex].TestHasFailed THEN
-                    TestResults[CurrentTestIndex].TestName  := Tests[CurrentTestIndex].TestName;
-                    TestResults[CurrentTestIndex].TestState := 'Failed';
-                    TestResults[CurrentTestIndex].ImageRef  := '3';
-                    FailedTestsCount := FailedTestsCount + 1;
-                ELSE
-                    TestResults[CurrentTestIndex].TestName  := Tests[CurrentTestIndex].TestName;
-                    TestResults[CurrentTestIndex].TestState := 'Passed';
-                    TestResults[CurrentTestIndex].ImageRef  := '2';
-                END_IF    
-                
-                CompletedTestsCount := CompletedTestsCount + 1;
+            Tests[CurrentTestIndex].Execute();
+
+            IF NOT Tests[CurrentTestIndex].TestEnabled OR Tests[CurrentTestIndex].TestHasFinished THEN
                 CurrentTestIndex := CurrentTestIndex + 1;
-                TestsCompletedPercentage := CompletedTestsCount * 100/_TestCount;
-                _Results := F_FormatString2('%d Tests completed, %d Tests Failed',F_INT(CompletedTestsCount),F_INT(FailedTestsCount));
-            ELSE
-                TestResults[CurrentTestIndex].TestName  := Tests[CurrentTestIndex].TestName;
-                TestResults[CurrentTestIndex].TestState := 'Running';
-                TestResults[CurrentTestIndex].ImageRef  := '1';
-                Tests[CurrentTestIndex].Execute();
             END_IF
         END_IF
 
-        IF CompletedTestsCount >= _TestCount THEN
+        IF EnabledTestCount > 0 THEN
+            TestsCompletedPercentage := CompletedTestsCount * 100 / EnabledTestCount;
+        END_IF
+
+        ResultsSummary := GetResultsSummary();
+
+        IF CurrentTestIndex >= TestCount THEN
             State := CheckResults;
-		END_IF
+        END_IF
 
     CheckResults:
-        _Results := F_FormatString2('%d Tests completed, %d Tests Failed',F_INT(CompletedTestsCount),F_INT(FailedTestsCount));
-        _TestsRunning := FALSE;
-        _AllTestsCompleted := TRUE;
-        
-        State := Init;
-    
-    
+        ResultsSummary := GetResultsSummary();
+        State          := Init;
+
 END_CASE]]></ST>
     </Implementation>
     <Folder Name="Methods" Id="{35bbb33e-58f9-46f6-83b2-7eeb5a0d79dc}" />
@@ -156,10 +124,11 @@ VAR_INPUT
 END_VAR
 ]]></Declaration>
       <Implementation>
-        <ST><![CDATA[IF _TestCount < MAX_TESTS THEN
-    Tests[_TestCount] := UnitTest;
-    _TestCount := _TestCount + 1;
-    AddTest := TRUE;
+        <ST><![CDATA[IF TestCount < MAX_TESTS THEN
+    UnitTest.TestEnabled := TRUE;
+    Tests[TestCount]    := UnitTest;
+    TestCount           := TestCount + 1;
+    AddTest              := TRUE;
 ELSE
     AssertionMessages.AddMessage('Maximum unit tests exceeded!');
 END_IF
@@ -185,85 +154,136 @@ END_IF
 ]]></ST>
       </Implementation>
     </Method>
-    <Method Name="ClearResults" Id="{57179eef-fc7b-4bd0-85fd-730ca5472c60}" FolderPath="Methods\">
-      <Declaration><![CDATA[METHOD ClearResults
-VAR_INPUT
-END_VAR
-]]></Declaration>
-      <Implementation>
-        <ST><![CDATA[_Results := '';
-_AllTestsCompleted := FALSE;
-FailedTestsCount := 0;
-CompletedTestsCount := 0;
-TestsCompletedPercentage := 0;
-
-MEMSET(
-    destAddr := ADR(TestResults), 
-    fillByte := 0, 
-    n        := SIZEOF(TestResults));
-]]></ST>
-      </Implementation>
-    </Method>
-    <Method Name="ClearTests" Id="{65746c67-2f16-46ec-b23f-e8a9237c14e3}" FolderPath="Methods\">
+    <Method Name="ClearTests" Id="{0514e42e-1772-4318-a77d-c71bfad7c3c5}" FolderPath="Methods\">
       <Declaration><![CDATA[METHOD ClearTests
 VAR_INPUT
 END_VAR
 ]]></Declaration>
       <Implementation>
-        <ST><![CDATA[MEMSET(
-    destAddr := ADR(Tests),
-    fillByte := 0,
-    n        := SIZEOF(Tests));
-_TestCount := 0;
+        <ST><![CDATA[FOR i := 0 TO MAX_TESTS DO
+    Tests[i] := 0;
+END_FOR
+TestCount := 0;]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="DisableAll" Id="{26b67286-b38a-473e-94c7-9aa515f07fd2}" FolderPath="Methods\">
+      <Declaration><![CDATA[METHOD DisableAll
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[IF State = Init THEN
+    FOR i := 0 TO MAX_TESTS - 1 DO
+        IF Tests[i] <> 0 THEN
+            Tests[i].TestEnabled := FALSE;
+        END_IF
+    END_FOR
+END_IF
 ]]></ST>
       </Implementation>
     </Method>
-    <Method Name="getTimeStampAsString" Id="{d42516d0-c807-491e-ba92-a82bc000bc36}" FolderPath="Methods\">
-      <Declaration><![CDATA[METHOD PRIVATE getTimeStampAsString : T_MaxString
+    <Method Name="EnableAll" Id="{7deaba0d-8d00-4771-a81f-72af7c0b7fce}" FolderPath="Methods\">
+      <Declaration><![CDATA[METHOD EnableAll
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[IF State = Init THEN
+    FOR i := 0 TO MAX_TESTS - 1 DO
+        IF Tests[i] <> 0 THEN
+            Tests[i].TestEnabled := TRUE;
+        END_IF
+    END_FOR
+END_IF
+]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="GetEnabledTestCount" Id="{eda51e2d-fc5b-45cb-acda-f23875822834}" FolderPath="Methods\">
+      <Declaration><![CDATA[METHOD GetEnabledTestCount : DINT
 VAR
-	CurrentDcTime : T_DCTIME64;
-    Now : TIMESTRUCT;
+    i : DINT;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[FOR i := 0 TO MAX_TESTS - 1 DO
+    IF Tests[i] <> 0 THEN
+        IF Tests[i].TestEnabled THEN
+            GetEnabledTestCount := GetEnabledTestCount + 1;
+        END_IF
+    END_IF
+END_FOR
+]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="GetResultsSummary" Id="{a7be1d44-d069-4b8d-bce1-d0edafc24474}" FolderPath="Methods\">
+      <Declaration><![CDATA[METHOD GetResultsSummary : T_MaxString
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[GetResultsSummary := F_FormatString3('%d Tests of %d completed, %d Tests Failed',
+                            F_DINT(CompletedTestsCount),
+                            F_DINT(EnabledTestCount),
+                            F_DINT(FailedTestsCount));
+]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="Initialisation" Id="{57179eef-fc7b-4bd0-85fd-730ca5472c60}" FolderPath="Methods\">
+      <Declaration><![CDATA[METHOD Initialisation
+VAR_INPUT
+END_VAR
+VAR
+    i : DINT;
 END_VAR]]></Declaration>
       <Implementation>
-        <ST><![CDATA[CurrentDcTime := F_GetActualDcTime64();
-Now := DCTIME64_TO_SYSTEMTIME(CurrentDcTime);
-getTimeStampAsString := tcl_StringUtils.F_TimeAsString_ms(Now);]]></ST>
+        <ST><![CDATA[FOR i := 0 TO MAX_TESTS DO
+    IF Tests[i] <> 0 THEN
+        Tests[i].Initialise(AssertionMessages,
+                            CompletedTestsCount := CompletedTestsCount,
+                            FailedTestsCount    := FailedTestsCount);
+    END_IF
+END_FOR
+
+ResultsSummary           := '';
+FailedTestsCount         := 0;
+CompletedTestsCount      := 0;
+TestsCompletedPercentage := 0;
+CurrentTestIndex         := 0;
+AssertionMessages.Clear();
+]]></ST>
       </Implementation>
     </Method>
-    <Property Name="Results" Id="{d09ac635-f5a8-46e9-8513-febf5f67e4bf}" FolderPath="Properties\">
-      <Declaration><![CDATA[PROPERTY Results : T_MaxString]]></Declaration>
-      <Get Name="Get" Id="{bac56fdf-ab86-41b2-bda2-a53cd7cf550f}">
+    <Property Name="ReloadTestsRequest" Id="{8fe8ab6a-5c02-4158-af1a-83e9f9cc4b45}" FolderPath="Properties\">
+      <Declaration><![CDATA[PROPERTY ReloadTestsRequest : BOOL]]></Declaration>
+      <Get Name="Get" Id="{6cc3539e-1a37-4c4c-832d-b7ca4feb8075}">
         <Declaration><![CDATA[VAR
 END_VAR
 ]]></Declaration>
         <Implementation>
-          <ST><![CDATA[Results := _Results;
+          <ST><![CDATA[ReloadTestsRequest := ReloadTests;]]></ST>
+        </Implementation>
+      </Get>
+      <Set Name="Set" Id="{13f8d37a-40d2-4a17-b6d3-39d8a07a1907}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[ReloadTestsRequest := ReloadTests;]]></ST>
+        </Implementation>
+      </Set>
+    </Property>
+    <Method Name="ToggleTestEnable" Id="{466982a5-d21e-4010-8476-b98928a418f1}" FolderPath="Methods\">
+      <Declaration><![CDATA[METHOD ToggleTestEnable
+VAR_INPUT
+    Index : DINT;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[IF State = Init THEN
+    Tests[Index].TestEnabled := NOT Tests[Index].TestEnabled;
+END_IF
 ]]></ST>
-        </Implementation>
-      </Get>
-    </Property>
-    <Property Name="TestCount" Id="{071111e2-ed4d-4d68-b95e-6b4cb6b3aa16}" FolderPath="Properties\">
-      <Declaration><![CDATA[PROPERTY TestCount : INT]]></Declaration>
-      <Get Name="Get" Id="{cc7bd08b-b6fe-4e09-88cb-16b9dd473b3f}">
-        <Declaration><![CDATA[VAR
-END_VAR
-]]></Declaration>
-        <Implementation>
-          <ST><![CDATA[TestCount := _TestCount;]]></ST>
-        </Implementation>
-      </Get>
-    </Property>
-    <Property Name="TestsRunning" Id="{cc8e65a0-6524-4f90-8531-cec392ab281c}" FolderPath="Properties\">
-      <Declaration><![CDATA[PROPERTY TestsRunning : BOOL]]></Declaration>
-      <Get Name="Get" Id="{0fb901a8-23b3-444c-a819-bc19c7f6c2c0}">
-        <Declaration><![CDATA[VAR
-END_VAR
-]]></Declaration>
-        <Implementation>
-          <ST><![CDATA[TestsRunning := _TestsRunning;
-]]></ST>
-        </Implementation>
-      </Get>
-    </Property>
+      </Implementation>
+    </Method>
   </POU>
 </TcPlcObject>

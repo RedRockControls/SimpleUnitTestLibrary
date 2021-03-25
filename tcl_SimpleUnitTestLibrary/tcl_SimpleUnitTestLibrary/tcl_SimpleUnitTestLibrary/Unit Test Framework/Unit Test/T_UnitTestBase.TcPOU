@@ -1,32 +1,102 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.4">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.6">
   <POU Name="T_UnitTestBase" Id="{11d674d7-44eb-41b0-9d82-8296e52558c5}" SpecialFunc="None">
     <Declaration><![CDATA[{attribute 'reflection'}
 FUNCTION_BLOCK ABSTRACT T_UnitTestBase IMPLEMENTS I_UnitTest, I_AssertionListener
 VAR
-    {attribute 'instance-path'} 
+    {attribute 'instance-path'}
     {attribute 'no_init'}
-    _TestName       : T_MaxString; // Automatically initialised with the full name of the instance
-    _TestFailed     : BOOL;
-    _TestFinished   : BOOL;
-    _ImageRef       : STRING;
-    _MessageList    : I_AssertionMessageList;
-    
+    _InstanceName  : T_MaxString; // Automatically initialised with the full name of the instance
+    _TestSuiteName : T_MaxString;
+    _TestName      : T_MaxString;
+    _TestFailed    : BOOL;
+    _TestFinished  : BOOL;
+    _TestState     : T_MaxString;
+    _ImageRef      : STRING;
+    _TestEnabled   : BOOL := TRUE;
+    _TestCompleted : BOOL;
+
+    _MessageList : I_AssertionMessageList;
+
     Assertion : T_Assertion(AssertionListener := THIS^); // Callback to allow the Assertion to update the message list on assertion failed
 
+    _CompletedTestsCount : REFERENCE TO DINT;
+    _FailedTestsCount    : REFERENCE TO DINT;
 END_VAR]]></Declaration>
     <Implementation>
       <ST><![CDATA[]]></ST>
     </Implementation>
     <Folder Name="Methods" Id="{2a54b672-815d-4dbb-9596-7d067b0ed961}" />
     <Folder Name="Properties" Id="{64501ea8-f895-4de8-96e6-bf3636e8f3a0}" />
+    <Property Name="CompletedTestsCount" Id="{4df0634e-c711-42ec-bb8e-f45037ac0270}" FolderPath="Properties\">
+      <Declaration><![CDATA[PROPERTY CompletedTestsCount : REFERENCE TO DINT]]></Declaration>
+      <Get Name="Get" Id="{906cf44a-8598-48c6-99e1-7d99e5c1bd7b}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[CompletedTestsCount REF= _CompletedTestsCount;]]></ST>
+        </Implementation>
+      </Get>
+      <Set Name="Set" Id="{339ced1a-97ef-48a0-877e-b7e2ea47e595}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[_CompletedTestsCount REF= CompletedTestsCount;]]></ST>
+        </Implementation>
+      </Set>
+    </Property>
     <Method Name="Execute" Id="{e8763835-464a-4d4d-91b6-bfd6399d248c}" FolderPath="Methods\">
       <Declaration><![CDATA[METHOD Execute
 ]]></Declaration>
       <Implementation>
-        <ST><![CDATA[THIS^();]]></ST>
+        <ST><![CDATA[IF NOT TestEnabled THEN
+    TestState := 'Disabled';
+    ImageRef  := '';
+ELSE
+    IF NOT TestHasFinished THEN
+        THIS^();
+        IF TestHasFinished THEN
+            TestCompleted := TRUE;
+            CompletedTestsCount := CompletedTestsCount + 1;
+            IF TestHasFailed THEN
+                TestState := 'Failed';
+                ImageRef  := '3';
+                FailedTestsCount := FailedTestsCount + 1;
+            ELSE
+                TestState := 'Passed';
+                ImageRef  := '2';
+            END_IF
+        ELSE
+            TestState := 'Running';
+            ImageRef  := '1';
+        END_IF
+    END_IF
+END_IF
+    
+]]></ST>
       </Implementation>
     </Method>
+    <Property Name="FailedTestsCount" Id="{f641f575-397a-4656-a8c0-bfa9a180f307}" FolderPath="Properties\">
+      <Declaration><![CDATA[PROPERTY FailedTestsCount : REFERENCE TO DINT]]></Declaration>
+      <Get Name="Get" Id="{b5553105-6e92-434b-b580-6c09ea53cd64}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[FailedTestsCount REF= _FailedTestsCount;]]></ST>
+        </Implementation>
+      </Get>
+      <Set Name="Set" Id="{bde94b6b-4815-486a-8d7d-8911e7c1a56d}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[_FailedTestsCount REF= FailedTestsCount;]]></ST>
+        </Implementation>
+      </Set>
+    </Property>
     <Method Name="FB_init" Id="{d80ab3c1-8238-4897-a324-064f979df65c}" FolderPath="Methods\">
       <Declaration><![CDATA[METHOD FB_init : BOOL
 VAR_INPUT
@@ -38,23 +108,60 @@ END_VAR
       <Implementation>
         <ST><![CDATA[IF TestSuite <> 0 THEN
     IF NOT bInCopyCode THEN // not an online change...
-        THIS^.setTestName(TestSuite.Name);
+        THIS^._TestSuiteName := TestSuite.Name;
+        THIS^.setTestName();
         TestSuite.AddTest(THIS^);
     END_IF
 END_IF]]></ST>
       </Implementation>
     </Method>
+    <Property Name="ImageRef" Id="{9b6511a9-fdf7-4456-8d3a-b0b7fddd9fa4}" FolderPath="Properties\">
+      <Declaration><![CDATA[{attribute 'monitoring' := 'call'}
+PROPERTY ImageRef : T_MaxString
+]]></Declaration>
+      <Get Name="Get" Id="{939bf022-27fe-4791-b057-90f167006edc}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[ImageRef := _ImageRef;]]></ST>
+        </Implementation>
+      </Get>
+      <Set Name="Set" Id="{e8943ad6-ab87-4a64-b99c-2d44c81b68f8}">
+        <Declaration><![CDATA[
+VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[_ImageRef := ImageRef;]]></ST>
+        </Implementation>
+      </Set>
+    </Property>
     <Method Name="Initialise" Id="{1fd7cd17-bea4-4e1a-b8bf-80b7d6405b5d}" FolderPath="Methods\">
       <Declaration><![CDATA[METHOD Initialise
 VAR_INPUT
     MessageList : I_AssertionMessageList;
+    CompletedTestsCount      : REFERENCE TO DINT;
+    FailedTestsCount         : REFERENCE TO DINT;
 END_VAR
 ]]></Declaration>
       <Implementation>
-        <ST><![CDATA[_TestFailed   := FALSE;
-_TestFinished := FALSE;
-_ImageRef     := '0';
-_MessageList  := MessageList;]]></ST>
+        <ST><![CDATA[_TestCompleted       := FALSE;
+_TestFailed          := FALSE;
+_TestFinished        := FALSE;
+_TestState           := '';
+_ImageRef            := '';
+_ImageRef            := '0';
+_MessageList         := MessageList;
+_CompletedTestsCount REF= CompletedTestsCount;
+_FailedTestsCount    REF= FailedTestsCount;
+
+IF _TestEnabled THEN
+    _TestState := 'Enabled';
+ELSE
+    _TestState := 'Disabled';
+END_IF
+]]></ST>
       </Implementation>
     </Method>
     <Method Name="OnAssertionFailed" Id="{b43c6d95-c832-4291-957a-0e675f31c612}" FolderPath="Methods\">
@@ -80,16 +187,13 @@ END_IF]]></ST>
     </Method>
     <Method Name="setTestName" Id="{fec2f039-d20a-446b-ab3c-1706e19fed00}" FolderPath="Methods\">
       <Declaration><![CDATA[METHOD setTestName
-VAR_INPUT
-    GroupName : STRING;
-END_VAR
 VAR
     StringSplitter : T_StringSplitter;
 END_VAR
 ]]></Declaration>
       <Implementation>
         <ST><![CDATA[StringSplitter.Init(
-    Str := _TestName,
+    Str := _InstanceName,
     Delim1 := '.',
     Delim2 := '');
     
@@ -97,12 +201,67 @@ WHILE StringSplitter.HasMore() DO
     _TestName := StringSplitter.GetNext(); // to get last sub-section
 END_WHILE
 
-IF GroupName <> '' THEN
-    _TestName := F_FormatStringEx2(Format := '%s.%s',arg1 := GroupName, arg2 := _TestName);
-END_IF
 ]]></ST>
       </Implementation>
     </Method>
+    <Property Name="SuiteName" Id="{5cdf62ee-6dcc-478f-aa2b-c031f15f34cb}" FolderPath="Properties\">
+      <Declaration><![CDATA[{attribute 'monitoring' := 'call'}
+PROPERTY SuiteName : T_MaxString
+]]></Declaration>
+      <Get Name="Get" Id="{40044915-bbff-402c-8cd2-3dd5dada6d98}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[SuiteName := _TestSuiteName;]]></ST>
+        </Implementation>
+      </Get>
+    </Property>
+    <Property Name="TestCompleted" Id="{d3752b13-84e5-469f-a8a1-7b17a7faa1c5}" FolderPath="Properties\">
+      <Declaration><![CDATA[PROPERTY TestCompleted : BOOL]]></Declaration>
+      <Get Name="Get" Id="{ee070489-246f-4d3d-80c8-d92af3de9bad}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[TestCompleted := _TestCompleted;]]></ST>
+        </Implementation>
+      </Get>
+      <Set Name="Set" Id="{f74fee5c-afc5-4c06-9184-ce8abf640499}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[_TestCompleted := TestCompleted;]]></ST>
+        </Implementation>
+      </Set>
+    </Property>
+    <Property Name="TestEnabled" Id="{467cafb2-4f22-4b57-88bd-26123e34e84b}" FolderPath="Properties\">
+      <Declaration><![CDATA[{attribute 'monitoring' := 'call'}
+PROPERTY TestEnabled : BOOL
+]]></Declaration>
+      <Get Name="Get" Id="{88a1d756-a140-4c71-88a5-89507db24db1}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[TestEnabled := _TestEnabled;]]></ST>
+        </Implementation>
+      </Get>
+      <Set Name="Set" Id="{09d4f24b-61a5-4082-add6-8bb698d02963}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[_TestEnabled := TestEnabled;
+IF TestEnabled THEN
+    _TestState := 'Enabled';
+ELSE
+    _TestState := 'Disabled';
+END_IF]]></ST>
+        </Implementation>
+      </Set>
+    </Property>
     <Method Name="TestFinished" Id="{40b90338-ccd7-407f-9078-9dcc2e61646e}" FolderPath="Methods\">
       <Declaration><![CDATA[METHOD TestFinished
 VAR_INPUT
@@ -122,6 +281,15 @@ END_VAR
           <ST><![CDATA[TestHasFailed := _TestFailed;]]></ST>
         </Implementation>
       </Get>
+      <Set Name="Set" Id="{d05bb5eb-8a5a-4a38-9b36-289c2ec36257}">
+        <Declaration><![CDATA[
+VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[_TestFailed := TestHasFailed;]]></ST>
+        </Implementation>
+      </Set>
     </Property>
     <Property Name="TestHasFinished" Id="{dae0aebe-3ba8-4510-96d3-a8ee6264162b}" FolderPath="Properties\">
       <Declaration><![CDATA[PROPERTY TestHasFinished : BOOL]]></Declaration>
@@ -133,9 +301,19 @@ END_VAR
           <ST><![CDATA[TestHasFinished := _TestFinished;]]></ST>
         </Implementation>
       </Get>
+      <Set Name="Set" Id="{f84738ce-0add-43da-a933-4021d490d24b}">
+        <Declaration><![CDATA[
+VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[_TestFinished := TestHasFinished;]]></ST>
+        </Implementation>
+      </Set>
     </Property>
     <Property Name="TestName" Id="{893d82b5-1201-4b73-be87-a5de58f69a15}" FolderPath="Properties\">
-      <Declaration><![CDATA[PROPERTY TestName : T_MaxString]]></Declaration>
+      <Declaration><![CDATA[{attribute 'monitoring' := 'call'}
+PROPERTY TestName : T_MaxString]]></Declaration>
       <Get Name="Get" Id="{1c2bbf5c-1242-4e3d-92c6-d2340060f9da}">
         <Declaration><![CDATA[VAR
 END_VAR
@@ -144,6 +322,28 @@ END_VAR
           <ST><![CDATA[TestName := _TestName;]]></ST>
         </Implementation>
       </Get>
+    </Property>
+    <Property Name="TestState" Id="{77bcbb00-fe03-4ec4-b265-72dca170694e}" FolderPath="Properties\">
+      <Declaration><![CDATA[{attribute 'monitoring' := 'call'}
+PROPERTY TestState : T_MaxString
+]]></Declaration>
+      <Get Name="Get" Id="{755d6f2d-c791-41e8-ad2b-188f34560255}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[TestState := _TestState;]]></ST>
+        </Implementation>
+      </Get>
+      <Set Name="Set" Id="{2211ac70-2efb-4d9b-a0eb-d7bcb157b78a}">
+        <Declaration><![CDATA[
+VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[_TestState := TestState;]]></ST>
+        </Implementation>
+      </Set>
     </Property>
   </POU>
 </TcPlcObject>

@@ -1,36 +1,119 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.4">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.6">
   <Itf Name="I_UnitTest" Id="{137795db-abc7-4fa7-8556-f33fd38a5e22}">
     <Declaration><![CDATA[INTERFACE I_UnitTest EXTENDS __SYSTEM.IQueryInterface
 ]]></Declaration>
-    <Method Name="Execute" Id="{2fba04c3-dc29-45c8-9862-61e987437cae}">
+    <Folder Name="Methods" Id="{f761c10b-71d3-4bb7-a464-c94a921ebd0a}" />
+    <Folder Name="Properties" Id="{25d91d0f-3ec5-4b68-b3db-6d6fd2380d59}" />
+    <Property Name="CompletedTestsCount" Id="{dbd77e51-7681-4c14-802a-210021da41bf}" FolderPath="Properties\">
+      <Declaration><![CDATA[PROPERTY CompletedTestsCount : REFERENCE TO DINT]]></Declaration>
+      <Get Name="Get" Id="{51f3d67d-ed10-43e5-a99f-9e63943a76ca}">
+        <Declaration><![CDATA[]]></Declaration>
+      </Get>
+      <Set Name="Set" Id="{bdd0258f-cb4a-40f4-ba77-3acf49ab7792}">
+        <Declaration><![CDATA[]]></Declaration>
+      </Set>
+    </Property>
+    <Method Name="Execute" Id="{2fba04c3-dc29-45c8-9862-61e987437cae}" FolderPath="Methods\">
       <Declaration><![CDATA[METHOD Execute
 ]]></Declaration>
     </Method>
-    <Method Name="Initialise" Id="{c9388da0-0ae6-4f8c-8201-6c010a8515b8}">
+    <Property Name="FailedTestsCount" Id="{52030541-a73b-4dfc-988b-4de3fb83fc2a}" FolderPath="Properties\">
+      <Declaration><![CDATA[PROPERTY FailedTestsCount : REFERENCE TO DINT]]></Declaration>
+      <Get Name="Get" Id="{39beb7f4-202c-4dba-bdbd-4df1bd5c8bcc}">
+        <Declaration><![CDATA[]]></Declaration>
+      </Get>
+      <Set Name="Set" Id="{22300810-c43d-41ff-8add-10bf53b9a444}">
+        <Declaration><![CDATA[]]></Declaration>
+      </Set>
+    </Property>
+    <Property Name="ImageRef" Id="{00e1c33c-d565-45ff-ad69-1270f4a00d3d}" FolderPath="Properties\">
+      <Declaration><![CDATA[{attribute 'monitoring' := 'call'}
+PROPERTY ImageRef : T_MaxString]]></Declaration>
+      <Get Name="Get" Id="{dc71cf87-c16c-49bc-a5ae-4df902978da5}">
+        <Declaration><![CDATA[]]></Declaration>
+      </Get>
+      <Set Name="Set" Id="{ae8e8c92-7e1b-4f5a-b60f-693f14a505a2}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+      </Set>
+    </Property>
+    <Method Name="Initialise" Id="{c9388da0-0ae6-4f8c-8201-6c010a8515b8}" FolderPath="Methods\">
       <Declaration><![CDATA[METHOD Initialise
 VAR_INPUT
-    MessageList : I_AssertionMessageList;
+    MessageList         : I_AssertionMessageList;
+    CompletedTestsCount : REFERENCE TO DINT;
+    FailedTestsCount    : REFERENCE TO DINT;
 END_VAR
 ]]></Declaration>
     </Method>
-    <Property Name="TestHasFailed" Id="{df9c8aa0-74e0-4748-8bd2-4a5fb0af13a5}">
+    <Property Name="SuiteName" Id="{ce096534-cf0a-48d1-ac19-6441665f747a}" FolderPath="Properties\">
+      <Declaration><![CDATA[{attribute 'monitoring' := 'call'}
+PROPERTY SuiteName : T_MaxString]]></Declaration>
+      <Get Name="Get" Id="{672d2083-1c29-4794-a14f-69ff428c05ad}">
+        <Declaration><![CDATA[]]></Declaration>
+      </Get>
+    </Property>
+    <Property Name="TestCompleted" Id="{917e1ce6-b1fb-4bbd-b8bd-161bb620517b}" FolderPath="Properties\">
+      <Declaration><![CDATA[PROPERTY TestCompleted : BOOL]]></Declaration>
+      <Get Name="Get" Id="{4e027229-2186-43ff-9dc4-c8c842738911}">
+        <Declaration><![CDATA[]]></Declaration>
+      </Get>
+      <Set Name="Set" Id="{ddfc18fd-08ea-4a78-9414-2fe70b96bf52}">
+        <Declaration><![CDATA[]]></Declaration>
+      </Set>
+    </Property>
+    <Property Name="TestEnabled" Id="{8fcd946c-4bf2-4713-be53-6d77a110b4c4}" FolderPath="Properties\">
+      <Declaration><![CDATA[{attribute 'monitoring' := 'call'}
+PROPERTY TestEnabled : BOOL]]></Declaration>
+      <Get Name="Get" Id="{fade4cab-8f6e-4ba0-bd6c-49f7f8a3ae33}">
+        <Declaration><![CDATA[]]></Declaration>
+      </Get>
+      <Set Name="Set" Id="{06efa95f-1439-4d5a-aa9f-5a6005530a66}">
+        <Declaration><![CDATA[]]></Declaration>
+      </Set>
+    </Property>
+    <Property Name="TestHasFailed" Id="{df9c8aa0-74e0-4748-8bd2-4a5fb0af13a5}" FolderPath="Properties\">
       <Declaration><![CDATA[PROPERTY TestHasFailed : BOOL]]></Declaration>
       <Get Name="Get" Id="{1a2f703b-1650-4083-8e8e-2f36512fa429}">
         <Declaration><![CDATA[]]></Declaration>
       </Get>
+      <Set Name="Set" Id="{9a79666d-3729-4727-8f47-8bfa7ddee8b3}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+      </Set>
     </Property>
-    <Property Name="TestHasFinished" Id="{007eb33b-a04a-4cb1-8b1a-872bdd85f4d0}">
+    <Property Name="TestHasFinished" Id="{007eb33b-a04a-4cb1-8b1a-872bdd85f4d0}" FolderPath="Properties\">
       <Declaration><![CDATA[PROPERTY TestHasFinished : BOOL]]></Declaration>
       <Get Name="Get" Id="{71a925c9-9c56-4b8d-b544-8cdd0a5a0cfa}">
         <Declaration><![CDATA[]]></Declaration>
       </Get>
+      <Set Name="Set" Id="{748e42c6-6fbc-4c88-baf0-e13ab7a1d27d}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+      </Set>
     </Property>
-    <Property Name="TestName" Id="{fca77da0-e028-4f06-adf6-809516ee7298}">
-      <Declaration><![CDATA[PROPERTY TestName : T_MaxString]]></Declaration>
+    <Property Name="TestName" Id="{fca77da0-e028-4f06-adf6-809516ee7298}" FolderPath="Properties\">
+      <Declaration><![CDATA[{attribute 'monitoring' := 'call'}
+PROPERTY TestName : T_MaxString]]></Declaration>
       <Get Name="Get" Id="{e1d0f475-1d5c-4058-8f2a-d47b2144376a}">
         <Declaration><![CDATA[]]></Declaration>
       </Get>
+    </Property>
+    <Property Name="TestState" Id="{e2ac040d-86ac-47d1-888c-8326d0e1d255}" FolderPath="Properties\">
+      <Declaration><![CDATA[{attribute 'monitoring' := 'call'}
+PROPERTY TestState : T_MaxString]]></Declaration>
+      <Get Name="Get" Id="{70ffa170-d75f-4efa-a323-a89f01f1e48d}">
+        <Declaration><![CDATA[]]></Declaration>
+      </Get>
+      <Set Name="Set" Id="{8ff40ff0-1f69-4e7d-924d-2b345b7fd7bd}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+      </Set>
     </Property>
   </Itf>
 </TcPlcObject>
