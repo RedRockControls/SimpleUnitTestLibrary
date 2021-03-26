@@ -20,6 +20,7 @@
     <Title>Unit Tests for Simple Unit test Lib</Title>
     <ProjectVersion>1.0.0.0</ProjectVersion>
     <Author>R Christopher</Author>
+    <CompilerDefines />
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="GlobalTextList.TcGTLO">
@@ -220,7 +221,7 @@
             <v>ExtendedSettings</v>
             <v>false</v>
             <v>GlobalVisuImageFilePath</v>
-            <v>"%APPLICATIONPATH%\"</v>
+            <v>"%APPLICATIONPATH%\;%APPLICATIONPATH%\"</v>
             <v>GeneralPropertySupport</v>
             <v>false</v>
           </d>

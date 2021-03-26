@@ -3,7 +3,7 @@
   <POU Name="T_TestRunner" Id="{c7f35beb-7079-466d-ae1a-1beb011dea9f}" SpecialFunc="None">
     <Declaration><![CDATA[FUNCTION_BLOCK T_TestRunner
 VAR
-    ReloadTests          : BOOL;
+    _ReloadTests         : BOOL := TRUE; // Also exposed as a property so it can be read and reset by client
     RunTestsSequentially : BOOL := TRUE;
     Run                  : BOOL;
     Reset                : BOOL;
@@ -116,7 +116,7 @@ CASE State OF
 END_CASE]]></ST>
     </Implementation>
     <Folder Name="Methods" Id="{35bbb33e-58f9-46f6-83b2-7eeb5a0d79dc}" />
-    <Folder Name="Properties" Id="{d986fc65-5487-4e94-af74-d63818155f10}" />
+    <Folder Name="Properties" Id="{116c350e-bd61-4a7a-9187-30ac7ad300f0}" />
     <Method Name="AddTest" Id="{aff2d568-ab55-47bc-af2b-94e85ba5e218}" FolderPath="Methods\">
       <Declaration><![CDATA[METHOD AddTest : BOOL
 VAR_INPUT
@@ -253,22 +253,23 @@ AssertionMessages.Clear();
 ]]></ST>
       </Implementation>
     </Method>
-    <Property Name="ReloadTestsRequest" Id="{8fe8ab6a-5c02-4158-af1a-83e9f9cc4b45}" FolderPath="Properties\">
-      <Declaration><![CDATA[PROPERTY ReloadTestsRequest : BOOL]]></Declaration>
-      <Get Name="Get" Id="{6cc3539e-1a37-4c4c-832d-b7ca4feb8075}">
+    <Property Name="ReloadTests" Id="{4bdb3974-f65e-4deb-bcb5-4b335da55118}" FolderPath="Properties\">
+      <Declaration><![CDATA[//{attribute 'monitoring' := 'call'}
+PROPERTY ReloadTests : BOOL]]></Declaration>
+      <Get Name="Get" Id="{87a98268-df1f-40ac-bc85-5740a11f7907}">
         <Declaration><![CDATA[VAR
 END_VAR
 ]]></Declaration>
         <Implementation>
-          <ST><![CDATA[ReloadTestsRequest := ReloadTests;]]></ST>
+          <ST><![CDATA[ReloadTests := _ReloadTests;]]></ST>
         </Implementation>
       </Get>
-      <Set Name="Set" Id="{13f8d37a-40d2-4a17-b6d3-39d8a07a1907}">
+      <Set Name="Set" Id="{fc6a2bda-f28c-4971-9e72-8ec9cc07c4e1}">
         <Declaration><![CDATA[VAR
 END_VAR
 ]]></Declaration>
         <Implementation>
-          <ST><![CDATA[ReloadTestsRequest := ReloadTests;]]></ST>
+          <ST><![CDATA[_ReloadTests := ReloadTests;]]></ST>
         </Implementation>
       </Set>
     </Property>

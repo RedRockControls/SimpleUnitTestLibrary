@@ -21,6 +21,16 @@
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
+              <v n="TextID">"553"</v>
+              <v n="TextDefault">"  Result"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"90"</v>
+              <v n="TextDefault">"  Suite"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
               <v n="TextID">"14"</v>
               <v n="TextDefault">"  Test Name"</v>
               <l n="LanguageTexts" t="ArrayList" />
@@ -38,6 +48,11 @@
             <o>
               <v n="TextID">"199"</v>
               <v n="TextDefault">" %s"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"897"</v>
+              <v n="TextDefault">" Name"</v>
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>

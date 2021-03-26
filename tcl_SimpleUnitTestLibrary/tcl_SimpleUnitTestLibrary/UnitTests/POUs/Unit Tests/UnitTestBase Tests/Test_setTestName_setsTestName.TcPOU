@@ -14,7 +14,7 @@ END_VAR
       <ST><![CDATA[UnitTest.setTestName();
 
 Assertion.AssertEquals_STRING(
-    Expected := 'UnitTester',
+    Expected := 'UnitTest',
     Actual   := UnitTest.TestName,
     VariableName := UnitTest.TestName);
     
