@@ -16,7 +16,7 @@ END_VAR
 Assertion.AssertEquals_STRING(
     Expected := 'UnitTest',
     Actual   := UnitTest.TestName,
-    VariableName := UnitTest.TestName);
+    VariableName := 'UnitTest.TestName');
     
 TestFinished();
 ]]></ST>

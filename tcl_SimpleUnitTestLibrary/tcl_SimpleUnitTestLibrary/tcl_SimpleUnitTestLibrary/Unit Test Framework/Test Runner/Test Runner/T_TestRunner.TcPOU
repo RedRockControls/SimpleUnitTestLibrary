@@ -29,8 +29,10 @@ VAR
     EnabledTestCount         : DINT;
     ResultsSummary           : T_MaxString;
 
-    Tests             : ARRAY[0..MAX_TESTS] OF I_UnitTest;
-    AssertionMessages : T_AssertionMessageList;
+    Tests    : ARRAY[0..MAX_TESTS] OF I_UnitTest;
+    Messages : ARRAY[0..MAX_ASSERTION_MESSAGES] OF T_MaxString; // must be located here so vis can access them
+
+    AssertionMessages : T_AssertionMessageList(Messages := Messages);
 
 END_VAR
 ]]></Declaration>

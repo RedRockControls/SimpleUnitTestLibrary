@@ -3,7 +3,7 @@
   <POU Name="T_AssertionMessageList" Id="{e7d5340d-c089-4dbb-ae44-9c00444fa0e8}" SpecialFunc="None">
     <Declaration><![CDATA[FUNCTION_BLOCK T_AssertionMessageList IMPLEMENTS I_AssertionMessageList
 VAR
-    Messages : ARRAY[0..200] OF T_MaxString;
+    Messages : REFERENCE TO ARRAY[0..MAX_ASSERTION_MESSAGES] OF T_MaxString;
     Count : INT;
 END_VAR
 ]]></Declaration>
@@ -36,6 +36,18 @@ END_VAR
     n        := SIZEOF(Messages));
 Count := 0;
 ]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="FB_init" Id="{614a9bab-78c5-48bd-a7b6-ff3a0068d57a}">
+      <Declaration><![CDATA[METHOD FB_init : BOOL
+VAR_INPUT
+    bInitRetains : BOOL; // if TRUE, the retain variables are initialized (warm start / cold start)
+    bInCopyCode  : BOOL; // if TRUE, the instance afterwards gets moved into the copy code (online change)
+    Messages     : REFERENCE TO ARRAY[0..MAX_ASSERTION_MESSAGES] OF T_MaxString;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[THIS^.Messages REF= Messages;]]></ST>
       </Implementation>
     </Method>
   </POU>
