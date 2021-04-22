@@ -10,7 +10,7 @@ VAR
     EnableAllTests       : BOOL;
     DisableAllTests      : BOOL;
     RowIsSelected        : BOOL;
-    SelectedRow          : DINT;
+    SelectedRow          : INT;
 
     State : (
         Init,
@@ -278,7 +278,7 @@ END_VAR
     <Method Name="ToggleTestEnable" Id="{466982a5-d21e-4010-8476-b98928a418f1}" FolderPath="Methods\">
       <Declaration><![CDATA[METHOD ToggleTestEnable
 VAR_INPUT
-    Index : DINT;
+    Index : INT;
 END_VAR
 ]]></Declaration>
       <Implementation>
