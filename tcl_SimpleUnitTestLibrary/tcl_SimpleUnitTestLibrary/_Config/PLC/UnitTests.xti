@@ -14,9 +14,19 @@
 					<Priority>20</Priority>
 					<CycleTime>10000000</CycleTime>
 				</Context>
+				<Context>
+					<Id NeedCalleeCall="true">1</Id>
+					<Name>VISU_TASK</Name>
+					<ManualConfig>
+						<OTCID>#x02010030</OTCID>
+					</ManualConfig>
+					<Priority>30</Priority>
+					<CycleTime>200000000</CycleTime>
+				</Context>
 			</Contexts>
 			<TaskPouOids>
 				<TaskPouOid Prio="20" OTCID="#x08502041"/>
+				<TaskPouOid Prio="30" OTCID="#x08502042"/>
 			</TaskPouOids>
 		</Instance>
 	</Project>

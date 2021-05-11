@@ -56,6 +56,11 @@
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
+              <v n="TextID">"86"</v>
+              <v n="TextDefault">" Suite"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
               <v n="TextID">"228"</v>
               <v n="TextDefault">" tcl_SimpleUnitTestLibrary version %s"</v>
               <l n="LanguageTexts" t="ArrayList" />

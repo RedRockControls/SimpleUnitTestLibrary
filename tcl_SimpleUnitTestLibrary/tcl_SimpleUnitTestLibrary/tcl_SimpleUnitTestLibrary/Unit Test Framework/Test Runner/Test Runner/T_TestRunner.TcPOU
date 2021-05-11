@@ -29,6 +29,7 @@ VAR
     EnabledTestCount         : DINT;
     ResultsSummary           : T_MaxString;
 
+    Results  : ARRAY[0..MAX_TESTS] OF ST_TestResult;
     Tests    : ARRAY[0..MAX_TESTS] OF I_UnitTest;
     Messages : ARRAY[0..MAX_ASSERTION_MESSAGES] OF T_MaxString; // must be located here so vis can access them
 
@@ -80,6 +81,8 @@ CASE State OF
     RunTests_Concurrently:
         FOR i := 0 TO TestCount - 1 DO
             Tests[i].Execute();
+			Results[i].TestState := Tests[i].TestState;
+			Results[i].ImageRef  := Tests[i].ImageRef;
         END_FOR
 
         IF EnabledTestCount > 0 THEN
@@ -95,6 +98,8 @@ CASE State OF
     RunTests_Sequentially:
         IF Tests[CurrentTestIndex] <> 0 THEN
             Tests[CurrentTestIndex].Execute();
+			Results[CurrentTestIndex].TestState := Tests[CurrentTestIndex].TestState;
+			Results[CurrentTestIndex].ImageRef  := Tests[CurrentTestIndex].ImageRef;
 
             IF NOT Tests[CurrentTestIndex].TestEnabled OR Tests[CurrentTestIndex].TestHasFinished THEN
                 CurrentTestIndex := CurrentTestIndex + 1;
@@ -243,6 +248,11 @@ END_VAR]]></Declaration>
         Tests[i].Initialise(AssertionMessages,
                             CompletedTestsCount := CompletedTestsCount,
                             FailedTestsCount    := FailedTestsCount);
+							
+	    Results[i].SuiteName := Tests[i].SuiteName;
+	    Results[i].TestName  := Tests[i].TestName;
+	    Results[i].TestState := Tests[i].TestState;
+	    Results[i].ImageRef  := Tests[i].ImageRef;
     END_IF
 END_FOR
 
