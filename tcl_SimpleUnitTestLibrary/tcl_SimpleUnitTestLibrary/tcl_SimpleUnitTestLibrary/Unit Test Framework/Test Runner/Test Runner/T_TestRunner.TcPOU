@@ -10,7 +10,8 @@ VAR
     EnableAllTests       : BOOL;
     DisableAllTests      : BOOL;
     RowIsSelected        : BOOL;
-    SelectedRow          : INT;
+    SelectedRow          : INT := -1;
+    Abort                : BOOL;
 
     State : (
         Init,
@@ -41,6 +42,7 @@ END_VAR
       <ST><![CDATA[IF RowIsSelected THEN
     ToggleTestEnable(Index := SelectedRow);
     RowIsSelected := FALSE;
+	SelectedRow := -1;
 END_IF
 
 IF EnableAllTests THEN
@@ -51,6 +53,12 @@ END_IF
 IF DisableAllTests THEN
     DisableAllTests := FALSE;
     DisableAll();
+END_IF
+
+IF Abort THEN
+	Abort := FALSE;
+	State := 0;
+	Initialisation();
 END_IF
 
 CASE State OF
@@ -134,6 +142,11 @@ END_VAR
         <ST><![CDATA[IF TestCount < MAX_TESTS THEN
     UnitTest.TestEnabled := TRUE;
     Tests[TestCount]    := UnitTest;
+	    Results[TestCount].SuiteName := UnitTest.SuiteName;
+	    Results[TestCount].TestName  := UnitTest.TestName;
+	    Results[TestCount].TestState := UnitTest.TestState;
+	    Results[TestCount].ImageRef  := UnitTest.ImageRef;
+	
     TestCount           := TestCount + 1;
     AddTest              := TRUE;
 ELSE
@@ -170,6 +183,10 @@ END_VAR
         <ST><![CDATA[FOR i := 0 TO MAX_TESTS DO
     Tests[i] := 0;
 END_FOR
+MEMSET(
+	destAddr:= ADR(Results), 
+	fillByte:= 0, 
+	n:= SIZEOF(Results));
 TestCount := 0;]]></ST>
       </Implementation>
     </Method>
@@ -183,6 +200,7 @@ END_VAR
     FOR i := 0 TO MAX_TESTS - 1 DO
         IF Tests[i] <> 0 THEN
             Tests[i].TestEnabled := FALSE;
+			Results[i].TestState := 'Disabled';
         END_IF
     END_FOR
 END_IF
@@ -199,6 +217,7 @@ END_VAR
     FOR i := 0 TO MAX_TESTS - 1 DO
         IF Tests[i] <> 0 THEN
             Tests[i].TestEnabled := TRUE;
+			Results[i].TestState := 'Enabled';
         END_IF
     END_FOR
 END_IF
@@ -293,7 +312,13 @@ END_VAR
 ]]></Declaration>
       <Implementation>
         <ST><![CDATA[IF State = Init THEN
-    Tests[Index].TestEnabled := NOT Tests[Index].TestEnabled;
+	IF Tests[Index].TestEnabled THEN
+		Tests[Index].TestEnabled := FALSE;
+		Results[Index].TestState := 'Disabled';
+	ELSE
+		Tests[Index].TestEnabled := TRUE;
+		Results[Index].TestState := 'Enabled';
+	END_IF
 END_IF
 ]]></ST>
       </Implementation>
