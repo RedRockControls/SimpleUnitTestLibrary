@@ -22,6 +22,8 @@ VAR
 
     _CompletedTestsCount : REFERENCE TO DINT;
     _FailedTestsCount    : REFERENCE TO DINT;
+	
+	State : INT; // for general use during test...
 END_VAR]]></Declaration>
     <Implementation>
       <ST><![CDATA[]]></ST>
@@ -161,6 +163,8 @@ IF _TestEnabled THEN
 ELSE
     _TestState := 'Disabled';
 END_IF
+
+State := 0;
 ]]></ST>
       </Implementation>
     </Method>
