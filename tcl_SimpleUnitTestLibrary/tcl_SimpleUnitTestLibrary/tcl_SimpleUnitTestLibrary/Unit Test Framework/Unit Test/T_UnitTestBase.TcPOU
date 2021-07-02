@@ -2,6 +2,7 @@
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.6">
   <POU Name="T_UnitTestBase" Id="{11d674d7-44eb-41b0-9d82-8296e52558c5}" SpecialFunc="None">
     <Declaration><![CDATA[{attribute 'reflection'}
+{attribute 'hide_all_locals'}
 FUNCTION_BLOCK ABSTRACT T_UnitTestBase IMPLEMENTS I_UnitTest, I_AssertionListener
 VAR
     {attribute 'instance-path'}

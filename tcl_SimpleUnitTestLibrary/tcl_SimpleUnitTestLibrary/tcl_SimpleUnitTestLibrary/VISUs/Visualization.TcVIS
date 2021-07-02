@@ -1785,7 +1785,22 @@
                 <l n="UserManagementAccessRights" t="ArrayList" />
               </o>
               <o>
-                <a n="ConfiguredComplexInputs" et="ComplexInput" />
+                <a n="ConfiguredComplexInputs" cet="ComplexInput">
+                  <o>
+                    <n n="DescriptionTree" />
+                    <o n="VisualElemMemberList" t="VisualElemMemberList">
+                      <l n="VisualElemMemberList" t="VisualElemMemberCollection" cet="VisualElemMember">
+                        <o>
+                          <v n="Id">1186196937L</v>
+                          <v n="Value">"TestRunner._ReloadTests"</v>
+                        </o>
+                      </l>
+                    </o>
+                    <v n="SignatureName">"Visu_TapInput"</v>
+                    <v n="Name">"Tap"</v>
+                    <v n="Description">"Configure the tapping of a Boolean variable"</v>
+                  </o>
+                </a>
                 <l n="Elements" t="ArrayList" />
                 <n n="VisualElementDescription" />
                 <o n="VisualElemMemberList" t="VisualElemMemberList">
@@ -3765,10 +3780,10 @@
               <d n="FbMethods" t="CaseInsensitiveHashtable_1" ckt="String" cvt="Guid">
                 <v>FB_Init</v>
                 <v>319b3862-e20c-4efb-b21c-21d239e42046</v>
-                <v>FB_Exit</v>
-                <v>9d7cc1d2-19b4-4438-9553-5613ffc533db</v>
                 <v>FB_Reinit</v>
                 <v>79f596e8-b768-4a1a-b1f7-0168ac61ec3e</v>
+                <v>FB_Exit</v>
+                <v>9d7cc1d2-19b4-4438-9553-5613ffc533db</v>
               </d>
               <v n="FbName">"NotImportant"</v>
               <v n="FbGuid">{a6162cd1-41ca-4124-ab79-9939f6b0efc8}</v>
