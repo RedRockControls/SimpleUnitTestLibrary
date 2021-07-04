@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.4">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.6">
   <POU Name="TTestRunner" Id="{c7f35beb-7079-466d-ae1a-1beb011dea9f}" SpecialFunc="None">
-    <Declaration><![CDATA[FUNCTION_BLOCK TTestRunner IMPLEMENTS ITestRunner
+    <Declaration><![CDATA[FUNCTION_BLOCK TTestRunner
 VAR_INPUT
     RunTestsSequentially : BOOL;
     ManualTestRunsOnly : BOOL; // Set true to enforce "Manual run only"
