@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.6">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
   <POU Name="T_TestRunner" Id="{c7f35beb-7079-466d-ae1a-1beb011dea9f}" SpecialFunc="None">
     <Declaration><![CDATA[FUNCTION_BLOCK T_TestRunner
 VAR
@@ -174,6 +174,29 @@ END_IF
 ]]></ST>
       </Implementation>
     </Method>
+    <Method Name="BeginTesting" Id="{699b6dc3-33c6-4d89-9f82-95a7e4b40926}" FolderPath="Methods\">
+      <Declaration><![CDATA[METHOD PUBLIC BeginTesting : BOOL
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[IF state <> init THEN
+  RETURN;
+END_IF
+
+Run := TRUE;
+BeginTesting := TRUE;]]></ST>
+      </Implementation>
+    </Method>
+    <Property Name="Busy" Id="{45f070aa-3d9a-49a7-a5af-2ceab900d3fc}" FolderPath="Properties\">
+      <Declaration><![CDATA[PROPERTY PUBLIC Busy : BOOL]]></Declaration>
+      <Get Name="Get" Id="{e0de5ad4-6ebb-4845-8e67-a34e5176db76}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[Busy := (State <> Init);]]></ST>
+        </Implementation>
+      </Get>
+    </Property>
     <Method Name="ClearTests" Id="{0514e42e-1772-4318-a77d-c71bfad7c3c5}" FolderPath="Methods\">
       <Declaration><![CDATA[METHOD ClearTests
 VAR_INPUT
@@ -304,6 +327,30 @@ END_VAR
         </Implementation>
       </Set>
     </Property>
+    <Method Name="ResetTests" Id="{27f81d65-984f-4e53-8ffe-2c3ed8a01b7f}" FolderPath="Methods\">
+      <Declaration><![CDATA[METHOD PUBLIC ResetTests : BOOL
+
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[IF state <> Init THEN
+  RETURN;
+END_IF
+
+Reset := TRUE;
+ResetTests := TRUE;]]></ST>
+      </Implementation>
+    </Method>
+    <Property Name="TestFinished" Id="{3f065415-1c7f-45e5-ab11-7edcad772c11}" FolderPath="Properties\">
+      <Declaration><![CDATA[PROPERTY PUBLIC TestFinished : BOOL]]></Declaration>
+      <Get Name="Get" Id="{8d404796-9805-4db8-9082-3d94b1bb6685}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[TestFinished := (CurrentTestIndex >= TestCount);]]></ST>
+        </Implementation>
+      </Get>
+    </Property>
     <Method Name="ToggleTestEnable" Id="{466982a5-d21e-4010-8476-b98928a418f1}" FolderPath="Methods\">
       <Declaration><![CDATA[METHOD ToggleTestEnable
 VAR_INPUT
@@ -323,5 +370,68 @@ END_IF
 ]]></ST>
       </Implementation>
     </Method>
+    <LineIds Name="T_TestRunner">
+      <LineId Id="3" Count="88" />
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="T_TestRunner.AddTest">
+      <LineId Id="3" Count="12" />
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="T_TestRunner.AddTestSuite">
+      <LineId Id="3" Count="5" />
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="T_TestRunner.BeginTesting">
+      <LineId Id="13" Count="4" />
+      <LineId Id="10" Count="0" />
+    </LineIds>
+    <LineIds Name="T_TestRunner.Busy.Get">
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="T_TestRunner.ClearTests">
+      <LineId Id="3" Count="6" />
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="T_TestRunner.DisableAll">
+      <LineId Id="3" Count="7" />
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="T_TestRunner.EnableAll">
+      <LineId Id="3" Count="7" />
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="T_TestRunner.GetEnabledTestCount">
+      <LineId Id="3" Count="6" />
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="T_TestRunner.GetResultsSummary">
+      <LineId Id="3" Count="3" />
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="T_TestRunner.Initialisation">
+      <LineId Id="3" Count="18" />
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="T_TestRunner.ReloadTests.Get">
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="T_TestRunner.ReloadTests.Set">
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="T_TestRunner.ResetTests">
+      <LineId Id="6" Count="0" />
+      <LineId Id="8" Count="1" />
+      <LineId Id="7" Count="0" />
+      <LineId Id="5" Count="0" />
+      <LineId Id="10" Count="0" />
+    </LineIds>
+    <LineIds Name="T_TestRunner.TestFinished.Get">
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="T_TestRunner.ToggleTestEnable">
+      <LineId Id="3" Count="8" />
+      <LineId Id="2" Count="0" />
+    </LineIds>
   </POU>
 </TcPlcObject>
