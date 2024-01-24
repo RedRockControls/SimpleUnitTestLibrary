@@ -37,3 +37,23 @@ tcl_SimpleUnitTestLibrary.TestFramework.TestRunner(
     ManualTestRunsOnly := TRUE
 );
 ```
+
+To run the tests programmatically 
+```pascal
+    // Load tests on start
+    IF testRunner.ReloadTests THEN
+        testRunner.AddTestSuite(exampleTestSuite);
+        testRunner.ReloadTests := FALSE;
+    END_IF
+
+    // IF the test runner has not completed run the tests
+    IF NOT testRunner.TestFinished THEN
+        IF NOT testRunner.Busy THEN
+            testRunner.ResetTests();
+            testRunner();
+            testRunner.BeginTesting();
+        END_IF
+
+        testRunner();
+    END_IF
+```
