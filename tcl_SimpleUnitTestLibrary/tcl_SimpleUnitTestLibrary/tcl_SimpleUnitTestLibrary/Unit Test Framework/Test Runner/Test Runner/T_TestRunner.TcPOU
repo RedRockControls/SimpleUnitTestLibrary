@@ -329,8 +329,7 @@ END_VAR
     </Property>
     <Method Name="ResetTests" Id="{27f81d65-984f-4e53-8ffe-2c3ed8a01b7f}" FolderPath="Methods\">
       <Declaration><![CDATA[METHOD PUBLIC ResetTests : BOOL
-VAR_INPUT
-END_VAR
+
 ]]></Declaration>
       <Implementation>
         <ST><![CDATA[IF state <> Init THEN
